@@ -1,0 +1,89 @@
+---
+import '../styles/global.css';
+import { person, links } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${person.name} — ${person.role}`,
+  description = 'Security researcher. Penetration testing, LLM security, and the tooling in between.',
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Cover' },
+  { href: '/writeups/', label: 'Writeups' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/about/', label: 'About' },
+];
+
+const isCurrent = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={person.name} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <nav class="nav">
+      <div class="nav__in">
+        <a class="nav__brand" href="/">divyansh404<i>.xyz</i></a>
+        <div class="nav__links">
+          {nav.map((n) => (
+            <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>
+              {n.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    <slot name="cover" />
+
+    <main class="shell">
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="shell">
+        <div class="foot__grid">
+          <div>
+            <div>{person.name} — {person.location}</div>
+            <div style="margin-top:.35rem">
+              <a href={`mailto:${person.email}`}>{person.email}</a>
+            </div>
+          </div>
+          <div class="link-list">
+            {links.map((l) => (
+              <a href={l.url} rel="me noopener" target="_blank">{l.label}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

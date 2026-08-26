@@ -1,0 +1,60 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Band from '../../../components/Band.astro';
+import { getCollection } from 'astro:content';
+import { platforms, roles } from '../../../data/site';
+
+export async function getStaticPaths() {
+  const { platforms } = await import('../../../data/site');
+  return platforms.map((p) => ({ params: { platform: p.slug } }));
+}
+
+const { platform } = Astro.params;
+const meta = platforms.find((p) => p.slug === platform)!;
+
+const items = (
+  await getCollection('writeups', ({ data }) => !data.draft)
+)
+  .filter((w) => w.id.split('/')[0] === platform)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<Base title={`${meta.name} writeups — Divyansh404`} description={meta.blurb}>
+  <Band offset="0000" label={meta.name}>
+    <a class="back" href="/writeups/">← All writeups</a>
+    <h1 class="display display--caps" style="font-size:clamp(2rem,5.5vw,3.25rem);margin-bottom:1rem">
+      {meta.name}
+    </h1>
+    <p class="lede">{meta.blurb}</p>
+  </Band>
+
+  <Band offset="0010" label="Entries">
+    {items.length === 0 ? (
+      <p class="muted">
+        Nothing published here yet. Add a markdown file to
+        <code style="font-family:var(--font-mono);font-size:.85em">
+          {` src/content/writeups/${platform}/ `}
+        </code>
+        and it will show up.
+      </p>
+    ) : (
+      <div class="entries">
+        {items.map((w) => (
+          <a class="entry" href={`/writeups/${w.id}/`}>
+            <span class="entry__title">{w.data.title}</span>
+            <span class="entry__meta">
+              <span class={`chip chip--sev chip--${w.data.difficulty}`}>
+                {w.data.difficulty}
+              </span>
+              &nbsp;{fmt(w.data.date)}
+            </span>
+            <span class="entry__sum">{w.data.summary}</span>
+          </a>
+        ))}
+      </div>
+    )}
+  </Band>
+</Base>
