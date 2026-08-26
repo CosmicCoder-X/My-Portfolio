@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import Band from '../../components/Band.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<Base title="Blog — Divyansh404" description="Notes on offensive security, LLM attack surface, and building security tooling.">
+  <Band offset="0000" label="Notes">
+    <h1 class="display display--caps" style="font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem">
+      Blog
+    </h1>
+    <p class="lede">
+      Writeups are what I did. This is what I think — about the attack surface
+      nobody's covering yet, about tooling, and about learning this in public
+      from a degree that has nothing to do with it.
+    </p>
+  </Band>
+
+  <Band offset="0010" label="Posts">
+    {posts.length === 0 ? (
+      <p class="muted">Nothing published yet.</p>
+    ) : (
+      <div class="entries">
+        {posts.map((p) => (
+          <a class="entry" href={`/blog/${p.id}/`}>
+            <span class="entry__title">{p.data.title}</span>
+            <span class="entry__meta">{fmt(p.data.date)}</span>
+            <span class="entry__sum">{p.data.summary}</span>
+          </a>
+        ))}
+      </div>
+    )}
+  </Band>
+</Base>
