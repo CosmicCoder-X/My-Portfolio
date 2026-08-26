@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://divyansh404.xyz/sitemap.xml
