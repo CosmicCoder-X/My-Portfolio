@@ -1,0 +1,75 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Band from '../../../components/Band.astro';
+import { getCollection, render } from 'astro:content';
+import { platforms, roles } from '../../../data/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('writeups', ({ data }) => !data.draft);
+  return entries.map((entry) => {
+    const [platform, ...rest] = entry.id.split('/');
+    return {
+      params: { platform, slug: rest.join('/') },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const platformMeta = platforms.find((p) => p.slug === Astro.params.platform);
+
+const fmt = (date: Date) =>
+  date.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<Base title={`${d.title} — Divyansh404`} description={d.summary}>
+  <Band offset="0000" label="Finding">
+    <a class="back" href={`/writeups/${Astro.params.platform}/`}>
+      ← {platformMeta?.name ?? 'Writeups'}
+    </a>
+
+    <h1 class="display" style="font-size:clamp(1.875rem,5vw,3rem);margin-bottom:1rem">
+      {d.title}
+    </h1>
+
+    <div class="chip-row" style="margin-bottom:1.25rem">
+      <span class={`chip chip--sev chip--${d.difficulty}`}>{d.difficulty}</span>
+      <span class="chip">{roles[d.role]}</span>
+      <span class="chip">{d.target}</span>
+    </div>
+
+    <p class="mono-label">{fmt(d.date)}</p>
+  </Band>
+
+  <Band offset="0010" label="Summary">
+    <div class="pao">
+      <div class="pao__row">
+        <div class="pao__k">Problem</div>
+        <div class="pao__v">{d.problem}</div>
+      </div>
+      <div class="pao__row">
+        <div class="pao__k">Action</div>
+        <div class="pao__v">{d.action}</div>
+      </div>
+      <div class="pao__row">
+        <div class="pao__k">Outcome</div>
+        <div class="pao__v">{d.outcome}</div>
+      </div>
+    </div>
+
+    {d.tags.length > 0 && (
+      <div class="chip-row">
+        {d.tags.map((t) => <span class="chip">{t}</span>)}
+      </div>
+    )}
+  </Band>
+
+  <Band offset="0020" label="Walkthrough">
+    <article class="doc">
+      <Content />
+    </article>
+  </Band>
+</Base>
