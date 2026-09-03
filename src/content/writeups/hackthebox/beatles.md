@@ -3,11 +3,11 @@ title: 'Beatles'
 target: 'Hack The Box — Beatles'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'A forensics challenge — unzipping the challenge file to find a ROT13-encoded message from John Lennon to Paul and a password-protected BAND.zip, decoding the message to learn the passphrase is four characters, cracking the zip with fcrackzip and rockyou.txt to recover the password pass, extracting BAND.JPG (The Beatles logo), using steghide with the passphrase THEBEATLES to extract a hidden ELF binary, and running strings on the binary to find a base64-encoded string that decodes to the flag.'
+summary: 'A forensics challenge — ROT13-encoded message hints at a four-character zip password, cracked with fcrackzip to reveal a Beatles logo JPG. Steghide extraction with passphrase THEBEATLES yields a hidden ELF binary containing a base64-encoded flag.'
 role: 'forensics'
 tags: ['steganography', 'rot13', 'zip-cracking', 'fcrackzip', 'steghide', 'elf-binary', 'base64', 'strings', 'rockyou']
 problem: 'The challenge provides a zip file containing a text message (m3ss@g#_f0r_pAuL) encoded in an unreadable format and a password-protected BAND.zip. The task is to follow the breadcrumbs — decode the message, crack the zip, and extract the flag from whatever is hidden inside.'
-action: 'Opened the text file m3ss@g#_f0r_pAuL and recognised the encoding as ROT13. Decoded it to reveal a message from John Lennon to Paul saying the folder passphrase is four characters long and mentioning a tour message and the Beatles. Cracked BAND.zip using fcrackzip with rockyou.txt, recovering the password pass. Extracted BAND.JPG — a Beatles logo image. Ran steghide on the JPG, guessing the passphrase THEBEATLES from the image content, which extracted an ELF binary (testabeatle.out). Rather than playing through the binary interactive math challenge, ran strings on it to find a base64-encoded string, decoded it to recover the flag.'
+action: 'Decoded the ROT13 message revealing a four-character passphrase hint and the tool name fcrackzip. Cracked BAND.zip with fcrackzip/rockyou.txt (password: pass). Ran steghide on the extracted Beatles logo JPG with passphrase THEBEATLES, extracting a hidden ELF binary. Ran strings on the binary to find a base64-encoded flag and decoded it.'
 outcome: 'Recovered the flag HTB{S0rRy_My_FR13nD} by decoding the base64 string extracted via strings from the hidden ELF binary. The challenge chained ROT13 decoding, zip cracking, steghide extraction with a contextual passphrase, and static analysis of a binary.'
 draft: false
 ---

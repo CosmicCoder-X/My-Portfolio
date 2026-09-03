@@ -3,10 +3,10 @@ title: 'Flag Command'
 target: 'Hack The Box — Flag Command'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'A web challenge featuring a text adventure game — inspecting the client-side JavaScript through DevTools to understand the game logic, discovering a hidden secret command array fetched from /api/options, and submitting the secret phrase to bypass the intended game flow and retrieve the flag.'
+summary: 'A web challenge — text adventure game with a hidden secret command found by inspecting client-side JavaScript and the /api/options endpoint, bypassing the intended game flow to retrieve the flag.'
 role: 'appsec'
 tags: ['web', 'javascript', 'devtools', 'source-code-review', 'api-enumeration', 'client-side-logic', 'ctf']
-problem: 'A web application presents a text-based adventure game with branching choices across multiple steps. Playing through the intended options leads to dead ends. The flag is hidden behind a secret command that is not presented to the player but is accepted by the game logic. The task is to find that command by analysing the client-side code and API responses.'
+problem: 'A text adventure game where all visible choices lead to dead ends. The flag is behind a secret command not shown in the UI but accepted by the game logic, discoverable through client-side code and API analysis.'
 action: 'Explored the web application and checked robots.txt (404). Opened DevTools and identified three JavaScript files powering the game — commands.js, game.js, and main.js. Analysed main.js and found the CheckMessage function, which accepts commands from either the visible options array or a secret array. Traced the secret array to the /api/options endpoint by inspecting Network tab requests, retrieved the JSON response containing all possible commands including the secret phrase, and submitted it in the game terminal.'
 outcome: 'Recovered the flag HTB{D3v310p3r_t0015_4r3_b35t_wh4t_y0u_Th1nk??!_77ea2105d8e8213cf3a2ad38e16ca65d} by submitting the secret command "Blip-blop, in a pickle with a hiccup! Shmiggity-shmack" discovered in the /api/options JSON response.'
 draft: false

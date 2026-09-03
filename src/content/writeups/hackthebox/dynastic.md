@@ -3,12 +3,12 @@ title: 'Dynastic'
 target: 'Hack The Box — Dynastic'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'A crypto challenge — given a Python encryption script and its output, analysing the encrypt function to identify it as a Trithemius cipher (a position-dependent Caesar shift where each letter is shifted forward by its index), reverse engineering it by subtracting the index instead of adding it, and running the decryption script to recover the flag.'
+summary: 'A crypto challenge — analysing a Python encryption script to identify a Trithemius cipher (position-dependent Caesar shift), then reversing it by subtracting the index instead of adding to recover the flag.'
 role: 'appsec'
 tags: ['crypto', 'python', 'reverse-engineering', 'trithemius-cipher', 'caesar-cipher', 'script-analysis', 'identity-map']
-problem: 'Two files are provided — source.py (the encryption script) and output.txt (the encrypted flag). The encryption script imports a hidden FLAG variable, encrypts it using a custom function, and writes the ciphertext to output.txt. The task is to reverse engineer the encryption logic and decrypt the flag.'
-action: 'Opened output.txt to find the encrypted flag DJF_CTA_SWYH_NPDKK_MBZ_QPHTIGPMZY_KRZSQE?!_ZL_CN_PGLIMCU_YU_KJODME_RYGZXL. Analysed source.py to understand the encryption — the encrypt function iterates over each character, converts alphabetic characters to their position in the alphabet (A=0 through Z=25), adds the character index i, and converts back to a letter using modulo 26. Non-alphabetic characters pass through unchanged. Recognised this as a Trithemius cipher — a variant of the Caesar cipher where the shift increases by one for each character position. Wrote a decryption script that reverses the operation by subtracting i instead of adding it. Ran the script to decrypt the ciphertext.'
-outcome: 'Recovered the flag HTB{DID_YOU_KNOW_ABOUT_THE_TRITHEMIUS_CIPHER?!_IT_IS_SIMILAR_TO_CAESAR_CIPHER} by reversing the position-dependent shift cipher. The flag itself names the cipher used — the Trithemius cipher.'
+problem: 'Given source.py (encryption script) and output.txt (ciphertext). The task is to reverse engineer the custom encryption function and decrypt the flag.'
+action: 'Analysed source.py — the encrypt function converts each letter to its alphabet position (A=0), adds the character index i, and converts back mod 26. Non-alpha characters pass through unchanged. Recognised it as a Trithemius cipher. Wrote a decryption script subtracting i instead of adding and ran it against the ciphertext.'
+outcome: 'Recovered HTB{DID_YOU_KNOW_ABOUT_THE_TRITHEMIUS_CIPHER?!_IT_IS_SIMILAR_TO_CAESAR_CIPHER} by reversing the position-dependent shift.'
 draft: false
 ---
 

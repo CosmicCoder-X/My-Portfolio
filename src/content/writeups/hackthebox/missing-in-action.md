@@ -3,12 +3,12 @@ title: 'Missing in Action'
 target: 'Hack The Box — Missing in Action'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'An OSINT challenge — tracing a missing person named Roland Sanchez from Birmingham, UK through social media platforms: finding his LinkedIn profile identifying him as CISO at Egotistical Bank, discovering the company Twitter account @BankEgotistical which references Foursquare for locations, then using Google dorks to find Roland Sanchez profile on Foursquare where the flag was hidden in a cafe review.'
+summary: 'An OSINT challenge — tracing Roland Sanchez across social media. LinkedIn reveals his employer Egotistical Bank, the company Twitter references Foursquare, and a Google dork finds his Foursquare profile with the flag hidden in a cafe review.'
 role: 'soc'
 tags: ['osint', 'social-media', 'linkedin', 'twitter', 'foursquare', 'google-dorks', 'reconnaissance', 'open-source-intelligence']
-problem: 'Roland Sanchez from Birmingham, UK has gone missing and his family believes he was kidnapped on a business trip. The task is to trace his digital footprint across social media platforms using only publicly available information to find the flag.'
-action: 'Searched for Roland Sanchez Birmingham UK on DuckDuckGo, found his LinkedIn profile identifying him as CISO at Egotistical Bank. Searched for the company name and found the @BankEgotistical Twitter account, which referenced @FoursquareGuide for branch locations. Navigated to Foursquare and used Google dorks ("Roland Sanchez" site:foursquare.com) to locate his Foursquare profile, where the flag was embedded in a cafe review at Tamper at Sellers Wheel in Sheffield, UK.'
-outcome: 'Recovered the flag HTB{J4Va_c0St_M3_m0r3_than_1_th0ugh7} from Roland Sanchez Foursquare profile, hidden in a review of a Sheffield coffee shop. The OSINT chain followed LinkedIn to Twitter to Foursquare across three platforms.'
+problem: 'Roland Sanchez from Birmingham, UK is missing. Trace his digital footprint across social media platforms using only public information to find the flag.'
+action: 'DuckDuckGo search found his LinkedIn profile as CISO at Egotistical Bank. The company Twitter @BankEgotistical referenced @FoursquareGuide for branch locations. Google dork "Roland Sanchez" site:foursquare.com located his Foursquare profile with the flag in a cafe review at Tamper at Sellers Wheel, Sheffield.'
+outcome: 'Flag HTB{J4Va_c0St_M3_m0r3_than_1_th0ugh7} recovered from a Foursquare cafe review. OSINT chain: LinkedIn to Twitter to Foursquare.'
 draft: false
 ---
 

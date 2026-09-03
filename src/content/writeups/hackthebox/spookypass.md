@@ -3,12 +3,12 @@ title: 'SpookyPass'
 target: 'Hack The Box — SpookyPass'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'A beginner reversing challenge — identifying an ELF binary with filetype, reviewing protections with checksec (Partial RELRO, Stack Canary, NX, PIE), extracting a hardcoded password from the binary using strings, and supplying it at runtime to retrieve the flag.'
+summary: 'A beginner reversing challenge — extracting a hardcoded plaintext password from an ELF binary using strings and supplying it at runtime to retrieve the flag.'
 role: 'pentest'
 tags: ['reversing', 'strings', 'elf', 'checksec', 'static-analysis', 'hardcoded-credentials']
-problem: 'A binary named pass prompts for a password before revealing the flag. The task is to reverse-engineer the binary, extract the correct password, and authenticate to recover the flag — without needing a disassembler or decompiler.'
-action: 'Identified the file as an ELF executable with filetype, reviewed binary protections with checksec (Partial RELRO, Stack Canary, NX enabled, PIE enabled), then ran strings piped through less to extract readable content from the binary — finding the hardcoded password s3cr3t_p455_f0r_gh05t5_4nd_gh0ul5 in plaintext. Executed the binary and supplied the password to retrieve the flag.'
-outcome: 'Recovered the flag HTB{un0bfu5c4t3d_5tr1ng5} by supplying the password extracted via strings. No disassembly or dynamic analysis was required — the password was stored as a plaintext string in the binary.'
+problem: 'An ELF binary prompts for a password before revealing the flag. The password is stored as a plaintext string with no obfuscation.'
+action: 'Confirmed ELF type with filetype and checked protections with checksec. Ran strings against the binary and found the hardcoded password s3cr3t_p455_f0r_gh05t5_4nd_gh0ul5 in plaintext. Supplied it at runtime to retrieve the flag.'
+outcome: 'Flag: HTB{un0bfu5c4t3d_5tr1ng5}. The entire solve was strings plus runtime input -- no disassembly needed.'
 draft: false
 ---
 

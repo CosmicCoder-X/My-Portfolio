@@ -3,10 +3,10 @@ title: 'Easy Phish'
 target: 'Hack The Box — Easy Phish'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'An OSINT challenge — enumerating DNS records for secure-startup.com using dig to understand why phishing emails were convincing, finding the first half of the flag in a misconfigured SPF record (v=spf1 with ?all) and the second half in the DMARC record (p=none), demonstrating how weak email authentication policies enable domain spoofing.'
+summary: 'An OSINT challenge — DNS enumeration of secure-startup.com revealing a misconfigured SPF record (?all) and unenforced DMARC (p=none), with the flag split across both TXT records.'
 role: 'soc'
 tags: ['osint', 'dns', 'spf', 'dmarc', 'email-authentication', 'dig', 'phishing', 'domain-spoofing']
-problem: 'Customers of secure-startup.com are receiving convincing phishing emails that appear to come from the legitimate domain. The task is to investigate the domain DNS configuration to determine why the phishing emails are not being rejected by recipient mail servers.'
+problem: 'Customers of secure-startup.com are receiving convincing phishing emails from the domain. The task is to investigate DNS email authentication records to determine why spoofed emails pass validation.'
 action: 'Enumerated DNS records for secure-startup.com using dig. Queried TXT records and found a misconfigured SPF record using ?all (neutral qualifier) instead of -all (hard fail), with the first half of the flag embedded in the record. Recognised the connection to email authentication and queried the _dmarc subdomain TXT record, finding a DMARC policy set to p=none (no enforcement) with the second half of the flag.'
 outcome: 'Recovered the flag HTB{RIP_SPF_Always_2nd_F1ddl3_2_DMARC} split across the SPF and DMARC TXT records. The misconfigured SPF (?all) and unenforced DMARC (p=none) policies explain why phishing emails spoofing the domain pass recipient mail server checks.'
 draft: false

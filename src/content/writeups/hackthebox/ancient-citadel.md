@@ -3,12 +3,12 @@ title: 'The Ancient Citadel'
 target: 'Hack The Box — The Ancient Citadel'
 difficulty: 'medium'
 date: 2025-08-29
-summary: 'An OSINT challenge — given a photo of a stone fortress gate and the hint that it is located in Chile, using Google Lens reverse image search to identify the building as Brunet Castle (Castillo Brunet) in Viña del Mar, confirming the match via Google Street View, and extracting the address from the Google Knowledge Panel to construct the flag in the required format.'
+summary: 'An OSINT challenge — reverse image searching a stone fortress gate hinted to be in Chile, identifying it as Brunet Castle (Castillo Brunet) in Vina del Mar via Google Lens, confirming with Street View, and extracting the address from the Knowledge Panel for the flag.'
 role: 'soc'
 tags: ['osint', 'geolocation', 'google-lens', 'reverse-image-search', 'google-maps', 'chile', 'architecture']
-problem: 'A photo of a stone fortress with a green arched gate, crenellated walls, and the number 104 visible on the entrance is provided. The challenge description hints the location is somewhere in Chile. The flag format requires the street name, number, exact zip code, city, and region — all separated by underscores.'
-action: 'Uploaded the challenge photo to Google Lens for reverse image search. The top results identified the building as Brunet Castle (Castillo Brunet), with matches from travel blogs, Foursquare, and Flickr all pointing to Viña del Mar, Chile. Confirmed the match by comparing Google Street View imagery of the castle gate with the challenge photo — the green arched gate, stone masonry, number 104, and crenellated tower all matched. Extracted the address details from the Google Knowledge Panel, which identified it as The Brunet Castle (also known as Yarur Palace), a historic castle in Viña del Mar, Chile, designed by architect Alfredo Azancot.'
-outcome: 'Recovered the flag by formatting the castle address in the required HTB{street_number_exactzipcode_city_with_underscores_region} pattern. The solve was a straightforward reverse image search identification followed by address extraction.'
+problem: 'A photo of a stone fortress with a green arched gate and the number 104 on the entrance is provided, with a hint that the location is in Chile. The flag requires the full address — street, number, zip, city, and region — in a specific underscore-separated format.'
+action: 'Uploaded the photo to Google Lens — top results identified Brunet Castle (Castillo Brunet) in Vina del Mar, Chile. Confirmed via Google Street View comparison. Extracted the full address from the Google Knowledge Panel.'
+outcome: 'Recovered the flag by formatting the castle address in the required HTB{street_number_exactzipcode_city_with_underscores_region} pattern. Straightforward reverse image search solve.'
 draft: false
 ---
 

@@ -3,12 +3,12 @@ title: 'Labyrinth'
 target: 'Hack The Box — Labyrinth'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'A pwn challenge — given a 64-bit ELF binary with no canary and no PIE, connecting via netcat to a labyrinth with 100 doors, reverse engineering the binary in Ghidra to find that door 69 triggers a second input vulnerable to buffer overflow (fgets reading 0x44 bytes into a 0x30-byte buffer), locating the escape_plan function that reads flag.txt, and writing a pwntools exploit that overflows the stack to redirect execution to escape_plan.'
+summary: 'A pwn challenge — reversing a 64-bit ELF (no canary, no PIE) to find door 69 triggers a buffer overflow, then ret2win to an unreachable escape_plan function that prints the flag.'
 role: 'appsec'
 tags: ['pwn', 'buffer-overflow', 'binary-exploitation', 'ghidra', 'reverse-engineering', 'pwntools', 'stack-overflow', 'elf', 'checksec', 'ret2win']
-problem: 'A 64-bit ELF binary (labyrinth) is provided along with glibc libraries and a test flag.txt. The binary presents 100 doors to choose from, and choosing wrong prints "YOU FAILED TO ESCAPE!" The goal is to reverse engineer the binary to find the correct door and exploit a vulnerability to reach a hidden function that prints the flag.'
-action: 'Ran checksec on the binary — Full RELRO, no canary, NX enabled, no PIE. Connected to the remote instance via netcat and observed the door selection interface. Loaded the binary into Ghidra and decompiled the main function, which revealed that door 69 (or 069) passes a strncmp check and triggers a second fgets call that reads up to 0x44 (68) bytes into a buffer only 0x30 (48) bytes deep — a classic stack buffer overflow. Found a separate escape_plan function that opens and prints flag.txt but is never called from main. Used objdump to locate escape_plan at address 0x401256. Wrote a pwntools exploit that sends 69 as the door choice, then overflows the buffer with 0x30 bytes of padding, a crafted base pointer pointing into .bss+0x200, and the address of escape_plan as the return address.'
-outcome: 'The exploit successfully redirected execution to escape_plan, which printed the flag HTB{3sc4p3_fr0m_4b0v3}. A straightforward ret2win buffer overflow exploit with no canary and no PIE to complicate the payload.'
+problem: 'A 64-bit ELF with no canary and no PIE presents 100 doors. Only door 69 passes the check and triggers a second fgets vulnerable to buffer overflow. An unreachable escape_plan function reads flag.txt.'
+action: 'Checksec confirmed Full RELRO, no canary, NX enabled, no PIE. Ghidra decompilation showed door 69 passes a strncmp check and triggers fgets reading 0x44 bytes into a 0x30-byte buffer — 20 bytes of overflow. Found escape_plan at 0x401256 via objdump. Wrote a pwntools exploit sending door 69, then overflowing with 0x30 padding, a crafted base pointer into .bss+0x200, and escape_plan as the return address.'
+outcome: 'Ret2win exploit redirected execution to escape_plan, printing HTB{3sc4p3_fr0m_4b0v3}. Straightforward stack overflow with no canary or PIE to complicate the payload.'
 draft: false
 ---
 

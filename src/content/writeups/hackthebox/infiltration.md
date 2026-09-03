@@ -3,12 +3,12 @@ title: 'Infiltration'
 target: 'Hack The Box — Infiltration'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'An OSINT challenge — investigating Evil Corp LLC across social media platforms, navigating past two deliberate rabbit holes (a base64-encoded encouragement message on the LinkedIn company page and a D&D-themed tweet by an employee on Twitter), pivoting to an Instagram account of another employee whose posted photo of an E Corp employee badge contained the flag below the barcode.'
+summary: 'An OSINT challenge — enumerating Evil Corp LLC employees across social media, navigating past two deliberate rabbit holes on LinkedIn and Twitter, and finding the flag on an employee badge visible in an Instagram photo.'
 role: 'soc'
 tags: ['osint', 'social-media', 'linkedin', 'twitter', 'instagram', 'reconnaissance', 'rabbit-holes', 'employee-enumeration']
-problem: 'The target is a company called Evil Corp LLC. The task is to investigate its social media presence, enumerate employees across platforms, and find useful information that could aid in breaking into the company — with the flag hidden somewhere in the digital footprint.'
-action: 'Searched for Evil Corp LLC and found the company LinkedIn page, which had a base64-encoded string in the tagline that decoded to You can do this keep going — a deliberate rabbit hole. Enumerated employees and found Alia Mccarty on Twitter (@mccarty_alia), an Internal Communications Designer at Evil Corp LLC whose media tab contained a D&D class tweet with HTB{ in the text — another rabbit hole. Found Eryn Mcmahon on Instagram (eryn_mcmahon12), a Relational Factors Analyst at Evil Corp LLC with a LinkedIn link in her bio. Browsed her Instagram posts and found a photo of her desk showing an E Corp employee badge with the flag printed below the barcode.'
-outcome: 'Recovered the flag HTB{Y0ur_Enum3rat10n_1s_Str0ng_Y0ung_0ne} from an employee badge visible in an Instagram photo. The solve required persistence through two rabbit holes before finding the correct platform and the correct employee.'
+problem: 'Investigate Evil Corp LLC across social media, enumerate employees, and find the flag hidden in their digital footprint. Two deliberate rabbit holes test persistence before the real flag.'
+action: 'Found the Evil Corp LLC LinkedIn page with a base64-encoded fake flag in the tagline (decoded to "You can do this keep going"). Enumerated employees — Alia Mccarty on Twitter had a D&D tweet baiting HTB{ class names, another rabbit hole. Found Eryn Mcmahon on Instagram (eryn_mcmahon12) whose desk photo showed an E Corp employee badge with the real flag below the barcode.'
+outcome: 'Flag HTB{Y0ur_Enum3rat10n_1s_Str0ng_Y0ung_0ne} recovered from an employee badge in an Instagram photo after navigating past two deliberate rabbit holes on LinkedIn and Twitter.'
 draft: false
 ---
 

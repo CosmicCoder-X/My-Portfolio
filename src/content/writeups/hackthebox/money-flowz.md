@@ -3,12 +3,12 @@ title: 'Money Flowz'
 target: 'Hack The Box — Money Flowz'
 difficulty: 'medium'
 date: 2025-08-29
-summary: 'An OSINT challenge — starting from a name Frank Vitalik, finding his Reddit account u/frankvitalik with crypto scam posts, following a link to a Steemit page advertising a fake Ethereum giveaway with wallet address 0x1b3247Cd0A59ac8B37A922804D150556dB837699, noticing a comment hinting at the Ropsten testnet, looking up the address on ropsten.etherscan.io, filtering for outgoing transactions to find only two, and decoding the hex input data of a transaction to reveal the flag.'
+summary: 'An OSINT challenge — tracing Frank Vitalik from Reddit to a Steemit fake ETH giveaway, pivoting to the Ropsten testnet via a comment hint, and decoding hex input data from an outgoing transaction to reveal the flag.'
 role: 'soc'
 tags: ['osint', 'reddit', 'steemit', 'ethereum', 'ropsten', 'etherscan', 'blockchain', 'cryptocurrency', 'transaction-analysis', 'hex-decoding']
-problem: 'Frank Vitalik is described as a hustler, and the task is to figure out where the money flows. The only starting point is the name and the implication that cryptocurrency is involved. The flag is hidden somewhere in the trail of his financial activity.'
-action: 'Searched for Frank Vitalik and found the Reddit account u/frankvitalik, which had a repost about crypto scams and a post titled Incredible SCAM giveaway linking to a Steemit page at steemit.com/htb/@freecoinz/freecoinz. The Steemit page advertised a fake Ethereum giveaway with wallet address 0x1b3247Cd0A59ac8B37A922804D150556dB837699. A comment on the post from the freecoinz account mentioned the ropsten net, pointing to the Ropsten Ethereum testnet. Looked up the address on ropsten.etherscan.io and found 125 incoming transactions but only 2 outgoing. Inspected the outgoing transactions and found hex-encoded data in the Input Data field of one transaction, which decoded from hex to UTF-8 as the flag.'
-outcome: 'Recovered the flag HTB{CryPt0Curr3ncy_1s_FuNz!!} from the Input Data field of an outgoing Ropsten testnet transaction. The OSINT chain followed Reddit to Steemit to Ropsten Etherscan, pivoting from social media personas to blockchain analysis.'
+problem: 'Starting point is the name Frank Vitalik and a crypto implication. The flag is hidden somewhere in the trail of his financial activity across social media and blockchain.'
+action: 'Found Reddit u/frankvitalik with a post linking to a Steemit fake ETH giveaway at steemit.com/htb/@freecoinz/freecoinz with wallet 0x1b3247Cd0A59ac8B37A922804D150556dB837699. A self-reply comment mentioned "ropsten net", pointing to the Ropsten testnet. Looked up the address on ropsten.etherscan.io -- 125 incoming transactions, only 2 outgoing. The Input Data field of one outgoing transaction contained hex that decoded to the flag.'
+outcome: 'Flag HTB{CryPt0Curr3ncy_1s_FuNz!!} recovered from hex-encoded Input Data in a Ropsten testnet transaction. OSINT chain: Reddit to Steemit to blockchain analysis.'
 draft: false
 ---
 

@@ -3,12 +3,12 @@ title: 'Monstrosity'
 target: 'Hack The Box — Monstrosity'
 difficulty: 'medium'
 date: 2025-08-29
-summary: 'An OSINT challenge — investigating a Twitter account @miounster with 3,000 identical growling tweets, using DevTools to extract the user ID from the Twitter API, fetching all tweets via the Twitter API v2 with Bearer token authentication and pagination, running a Python script to filter geo-tagged tweets and plot their coordinates with matplotlib, reading the resulting MD5 hash 407180F14EBB5D998E0083034ED9A21B from the plot, and cracking it on CrackStation to recover the flag.'
+summary: 'An OSINT challenge — extracting geo-coordinate metadata from 3,000 identical tweets on @miounster via the Twitter API, plotting coordinates with matplotlib to reveal an MD5 hash, and cracking it on CrackStation for the flag.'
 role: 'soc'
 tags: ['osint', 'twitter', 'twitter-api', 'geo-coordinates', 'matplotlib', 'python', 'md5', 'hash-cracking', 'crackstation', 'api-enumeration', 'pagination']
-problem: 'A Twitter account @miounster has posted exactly 3,000 tweets, all containing variations of "Gggggrrrrr". The tweets appear identical at first glance, but some contain embedded geo-coordinate metadata. The task is to extract all tweets, identify the ones with location data, and decode the hidden message formed by the coordinates.'
-action: 'Visited the @miounster Twitter profile and observed 3,000 tweets of identical growling content. Opened DevTools Network tab and intercepted the UserByScreenName API request to extract the account rest_id 885213010314317825. Used the Twitter API v2 with Bearer token authentication to fetch all 3,000 tweets with pagination, filtering for tweets containing geo-coordinate fields. Ran a community analysis script (analyze.py) to extract and plot the coordinates using matplotlib, which rendered the MD5 hash 407180F14EBB5D998E0083034ED9A21B as text on a scatter plot. Submitted the hash to CrackStation, which identified it as md5 and cracked it to the plaintext covertops.'
-outcome: 'Recovered the flag HTB{covertops} by cracking the MD5 hash 407180F14EBB5D998E0083034ED9A21B revealed through geo-coordinate plotting. The OSINT chain moved from Twitter profile enumeration through API data extraction to coordinate visualisation and hash cracking.'
+problem: 'Twitter account @miounster has 3,000 identical "Gggggrrrrr" tweets. Some contain hidden geo-coordinate metadata that spells a message when plotted. Manual inspection is impossible at this scale.'
+action: 'Extracted the user ID (885213010314317825) from DevTools Network tab via the UserByScreenName API call. Fetched all 3,000 tweets using Twitter API v2 with Bearer token and pagination, requesting geo.coordinates fields. Ran a community script (analyze.py) to filter geo-tagged tweets and plot coordinates with matplotlib, revealing the MD5 hash 407180F14EBB5D998E0083034ED9A21B. Cracked it on CrackStation to plaintext covertops.'
+outcome: 'Flag HTB{covertops} recovered by cracking the MD5 hash revealed through geo-coordinate plotting. OSINT chain: Twitter API extraction to coordinate visualisation to hash cracking.'
 draft: false
 ---
 

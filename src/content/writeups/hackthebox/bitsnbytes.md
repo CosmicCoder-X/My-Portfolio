@@ -3,12 +3,12 @@ title: 'BitsNBytes'
 target: 'Hack The Box — BitsNBytes'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'A steganography challenge — given two visually identical PNG images (intercepted.png and original.png), using StegSolve image combiner in SUB mode to reveal hidden pixel differences along the leftmost column, writing a Python script with PIL to extract the first vertical line and map black pixels to 0 and white pixels to 1, converting the resulting binary string to ASCII to get a base64-encoded string, and decoding it to recover the flag.'
+summary: 'A steganography challenge — two visually identical PNGs differ in the leftmost pixel column. StegSolve SUB mode reveals the modified pixels, a Python/PIL script extracts binary from black/white values, and the resulting base64 string decodes to the flag.'
 role: 'forensics'
 tags: ['steganography', 'image-analysis', 'stegsolve', 'python', 'pil', 'binary', 'base64', 'pixel-manipulation', 'image-subtraction']
 problem: 'Two PNG images are provided — intercepted.png and original.png. Both are 775x550 pixels and visually identical, with file sizes differing by only 0.1 kB. The flag is hidden somewhere in the difference between the two images.'
-action: 'Opened both images side by side and confirmed they look identical. Used StegSolve image combiner with the SUB (subtraction) operation to subtract original.png from intercepted.png, revealing small white dots along the leftmost vertical column of the resulting image. Wrote a Python script using PIL to iterate over the first column (x=0) of the intercepted image, mapping each pixel to 0 for black (0, 0, 0) and 1 for white (255, 255, 255). Ran the script to extract a binary string, converted it to ASCII text which produced a base64-encoded string, and decoded it to get the flag.'
-outcome: 'Recovered the flag HTB{1f_a_w00d_chuck_c0uld_chuck_w00d} by decoding the base64 string SFRCezFmX2FfdzAwZF9jaHVja19jMHVsZF9jaHVja193MDBkfQ== extracted from pixel data hidden in the first column of the intercepted image.'
+action: 'Used StegSolve SUB mode to subtract original.png from intercepted.png, revealing white dots along the leftmost column. Wrote a Python/PIL script to extract column x=0 pixel values as binary (black=0, white=1). Converted the binary string to ASCII, producing a base64 string that decoded to the flag.'
+outcome: 'Recovered the flag from base64-encoded pixel data hidden in the first column of the intercepted image. Clean image subtraction and binary extraction pipeline.'
 draft: false
 ---
 

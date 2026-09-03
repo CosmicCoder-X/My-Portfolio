@@ -3,12 +3,12 @@ title: 'The Shadowed Sigil'
 target: 'Hack The Box — The Shadowed Sigil'
 difficulty: 'medium'
 date: 2025-08-29
-summary: 'An OSINT challenge — identifying which APT group is associated with the IP address 139.5.177.205 by searching for the IoC on Google, finding the UK National Cyber Security Centre PDF documenting APT28 malware indicators, and confirming the IP is listed as a C2 server for the X-AGENT (CHOPSTICK) RAT used by APT28.'
+summary: 'An OSINT challenge — Googling the IP 139.5.177.205 to find a UK NCSC PDF listing it as a C2 server for the X-AGENT RAT used by APT28.'
 role: 'soc'
 tags: ['osint', 'threat-intelligence', 'apt', 'ioc', 'ip-address', 'ncsc', 'apt28', 'x-agent', 'c2-infrastructure']
-problem: 'The IP address 139.5.177.205 is provided as an indicator of compromise linked to multiple malicious incidents. The task is to identify which APT group operates the infrastructure behind this IP address and submit the group designation as the flag.'
-action: 'Searched for the IP address 139.5.177.205 on Google in quotes. The results returned IPinfo pages and a PDF from the UK National Cyber Security Centre (NCSC) titled Indicators of Compromise for Malware used by APT28, hosted at ncsc.gov.uk under the filename NCSC_APT28. Opened the PDF and confirmed the IP 139.5.177.205 is listed on page 2 as a C2 server for X-AGENT (also known as CHOPSTICK), a second-stage modular remote access trojan used by APT28.'
-outcome: 'Recovered the flag HTB{APT28} by identifying the IP address as APT28 infrastructure through the NCSC IoC report. The solve required a single Google search and verification against an authoritative government threat intelligence publication.'
+problem: 'An IP address (139.5.177.205) is provided as an IoC. The task is to identify which APT group operates this infrastructure and submit the group designation as the flag.'
+action: 'Googled "139.5.177.205" in quotes. Results included a UK NCSC PDF titled "Indicators of Compromise for Malware used by APT28." Opened the PDF and confirmed the IP is listed on page 2 as a C2 server for X-AGENT (CHOPSTICK), a second-stage modular RAT used by APT28.'
+outcome: 'Flag: HTB{APT28}. A single quoted Google search surfaced the authoritative NCSC IoC report attributing the IP to APT28.'
 draft: false
 ---
 
