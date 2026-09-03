@@ -584,11 +584,29 @@ a { color: inherit; }
 
 /* ── platform cards (writeups hub) ────────────────────────── */
 .platform-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
+}
+
+.platform-grid > .platform-card {
+  flex: 1 1 20rem;
+  max-width: calc(33.333% - 1px);
+}
+
+@media (max-width: 64rem) {
+  .platform-grid > .platform-card {
+    max-width: calc(50% - 1px);
+  }
+}
+
+@media (max-width: 46rem) {
+  .platform-grid > .platform-card {
+    max-width: 100%;
+  }
 }
 
 .platform-card {
