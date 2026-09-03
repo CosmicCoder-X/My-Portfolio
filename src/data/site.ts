@@ -98,11 +98,15 @@ export const credentials = [
 ];
 
 // ── Certification categories (for /certifications/ page) ────
+// To add a new cert: copy a line, change name/issuer/year/image.
+// image: path relative to public/ — upload PNG/PDF to public/certifications/ on GitHub.
+// For PDFs: convert to PNG first (screenshot or export), or link the PDF in image field
+// and the page will show a placeholder tile with a download link.
 export const certCategories = [
   {
     slug: 'ctf',
     name: 'CTF Certificates',
-    blurb: 'Certificates earned from capture-the-flag competitions and platform milestones.',
+    blurb: 'Certificates earned from capture-the-flag competitions.',
     items: [
       { name: 'Athena CTF 2026', issuer: 'Athena CTF', year: '2026', image: '/certifications/Athena CTF_26 certification.png' },
       { name: "CyberGeek'26 CTF", issuer: 'CyberGeek', year: '2026', image: "/certifications/CyberGeek'26 CTF Certificate.png" },
@@ -114,12 +118,19 @@ export const certCategories = [
     ],
   },
   {
-    slug: 'professional',
-    name: 'Professional Certifications',
-    blurb: 'Industry certifications, platform pathways, and structured coursework.',
+    slug: 'pathway',
+    name: 'Pathway Certificates',
+    blurb: 'Certificates earned by completing structured learning paths and roadmaps.',
     items: [
       { name: 'Junior Penetration Tester', issuer: 'TryHackMe', year: '', image: '' },
       { name: 'Blue Team Junior Analyst', issuer: 'Security Blue Team', year: '', image: '' },
+    ],
+  },
+  {
+    slug: 'professional',
+    name: 'Professional Certifications',
+    blurb: 'Industry certifications and structured coursework.',
+    items: [
       { name: 'Ethical Hacking', issuer: 'Cisco', year: '', image: '' },
       { name: 'FOR589 — Cybercrime Investigations', issuer: 'SANS curriculum', year: '', image: '' },
       { name: 'AI Hacking 101', issuer: 'Self-study', year: '', image: '' },
