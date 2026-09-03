@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import Band from '../../components/Band.astro';
+import { certCategories } from '../../data/site';
+
+const offsets = ['0000', '0010', '0020'];
+---
+
+<Base title="Certifications — Divyansh404" description="CTF certificates and professional certifications.">
+  <Band offset="0000" label="Index">
+    <h1 class="display display--caps" style="font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem">
+      Certifications
+    </h1>
+    <p class="lede">
+      Platform milestones, competition certificates, and industry credentials.
+      Pick a category to browse.
+    </p>
+  </Band>
+
+  {certCategories.map((cat, i) => (
+    <Band offset={offsets[i + 1]} label={cat.name}>
+      <div style="display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem">
+        <h2 class="h2" style="margin-bottom:0">{cat.name}</h2>
+        <span class="mono-label">{cat.items.length} entries</span>
+      </div>
+      <p class="muted" style="margin-bottom:1.5rem">{cat.blurb}</p>
+
+      {cat.items.length === 0 ? (
+        <p class="muted" style="font-size:.9375rem">
+          Nothing here yet.
+        </p>
+      ) : (
+        <div class="cert-grid">
+          {cat.items.map((c) => (
+            <div class="cert-card">
+              <div class="cert-card__head">
+                <h3 class="cert-card__name">{c.name}</h3>
+                {c.year && <span class="cert-card__year">{c.year}</span>}
+              </div>
+              <span class="cert-card__issuer">{c.issuer}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </Band>
+  ))}
+</Base>
