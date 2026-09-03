@@ -97,6 +97,29 @@ export const credentials = [
   { name: 'AI Hacking 101', issuer: 'Self-study', kind: 'Applied in PromptProbe' },
 ];
 
+// ── Certification categories (for /certifications/ page) ────
+export const certCategories = [
+  {
+    slug: 'ctf',
+    name: 'CTF Certificates',
+    blurb: 'Certificates earned from capture-the-flag competitions and platform milestones.',
+    items: [
+      { name: 'Junior Penetration Tester', issuer: 'TryHackMe', year: '' },
+      { name: 'Blue Team Junior Analyst', issuer: 'Security Blue Team', year: '' },
+    ],
+  },
+  {
+    slug: 'professional',
+    name: 'Professional Certifications',
+    blurb: 'Industry certifications and structured coursework.',
+    items: [
+      { name: 'Ethical Hacking', issuer: 'Cisco', year: '' },
+      { name: 'FOR589 — Cybercrime Investigations', issuer: 'SANS curriculum', year: '' },
+      { name: 'AI Hacking 101', issuer: 'Self-study', year: '' },
+    ],
+  },
+];
+
 // ── Toolkit ──────────────────────────────────────────────────
 export const toolkit = [
   {
@@ -122,6 +145,7 @@ export const platforms = [
   { slug: 'hackthebox', name: 'Hack The Box', blurb: 'Machines and challenge chains.' },
   { slug: 'picoctf', name: 'picoCTF', blurb: 'Competition challenges.' },
   { slug: 'bugbounty', name: 'Bug bounty', blurb: 'Disclosed findings, sanitised.' },
+  { slug: 'otherctf', name: 'Other CTFs', blurb: 'Standalone competitions and one-off events.' },
 ];
 
 export const roles: Record<string, string> = {
