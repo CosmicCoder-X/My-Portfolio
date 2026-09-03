@@ -3,12 +3,12 @@ title: 'Encryption — Crypto 101'
 target: 'TryHackMe — Encryption — Crypto 101'
 difficulty: 'easy'
 date: 2025-08-29
-summary: 'A theory-heavy walkthrough of core cryptography concepts — symmetric vs asymmetric encryption, RSA key math and Diffie-Hellman key exchange, the role of digital certificates and TLS in securing communications, PGP/GPG for encrypting and signing data at rest, cracking passphrase-protected SSH keys with John the Ripper, and how quantum computing threatens current cryptographic standards.'
+summary: "A walkthrough of core cryptography concepts — symmetric vs asymmetric encryption, RSA key math, Diffie-Hellman, digital certificates, PGP/GPG, cracking SSH keys with John the Ripper, and quantum computing threats to current standards."
 role: 'soc'
 tags: ['cryptography', 'rsa', 'ssh', 'gpg', 'pgp', 'aes', 'des', 'tls', 'john-the-ripper', 'encryption', 'diffie-hellman']
-problem: 'Encryption underpins nearly every security control — TLS, SSH, PGP, disk encryption, password hashing — but the underlying mathematics and trust models are easy to use without understanding. The task is to build a working mental model of symmetric and asymmetric cryptography, understand how RSA and Diffie-Hellman work at a mathematical level, see how digital certificates create trust chains, practice cracking a passphrase-protected SSH key, and decrypt a GPG-encrypted message using an imported private key.'
-action: 'Worked through the mathematical foundations of RSA (prime factorisation, modular arithmetic, key generation from p and q), compared symmetric ciphers like AES and DES against asymmetric schemes like RSA, studied the Diffie-Hellman key exchange and its role in establishing shared secrets, reviewed how digital certificates and certificate authorities form trust hierarchies for TLS, cracked a passphrase-protected SSH private key using ssh2john and John the Ripper with the rockyou wordlist, and imported a PGP private key to decrypt a GPG-encrypted message.'
-outcome: 'Computed modular arithmetic results (30%5=0, 25%7=4, 118613842%9091=3), identified DES as insecure and AES as the current standard, calculated RSA n=29239669 from given primes, cracked the SSH key passphrase (delicious) using John the Ripper, successfully imported the TryHackMe PGP key and decrypted the GPG message, and identified E1 as the certificate issuer for the TryHackMe HTTPS certificate.'
+problem: "The task is to build a working mental model of symmetric and asymmetric cryptography, understand RSA and Diffie-Hellman at a mathematical level, practice cracking a passphrase-protected SSH key, and decrypt a GPG-encrypted message."
+action: "Worked through RSA key math including prime factorisation and modular arithmetic, compared symmetric ciphers (AES, DES) against asymmetric schemes, and studied Diffie-Hellman key exchange. Cracked a passphrase-protected SSH key using ssh2john and John the Ripper with the rockyou wordlist. Imported a PGP private key to decrypt a GPG-encrypted message."
+outcome: "Calculated RSA n=29239669 from given primes, cracked the SSH key passphrase (delicious) with John the Ripper, decrypted the GPG message with the imported PGP key, and identified E1 as the TryHackMe certificate issuer."
 draft: false
 ---
 
