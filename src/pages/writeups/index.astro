@@ -2,19 +2,31 @@
 import Base from '../../layouts/Base.astro';
 import Band from '../../components/Band.astro';
 import { getCollection } from 'astro:content';
-import { platforms, roles } from '../../data/site';
+import { platforms } from '../../data/site';
 
 const all = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const fmt = (d: Date) =>
-  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-
 const countFor = (slug: string) =>
   all.filter((w) => w.id.split('/')[0] === slug).length;
 
-const offsets = ['0000', '0010', '0020', '0030', '0040', '0050'];
+const latestFor = (slug: string) => {
+  const items = all.filter((w) => w.id.split('/')[0] === slug);
+  return items.length > 0 ? items[0] : null;
+};
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+const difficultySpread = (slug: string) => {
+  const items = all.filter((w) => w.id.split('/')[0] === slug);
+  const counts: Record<string, number> = {};
+  items.forEach((w) => {
+    counts[w.data.difficulty] = (counts[w.data.difficulty] || 0) + 1;
+  });
+  return counts;
+};
 ---
 
 <Base title="Writeups — Divyansh404" description="Penetration testing and CTF writeups, written as case studies.">
@@ -24,44 +36,61 @@ const offsets = ['0000', '0010', '0020', '0030', '0040', '0050'];
     </h1>
     <p class="lede">
       Rooms, machines and challenges, each written the way a finding gets
-      written up: the problem, the action, the outcome. Nothing here contains
-      live flags or unsanitised client data.
+      written up: the problem, the action, the outcome. Pick a platform to browse.
     </p>
   </Band>
 
-  {platforms.map((p, i) => {
-    const items = all.filter((w) => w.id.split('/')[0] === p.slug);
-    return (
-      <Band offset={offsets[i + 1]} label={p.name}>
-        <div style="display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem">
-          <h2 class="h2" style="margin-bottom:0">
-            <a href={`/writeups/${p.slug}/`} style="text-decoration:none">{p.name}</a>
-          </h2>
-          <span class="mono-label">{countFor(p.slug)} entries</span>
-        </div>
-        <p class="muted" style="margin-bottom:1.5rem">{p.blurb}</p>
+  <Band offset="0010" label="Platforms">
+    <div class="platform-grid">
+      {platforms.map((p) => {
+        const count = countFor(p.slug);
+        const latest = latestFor(p.slug);
+        const spread = difficultySpread(p.slug);
+        return (
+          <a class="platform-card" href={`/writeups/${p.slug}/`}>
+            <div class="platform-card__head">
+              <h2 class="platform-card__name">{p.name}</h2>
+              <span class="platform-card__count">{count}</span>
+            </div>
+            <p class="platform-card__blurb">{p.blurb}</p>
+            {count > 0 && (
+              <div class="platform-card__meta">
+                <div class="platform-card__spread">
+                  {Object.entries(spread).map(([diff, n]) => (
+                    <span class={`chip chip--sev chip--${diff}`}>{diff} {n}</span>
+                  ))}
+                </div>
+                {latest && (
+                  <div class="platform-card__latest">
+                    Latest: <strong>{latest.data.title}</strong> — {fmt(latest.data.date)}
+                  </div>
+                )}
+              </div>
+            )}
+            {count === 0 && (
+              <p class="platform-card__empty">Nothing published here yet.</p>
+            )}
+            <span class="platform-card__arrow">View all →</span>
+          </a>
+        );
+      })}
+    </div>
+  </Band>
 
-        {items.length === 0 ? (
-          <p class="muted" style="font-size:.9375rem">
-            Nothing published here yet.
-          </p>
-        ) : (
-          <div class="entries">
-            {items.map((w) => (
-              <a class="entry" href={`/writeups/${w.id}/`}>
-                <span class="entry__title">{w.data.title}</span>
-                <span class="entry__meta">
-                  <span class={`chip chip--sev chip--${w.data.difficulty}`}>
-                    {w.data.difficulty}
-                  </span>
-                  &nbsp;{fmt(w.data.date)}
-                </span>
-                <span class="entry__sum">{w.data.summary}</span>
-              </a>
-            ))}
-          </div>
-        )}
-      </Band>
-    );
-  })}
+  <Band offset="0020" label="Stats">
+    <div class="writeup-stats">
+      <div class="stat">
+        <span class="stat__num">{all.length}</span>
+        <span class="stat__label">Total writeups</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">{platforms.filter((p) => countFor(p.slug) > 0).length}</span>
+        <span class="stat__label">Active platforms</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">{all.filter((w) => w.data.difficulty === 'hard' || w.data.difficulty === 'insane').length}</span>
+        <span class="stat__label">Hard / Insane</span>
+      </div>
+    </div>
+  </Band>
 </Base>
