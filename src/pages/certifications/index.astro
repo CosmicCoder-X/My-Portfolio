@@ -13,7 +13,6 @@ const offsets = ['0000', '0010', '0020'];
     </h1>
     <p class="lede">
       Platform milestones, competition certificates, and industry credentials.
-      Pick a category to browse.
     </p>
   </Band>
 
@@ -30,14 +29,25 @@ const offsets = ['0000', '0010', '0020'];
           Nothing here yet.
         </p>
       ) : (
-        <div class="cert-grid">
+        <div class="cert-gallery">
           {cat.items.map((c) => (
-            <div class="cert-card">
-              <div class="cert-card__head">
-                <h3 class="cert-card__name">{c.name}</h3>
-                {c.year && <span class="cert-card__year">{c.year}</span>}
+            <div class="cert-tile">
+              {c.image ? (
+                <div class="cert-tile__img-wrap">
+                  <img src={c.image} alt={`${c.name} certificate`} loading="lazy" />
+                </div>
+              ) : (
+                <div class="cert-tile__placeholder">
+                  <span>Certificate</span>
+                </div>
+              )}
+              <div class="cert-tile__info">
+                <h3 class="cert-tile__name">{c.name}</h3>
+                <div class="cert-tile__meta">
+                  <span class="cert-tile__issuer">{c.issuer}</span>
+                  {c.year && <span class="cert-tile__year">{c.year}</span>}
+                </div>
               </div>
-              <span class="cert-card__issuer">{c.issuer}</span>
             </div>
           ))}
         </div>
