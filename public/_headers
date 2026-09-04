@@ -1,0 +1,30 @@
+# Cloudflare Pages headers.
+#
+# Astro copies public/ into dist/, and Cloudflare reads _headers from the
+# build output, so this file is what actually applies. (There was a
+# netlify.toml carrying these rules; the site is not on Netlify, so none
+# of it was ever served.)
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Cross-Origin-Opener-Policy: same-origin
+  # Every script is a hashed Astro bundle served from this origin — the
+  # build emits no inline <script>, so script-src needs no 'unsafe-inline'.
+  # Styles do: the pages use style="" attributes throughout.
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# Astro fingerprints everything under /_astro/, so it can be cached hard.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.svg
+  Cache-Control: public, max-age=604800
+
+/og.png
+  Cache-Control: public, max-age=604800
+
+/rss.xml
+  Cache-Control: public, max-age=3600
