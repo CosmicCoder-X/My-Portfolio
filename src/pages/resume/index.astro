@@ -166,7 +166,9 @@ const live = links.filter((l) => l.primary);
 </Base>
 
 <script>
-  document.querySelector<HTMLButtonElement>('[data-print]')?.addEventListener('click', () => {
-    window.print();
+  // Delegated and registered once, so it survives view transitions
+  // without stacking a listener per navigation.
+  document.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest?.('[data-print]')) window.print();
   });
 </script>

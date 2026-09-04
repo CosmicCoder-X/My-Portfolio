@@ -1,7 +1,7 @@
 ---
 // Client-side behaviour for long-form pages: image lightbox, code
-// copy, and table-of-contents scrollspy. All three are additive —
-// the page is fully readable and navigable without any of them.
+// copy, caption toggles, and table-of-contents scrollspy. All of it is
+// additive — the page is fully readable and navigable without any of it.
 ---
 
 <dialog class="lb" data-lightbox aria-label="Enlarged screenshot">
@@ -11,66 +11,76 @@
 </dialog>
 
 <script>
-  // ── Lightbox ───────────────────────────────────────────────
-  // These are dense terminal captures. At the width of a reading
-  // column they're decorative; at full size they're the evidence.
-  (() => {
+  // View transitions swap the document body without re-evaluating this
+  // module, so anything that touches elements has to run again on every
+  // navigation. `astro:page-load` fires on the first load and after each
+  // transition, which is exactly that hook.
+  //
+  // Listeners bound to `document` must NOT go inside it, or they stack
+  // up one copy per navigation — those are registered once, below.
+
+  const ZOOMABLE = 'article.doc img, .cert-tile__img-wrap img';
+
+  function openLightbox(src: string, alt: string) {
+    // Look the dialog up at call time: the previous page's copy is gone.
     const dlg = document.querySelector<HTMLDialogElement>('[data-lightbox]');
     if (!dlg) return;
+    const img = dlg.querySelector<HTMLImageElement>('[data-lb-img]');
+    const cap = dlg.querySelector<HTMLElement>('[data-lb-cap]');
+    if (!img || !cap) return;
 
-    const img = dlg.querySelector<HTMLImageElement>('[data-lb-img]')!;
-    const cap = dlg.querySelector<HTMLElement>('[data-lb-cap]')!;
-    const closeBtn = dlg.querySelector<HTMLButtonElement>('[data-lb-close]')!;
+    img.src = src;
+    img.alt = alt;
+    cap.textContent = alt;
+    cap.hidden = !alt;
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+  }
 
-    const zoomable = 'article.doc img, .cert-tile__img-wrap img';
+  // ── Registered once, for the life of the document ──────────
+  document.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
 
-    function open(src: string, alt: string) {
-      img.src = src;
-      img.alt = alt;
-      cap.textContent = alt;
-      cap.hidden = !alt;
-      if (typeof dlg.showModal === 'function') dlg.showModal();
-    }
-
-    document.addEventListener('click', (e) => {
-      const t = e.target as HTMLElement;
-      if (!t.matches?.(zoomable)) return;
+    if (t.matches?.(ZOOMABLE)) {
       e.preventDefault();
       const el = t as HTMLImageElement;
-      open(el.currentSrc || el.src, el.alt || '');
-    });
+      openLightbox(el.currentSrc || el.src, el.alt || '');
+      return;
+    }
 
-    // Keyboard route to the same thing: certificate tiles are buttons.
-    document.querySelectorAll<HTMLElement>('[data-zoom]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const el = btn.querySelector('img');
-        if (el) open(el.currentSrc || el.src, el.alt || '');
-      });
-    });
+    // Certificate tiles are buttons wrapping an image, so they also
+    // work from the keyboard.
+    const zoomBtn = t.closest?.('[data-zoom]');
+    if (zoomBtn) {
+      const el = zoomBtn.querySelector('img');
+      if (el) openLightbox(el.currentSrc || el.src, el.alt || '');
+      return;
+    }
 
-    const close = () => dlg.close();
-    closeBtn.addEventListener('click', close);
-    // Clicking the backdrop (i.e. the dialog itself, not the image) closes.
-    dlg.addEventListener('click', (e) => {
-      if (e.target === dlg) close();
-    });
-    dlg.addEventListener('close', () => {
-      img.src = '';
-    });
-  })();
+    if (t.closest?.('[data-lb-close]')) {
+      document.querySelector<HTMLDialogElement>('[data-lightbox]')?.close();
+      return;
+    }
 
-  // ── Long figure captions ───────────────────────────────────
-  // The caption is the image's alt text and often runs to a paragraph.
-  // Clamp it here rather than in CSS so that a reader without
-  // JavaScript sees the whole thing instead of two orphaned lines.
-  (() => {
+    // Clicking the backdrop — the dialog itself, not the image — closes.
+    if (t.matches?.('[data-lightbox]')) {
+      (t as HTMLDialogElement).close();
+    }
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    // ── Long figure captions ─────────────────────────────────
+    // The caption is the image's alt text and often runs to a paragraph.
+    // Clamp it here rather than in CSS so a reader without JavaScript
+    // sees the whole thing instead of two orphaned lines.
     document.querySelectorAll<HTMLElement>('article.doc figure').forEach((fig) => {
+      if (fig.dataset.capWired) return;
+      fig.dataset.capWired = '1';
+
       const cap = fig.querySelector<HTMLElement>('figcaption');
       if (!cap) return;
 
       const full = cap.scrollHeight;
       fig.classList.add('is-clamped');
-      // Nothing gained by a toggle on a caption that already fits.
       if (cap.clientHeight >= full) {
         fig.classList.remove('is-clamped');
         return;
@@ -81,22 +91,20 @@
       btn.className = 'cap-toggle';
       btn.textContent = 'Full caption';
       btn.setAttribute('aria-expanded', 'false');
-
       btn.addEventListener('click', () => {
         const open = fig.hasAttribute('data-open');
-        if (open) fig.removeAttribute('data-open');
-        else fig.setAttribute('data-open', '');
+        fig.toggleAttribute('data-open', !open);
         btn.textContent = open ? 'Full caption' : 'Collapse caption';
-        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        btn.setAttribute('aria-expanded', String(!open));
       });
-
       cap.insertAdjacentElement('afterend', btn);
     });
-  })();
 
-  // ── Copy buttons on code blocks ────────────────────────────
-  (() => {
+    // ── Copy buttons on code blocks ──────────────────────────
     document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+      if (btn.dataset.wired) return;
+      btn.dataset.wired = '1';
+
       btn.addEventListener('click', async () => {
         const pre = btn.parentElement?.querySelector('pre');
         const text = pre?.innerText ?? '';
@@ -124,10 +132,8 @@
         }, 1600);
       });
     });
-  })();
 
-  // ── Table of contents scrollspy ────────────────────────────
-  (() => {
+    // ── Table of contents scrollspy ──────────────────────────
     const toc = document.querySelector<HTMLElement>('[data-toc]');
     if (!toc) return;
 
@@ -139,7 +145,6 @@
     const headings = [...linkFor.keys()]
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
-
     if (headings.length === 0) return;
 
     let current: HTMLAnchorElement | null = null;
@@ -153,8 +158,6 @@
 
     const io = new IntersectionObserver(
       (records) => {
-        // Prefer whichever tracked heading is highest on screen and
-        // still above the fold.
         const visible = records
           .filter((r) => r.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
@@ -162,7 +165,10 @@
       },
       { rootMargin: '-80px 0px -70% 0px', threshold: 0 },
     );
-
     headings.forEach((h) => io.observe(h));
-  })();
+
+    // The observer holds references into a document that is about to be
+    // discarded; drop it before the next page swaps in.
+    document.addEventListener('astro:before-swap', () => io.disconnect(), { once: true });
+  });
 </script>

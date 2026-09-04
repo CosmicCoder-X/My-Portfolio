@@ -11,6 +11,12 @@ const all = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
 
 const onPlatform = (slug: string) => all.filter((w) => w.id.split('/')[0] === slug);
 
+// Only platforms that actually have writeups. A card reading "0" both
+// advertises an absence and leaves a dead cell in the grid; the pages
+// themselves still build, so they reappear here the moment the first
+// writeup lands in that folder.
+const active = platforms.filter((p) => onPlatform(p.slug).length > 0);
+
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
@@ -44,7 +50,7 @@ const roleMax = Math.max(...roleCounts.map((r) => r.count));
 
   <Band offset="0010" label="Platforms">
     <div class="platform-grid">
-      {platforms.map((p) => {
+      {active.map((p) => {
         const items = onPlatform(p.slug);
         const spread = difficultySpread(p.slug);
         return (
@@ -54,21 +60,16 @@ const roleMax = Math.max(...roleCounts.map((r) => r.count));
               <span class="platform-card__count">{items.length}</span>
             </div>
             <p class="platform-card__blurb">{p.blurb}</p>
-            {items.length > 0 && (
-              <div class="platform-card__meta">
-                <div class="platform-card__spread">
-                  {Object.entries(spread).map(([diff, n]) => (
-                    <span class={`chip chip--sev chip--${diff}`}>{diff} {n}</span>
-                  ))}
-                </div>
-                <div class="platform-card__latest">
-                  Latest: <strong>{items[0].data.title}</strong> — {fmt(items[0].data.date)}
-                </div>
+            <div class="platform-card__meta">
+              <div class="platform-card__spread">
+                {Object.entries(spread).map(([diff, n]) => (
+                  <span class={`chip chip--sev chip--${diff}`}>{diff} {n}</span>
+                ))}
               </div>
-            )}
-            {items.length === 0 && (
-              <p class="platform-card__empty">Nothing published here yet.</p>
-            )}
+              <div class="platform-card__latest">
+                Latest: <strong>{items[0].data.title}</strong> — {fmt(items[0].data.date)}
+              </div>
+            </div>
             <span class="platform-card__arrow">View all →</span>
           </a>
         );

@@ -122,6 +122,11 @@ const searchIndex = (w: CollectionEntry<'writeups'>) =>
 <script>
   // One controller per list. Cheap, dependency-free, and it never
   // touches the DOM structure — only the `hidden` attribute.
+  //
+  // Runs on `astro:page-load` rather than at module scope: view
+  // transitions swap the body without re-evaluating modules, so wiring
+  // done once would leave every later page with a dead search box.
+  document.addEventListener('astro:page-load', () => {
   document.querySelectorAll<HTMLElement>('[data-filter]').forEach((panel) => {
     const scope = panel.parentElement;
     if (!scope) return;
@@ -220,5 +225,6 @@ const searchIndex = (w: CollectionEntry<'writeups'>) =>
     }
 
     if (q || params.has('difficulty') || params.has('role')) apply();
+  });
   });
 </script>
