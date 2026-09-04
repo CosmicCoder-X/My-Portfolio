@@ -20,10 +20,13 @@ export const person = {
   // Shown as the status line in the sidebar. Set to '' to hide it.
   availability: 'Available for hire',
 
-  // Optional portrait for the cover. Drop a square-ish photo into
-  // public/ (e.g. '/portrait.jpg') and it appears beside the hero;
-  // leave it '' and the layout closes up with nothing missing.
-  portrait: '',
+  // Illustration beside the hero. Generated from assets/portrait-source.jpg
+  // by `npm run assets`, which cuts a real alpha channel so the strokes sit
+  // on the cream with no visible panel. Set to '' and the layout closes up
+  // with nothing missing.
+  portrait: '/portrait.png',
+  portraitAlt:
+    'Line drawing of a person at a laptop, the screen listing nmap, burpsuite, nikto, hydra and john the ripper.',
 
   // Where you'll work. Recruiters filter on this hard.
   openTo: 'Security engineering · Penetration testing · India & remote / relocation',

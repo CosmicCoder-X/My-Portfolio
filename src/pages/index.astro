@@ -53,7 +53,13 @@ const fmt = (d: Date) =>
 
         {person.portrait && (
           <div class="portrait rise rise-3">
-            <img src={person.portrait} alt={person.name} width="480" height="600" />
+            <img
+              src={person.portrait}
+              alt={person.portraitAlt}
+              width="1024"
+              height="733"
+              fetchpriority="high"
+            />
           </div>
         )}
       </div>

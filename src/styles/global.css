@@ -438,15 +438,13 @@ h1, h2, h3, h4, .display, .h2, .h3, .page-title, .cover__name {
   .cover__split.has-portrait { grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem); }
 }
 
-.portrait { position: relative; }
-.portrait img {
-  width: 100%;
-  height: auto;
-  /* Line art arrives on a near-white ground. `multiply` drops that
-     ground out so only the strokes sit on the cream — no white box
-     floating in the hero, and no cut-out needed. */
-  mix-blend-mode: multiply;
-}
+/* The image ships with a real alpha channel cut by scripts/gen-assets.mjs,
+   so it needs no blend mode and no filter — it composites correctly on
+   the cream, in print, and on any future background. An earlier attempt
+   used mix-blend-mode: multiply, which silently stopped working the
+   moment a filter was added to the same element: a filter creates a
+   stacking context and the blend is dropped, leaving a white box. */
+.portrait img { width: 100%; height: auto; }
 
 /* ══════════════════════════════════════════════════════════════
    EVIDENCE MATRIX — one cell per writeup. The signature element.

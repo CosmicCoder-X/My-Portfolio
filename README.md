@@ -22,9 +22,12 @@ Profile links live in the `links` array. Set `primary: true` on the few you
 want in the sidebar; every link appears in the footer and on the About page
 either way.
 
-To add your photo, drop a file in `public/` and set `person.portrait` to its
-path (e.g. `'/portrait.jpg'`). It appears beside the hero; left empty, the
-layout closes up with nothing missing.
+The hero illustration is `public/portrait.png`, generated from
+`assets/portrait-source.jpg` by `npm run assets`. To change it, replace the
+source file and re-run that command — it cuts a real alpha channel from the
+line art so the strokes sit on the cream with no visible panel behind them.
+Set `person.portrait` to `''` to remove it; the layout closes up with nothing
+missing.
 
 ### Publish a writeup
 
