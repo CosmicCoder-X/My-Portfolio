@@ -1,0 +1,73 @@
+---
+// Monogram mark — "DA", drawn the way the reference's "AJD" is: a bold
+// letterform rendered as an outline (stroke, no fill) so you read the
+// contour of a thick stroke rather than the stroke itself, with the two
+// letters overlapping so the lines cross.
+//
+// Built from live <text> rather than hand-authored path data: the glyphs
+// come from Cormorant Garamond, which the page already loads, so the mark
+// stays in the same voice as every heading on the site and needs no
+// separate asset. Inline SVG inherits the document's fonts — this would
+// not work referenced as <img src>.
+//
+// Georgia is the fallback in the stack; both are serifs, so a fallback
+// degrades in proportion rather than changing character.
+
+interface Props {
+  /** Rendered width in px. Height follows the viewBox ratio. */
+  width?: number;
+  class?: string;
+}
+
+const { width = 120, class: cls = '' } = Astro.props;
+---
+
+<svg
+  class={`monogram ${cls}`}
+  width={width}
+  viewBox="0 0 146 74"
+  fill="none"
+  role="img"
+  aria-label="Divyansh Agrawal"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- D and A overlap by design; the A sits into the D's bowl so the
+       outlines intersect the way the reference's letters do. -->
+  <text
+    x="2"
+    y="58"
+    font-family="'Cormorant Garamond', Georgia, serif"
+    font-weight="600"
+    font-size="74"
+    stroke="currentColor"
+    stroke-width="1.3"
+    stroke-linejoin="round"
+    fill="none"
+  >D</text>
+
+  <!-- The A is set just far enough right that its left leg grazes the
+       D's bowl instead of cutting through it: the outlines should kiss,
+       not collide. -->
+  <text
+    x="56"
+    y="58"
+    font-family="'Cormorant Garamond', Georgia, serif"
+    font-weight="600"
+    font-size="74"
+    stroke="currentColor"
+    stroke-width="1.3"
+    stroke-linejoin="round"
+    fill="none"
+  >A</text>
+</svg>
+
+<style>
+  .monogram {
+    display: block;
+    height: auto;
+    color: var(--ink);
+    overflow: visible;
+    transition: opacity 0.2s;
+  }
+  a:hover .monogram { opacity: 0.6; }
+</style>

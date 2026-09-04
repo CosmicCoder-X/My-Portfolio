@@ -140,21 +140,7 @@ a { color: inherit; }
 
 .rail__id { text-decoration: none; display: block; margin-bottom: 36px; }
 
-.mark {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1;
-  border-radius: 100px;
-  margin-bottom: 16px;
-  flex: none;
-}
+.mark { margin-bottom: 18px; flex: none; }
 
 .rail__name {
   display: block;
@@ -222,7 +208,7 @@ a { color: inherit; }
 @media (max-width: 899px) {
   .rail__in { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .rail__id { display: flex; align-items: center; gap: 10px; margin-bottom: 0; }
-  .mark { width: 30px; height: 30px; font-size: 15px; margin-bottom: 0; }
+  .mark { width: 76px; margin-bottom: 0; }
   .rail__name { font-size: 17px; }
   .rail__role, .status, .rail__foot { display: none; }
   .rail__nav {

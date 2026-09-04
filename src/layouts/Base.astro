@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
+import Monogram from '../components/Monogram.astro';
 import { person, links, platforms } from '../data/site';
 
 interface Props {
@@ -125,7 +126,7 @@ const year = new Date().getFullYear();
       <aside class="rail">
         <div class="rail__in">
           <a class="rail__id" href="/">
-            <span class="mark" aria-hidden="true">{initials}</span>
+            <Monogram width={104} class="mark" />
             <span>
               <span class="rail__name">{person.name}</span>
               <span class="rail__role">{person.role}</span>
