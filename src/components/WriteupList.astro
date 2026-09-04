@@ -1,0 +1,224 @@
+---
+// Filterable writeup list.
+//
+// Progressive enhancement: the full list is in the HTML. Without
+// JavaScript the controls are hidden by CSS (.no-js) and every
+// entry stays visible, so the page never depends on the script.
+import type { CollectionEntry } from 'astro:content';
+import { roles, difficulties, platforms } from '../data/site';
+import { tagSlug } from '../lib/evidence';
+
+interface Props {
+  items: CollectionEntry<'writeups'>[];
+  /** Show which platform each entry came from — used on cross-platform lists. */
+  showPlatform?: boolean;
+  /** Hide the search/filter controls for short lists. */
+  filterable?: boolean;
+}
+
+const { items, showPlatform = false, filterable = true } = Astro.props;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+const platformName = (id: string) =>
+  platforms.find((p) => p.slug === id.split('/')[0])?.name ?? id.split('/')[0];
+
+// Only offer a filter button for values that actually occur in this list.
+const presentDiff = difficulties.filter((d) => items.some((w) => w.data.difficulty === d));
+const presentRoles = Object.keys(roles).filter((r) => items.some((w) => w.data.role === r));
+
+const searchIndex = (w: CollectionEntry<'writeups'>) =>
+  [w.data.title, w.data.target, w.data.summary, ...w.data.tags].join(' ').toLowerCase();
+---
+
+{filterable && items.length > 6 && (
+  <div class="filter" data-filter>
+    <div class="filter__search">
+      <label class="sr-only" for="wu-search">Search writeups</label>
+      <input
+        type="search"
+        id="wu-search"
+        data-q
+        placeholder={`Search ${items.length} writeups — technique, tool, box name…`}
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="filter__clear" data-clear type="button" aria-label="Clear search" hidden>×</button>
+    </div>
+
+    <div class="filter__groups">
+      {presentDiff.length > 1 && (
+        <div class="filter__group">
+          <span class="filter__legend">Difficulty</span>
+          {presentDiff.map((d) => (
+            <button class="filter__btn" type="button" data-facet="difficulty" data-value={d} aria-pressed="false">
+              {d}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {presentRoles.length > 1 && (
+        <div class="filter__group">
+          <span class="filter__legend">Discipline</span>
+          {presentRoles.map((r) => (
+            <button class="filter__btn" type="button" data-facet="role" data-value={r} aria-pressed="false">
+              {roles[r]}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <p class="filter__count" data-count aria-live="polite">
+      Showing <b>{items.length}</b> of {items.length}
+    </p>
+  </div>
+)}
+
+<div class="entries" data-list>
+  {items.map((w) => (
+    <a
+      class="entry"
+      href={`/writeups/${w.id}/`}
+      data-entry
+      data-search={searchIndex(w)}
+      data-difficulty={w.data.difficulty}
+      data-role={w.data.role}
+    >
+      <span class="entry__title">{w.data.title}</span>
+      <span class="entry__meta">
+        <span class={`chip chip--sev chip--${w.data.difficulty}`}>{w.data.difficulty}</span>
+        {showPlatform && <span>{platformName(w.id)}</span>}
+        <span>{fmt(w.data.date)}</span>
+      </span>
+      <span class="entry__sum">{w.data.summary}</span>
+      {w.data.tags.length > 0 && (
+        <span class="entry__tags">
+          {w.data.tags.slice(0, 6).map((t) => tagSlug(t)).join(' · ')}
+        </span>
+      )}
+    </a>
+  ))}
+</div>
+
+<p class="filter__empty" data-empty hidden>
+  Nothing matches that. Try a broader term, or clear the filters.
+</p>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script>
+  // One controller per list. Cheap, dependency-free, and it never
+  // touches the DOM structure — only the `hidden` attribute.
+  document.querySelectorAll<HTMLElement>('[data-filter]').forEach((panel) => {
+    const scope = panel.parentElement;
+    if (!scope) return;
+
+    const input = panel.querySelector<HTMLInputElement>('[data-q]');
+    const clear = panel.querySelector<HTMLButtonElement>('[data-clear]');
+    const countEl = panel.querySelector<HTMLElement>('[data-count]');
+    const entries = Array.from(scope.querySelectorAll<HTMLElement>('[data-entry]'));
+    const empty = scope.querySelector<HTMLElement>('[data-empty]');
+    const buttons = Array.from(panel.querySelectorAll<HTMLButtonElement>('[data-facet]'));
+
+    const total = entries.length;
+    const active: Record<string, Set<string>> = { difficulty: new Set(), role: new Set() };
+
+    // Reveal the controls now that something can actually service them.
+    panel.classList.add('is-ready');
+
+    // Split on whitespace: every term must match somewhere. Lets you
+    // type "windows kerberos" and get the intersection.
+    const terms = () =>
+      (input?.value ?? '').toLowerCase().trim().split(/\s+/).filter(Boolean);
+
+    function apply() {
+      const t = terms();
+      let shown = 0;
+
+      for (const el of entries) {
+        const hay = el.dataset.search ?? '';
+        const okText = t.every((term) => hay.includes(term));
+        const okDiff =
+          active.difficulty.size === 0 || active.difficulty.has(el.dataset.difficulty ?? '');
+        const okRole = active.role.size === 0 || active.role.has(el.dataset.role ?? '');
+
+        const show = okText && okDiff && okRole;
+        el.hidden = !show;
+        if (show) shown++;
+      }
+
+      if (countEl) {
+        countEl.innerHTML = `Showing <b>${shown}</b> of ${total}`;
+      }
+      if (empty) empty.hidden = shown !== 0;
+      if (clear) clear.hidden = (input?.value ?? '') === '';
+    }
+
+    input?.addEventListener('input', apply);
+
+    clear?.addEventListener('click', () => {
+      if (input) input.value = '';
+      input?.focus();
+      apply();
+    });
+
+    // Escape clears the search from anywhere in the field.
+    input?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && input.value !== '') {
+        e.preventDefault();
+        input.value = '';
+        apply();
+      }
+    });
+
+    for (const btn of buttons) {
+      btn.addEventListener('click', () => {
+        const facet = btn.dataset.facet!;
+        const value = btn.dataset.value!;
+        const set = active[facet];
+        const on = set.has(value);
+        if (on) set.delete(value);
+        else set.add(value);
+        btn.setAttribute('aria-pressed', on ? 'false' : 'true');
+        apply();
+      });
+    }
+
+    // Deep links, e.g. /writeups/?q=kerberos or /writeups/?role=soc
+    const params = new URLSearchParams(location.search);
+
+    const q = params.get('q');
+    if (q && input) input.value = q;
+
+    for (const facet of ['difficulty', 'role'] as const) {
+      const wanted = new Set(params.getAll(facet).flatMap((v) => v.split(',')).filter(Boolean));
+      if (wanted.size === 0) continue;
+
+      // Match against the buttons we already hold rather than building a
+      // selector from the query string — `?role=a"]` would otherwise throw
+      // a DOMException and abort init, killing the filter for that load.
+      for (const btn of buttons) {
+        if (btn.dataset.facet !== facet) continue;
+        const value = btn.dataset.value ?? '';
+        if (!wanted.has(value)) continue;
+        active[facet].add(value);
+        btn.setAttribute('aria-pressed', 'true');
+      }
+    }
+
+    if (q || params.has('difficulty') || params.has('role')) apply();
+  });
+</script>

@@ -1,19 +1,36 @@
 ---
 import Base from '../layouts/Base.astro';
 import Band from '../components/Band.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('writeups', ({ data }) => !data.draft);
 ---
 
-<Base title="404 — Divyansh404">
+<Base title="404 — Divyansh404" description="Nothing at this path.">
   <Band offset="0404" label="Status">
-    <h1 class="display display--caps" style="margin-bottom:1.25rem">404</h1>
-    <p class="lede" style="margin-bottom:1.5rem">
-      Nothing at this path. Given the domain, you'd think I'd have planned for
-      this better.
+    <p class="mono-label" style="color:var(--accent);margin-bottom:1rem">HTTP 404 — Not found</p>
+    <h1 class="page-title" style="margin-bottom:1.25rem">Nothing here</h1>
+    <p class="lede" style="margin-bottom:1.75rem">
+      No resource at this path. Given the domain, you'd think I'd have planned
+      for this better.
     </p>
+    <div class="btn-row">
+      <a class="btn" href="/">Back to the cover</a>
+      <a class="btn btn--ghost" href="/writeups/">Search {all.length} writeups</a>
+    </div>
+  </Band>
+
+  <Band offset="0410" label="Elsewhere">
+    <h2 class="h2">Try one of these</h2>
     <p class="link-list">
-      <a href="/">Back to the cover</a>
       <a href="/writeups/">Writeups</a>
+      <a href="/skills/">Skills index</a>
+      <a href="/tags/">Tags</a>
+      <a href="/projects/">Projects</a>
+      <a href="/certifications/">Certifications</a>
+      <a href="/resume/">Résumé</a>
       <a href="/blog/">Blog</a>
+      <a href="/about/">About</a>
     </p>
   </Band>
 </Base>

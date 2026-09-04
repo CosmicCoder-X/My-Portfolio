@@ -1,0 +1,97 @@
+---
+import Base from '../../layouts/Base.astro';
+import Band from '../../components/Band.astro';
+import WriteupList from '../../components/WriteupList.astro';
+import { getCollection } from 'astro:content';
+import { capabilities, writeupsFor, capabilityCounts } from '../../lib/evidence';
+import { platforms } from '../../data/site';
+
+export async function getStaticPaths() {
+  return capabilities.map((c) => ({ params: { cap: c.slug } }));
+}
+
+const { cap } = Astro.params;
+const meta = capabilities.find((c) => c.slug === cap)!;
+
+const all = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const items = writeupsFor(all, cap!);
+
+// Sibling capabilities, for lateral navigation.
+const others = capabilityCounts(all).filter((c) => c.slug !== cap).slice(0, 6);
+
+// Which platforms this capability shows up on — useful signal that a
+// skill isn't confined to one platform's house style.
+const spread = platforms
+  .map((p) => ({ ...p, n: items.filter((w) => w.id.split('/')[0] === p.slug).length }))
+  .filter((p) => p.n > 0);
+
+// Zero-value tiles advertise an absence — drop them.
+const stats = [
+  { n: items.length, label: 'Writeups' },
+  { n: spread.length, label: 'Platforms' },
+  {
+    n: items.filter((w) => w.data.difficulty === 'hard' || w.data.difficulty === 'insane').length,
+    label: 'Hard / insane',
+  },
+].filter((s) => s.n > 0);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `${meta.name} — documented work`,
+  description: meta.blurb,
+  url: new URL(Astro.url.pathname, Astro.site).toString(),
+  numberOfItems: items.length,
+};
+---
+
+<Base
+  title={`${meta.name} — ${items.length} writeups — Divyansh404`}
+  description={`${meta.blurb} ${items.length} documented writeups.`}
+  jsonLd={jsonLd}
+>
+  <Band offset="0000" label="Capability">
+    <a class="back" href="/skills/">← All skills</a>
+    <h1 class="page-title" style="font-size:clamp(2rem,5.5vw,3.25rem)">{meta.name}</h1>
+    <p class="lede" style="margin-bottom:1.5rem">{meta.blurb}</p>
+
+    <div class="stats" style="max-width:34rem">
+      {stats.map((s) => (
+        <div class="stat">
+          <span class="stat__num">{s.n}</span>
+          <span class="stat__label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+
+    {spread.length > 0 && (
+      <p class="mono-label" style="margin-top:1rem">
+        {spread.map((p) => `${p.name} ${p.n}`).join('  ·  ')}
+      </p>
+    )}
+  </Band>
+
+  <Band offset="0010" label="Evidence">
+    {items.length === 0 ? (
+      <p class="muted">Nothing filed under this yet.</p>
+    ) : (
+      <WriteupList items={items} showPlatform={true} />
+    )}
+  </Band>
+
+  <Band offset="0020" label="Adjacent">
+    <h2 class="h2">Other capabilities</h2>
+    <div class="matrix">
+      {others.map((c) => (
+        <a class="cap" href={`/skills/${c.slug}/`}>
+          <span class="cap__name">{c.name}</span>
+          <span class="cap__n">{c.count} <span>writeups</span></span>
+          <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
+        </a>
+      ))}
+    </div>
+  </Band>
+</Base>

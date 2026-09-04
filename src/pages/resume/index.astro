@@ -1,0 +1,172 @@
+---
+import Base from '../../layouts/Base.astro';
+import Band from '../../components/Band.astro';
+import { getCollection } from 'astro:content';
+import {
+  person, links, projects, credentials, toolkit, education, experience, roles,
+} from '../../data/site';
+import { capabilityCounts } from '../../lib/evidence';
+
+const all = await getCollection('writeups', ({ data }) => !data.draft);
+const caps = capabilityCounts(all).slice(0, 8);
+
+const roleCounts = Object.keys(roles)
+  .map((r) => ({ label: roles[r], count: all.filter((w) => w.data.role === r).length }))
+  .filter((r) => r.count > 0)
+  .sort((a, b) => b.count - a.count);
+
+const live = links.filter((l) => l.primary);
+---
+
+<Base
+  title={`Résumé — ${person.name}`}
+  description={`${person.role} — ${person.tagline}`}
+>
+  <Band offset="0000" label="Résumé">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem">
+      <div>
+        <h1 class="page-title" style="margin-bottom:.5rem">{person.name}</h1>
+        <p class="lede" style="margin-bottom:.75rem">{person.role} — {person.tagline}</p>
+        <p class="link-list">
+          <a href={`mailto:${person.email}`}>{person.email}</a>
+          <span style="color:var(--ink-3)">{person.location}</span>
+          {live.map((l) => (
+            <a href={l.url} target="_blank" rel="me noopener">{l.label}</a>
+          ))}
+        </p>
+      </div>
+
+      <div class="btn-row no-print">
+        <button class="btn" type="button" data-print>Print / save as PDF</button>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__k">Open to</div>
+      <p style="margin:0">{person.openTo}</p>
+    </div>
+  </Band>
+
+  <Band offset="0010" label="Profile">
+    <h2 class="h2">Profile</h2>
+    <div class="prose" style="max-width:44rem">
+      <p>{person.statement}</p>
+    </div>
+  </Band>
+
+  <Band offset="0020" label="Evidence">
+    <h2 class="h2">Demonstrated capability</h2>
+    <p class="muted" style="max-width:42rem;margin-bottom:1.25rem">
+      {all.length} published writeups back the following. Every figure is
+      counted from the work itself, and each is readable at
+      divyansh404.xyz/skills/.
+    </p>
+
+    <div class="matrix">
+      {caps.map((c) => (
+        <a class="cap" href={`/skills/${c.slug}/`}>
+          <span class="cap__name">{c.name}</span>
+          <span class="cap__n">{c.count} <span>writeups</span></span>
+          <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
+        </a>
+      ))}
+    </div>
+
+    <p class="mono-label" style="margin-top:1.25rem;text-transform:none;letter-spacing:.05em">
+      Split by discipline: {roleCounts.map((r) => `${r.label} ${r.count}`).join('  ·  ')}
+    </p>
+  </Band>
+
+  <Band offset="0030" label="Projects">
+    <h2 class="h2">Selected projects</h2>
+    <div class="findings">
+      {projects.filter((p) => p.kind !== 'Game development').map((p) => (
+        <article class="finding">
+          <div class="finding__head">
+            <h3 class="h3">{p.name}</h3>
+            <span class="finding__kind">{p.kind}</span>
+          </div>
+          <ul class="finding__points">
+            {p.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+          <div class="chip-row">
+            {p.stack.map((s) => <span class="chip">{s}</span>)}
+          </div>
+          {p.repo && (
+            <p class="link-list" style="margin-top:.25rem">
+              <a href={p.repo} target="_blank" rel="noopener">{p.repo.replace('https://', '')}</a>
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </Band>
+
+  <Band offset="0040" label="Experience">
+    <h2 class="h2">Experience</h2>
+    <div class="findings">
+      {experience.map((e) => (
+        <article class="finding">
+          <div class="finding__head">
+            <h3 class="h3">{e.role}</h3>
+            <span class="finding__kind">{e.org}</span>
+            <span class="mono-label" style="margin-left:auto">{e.period}</span>
+          </div>
+          <ul class="finding__points">
+            {e.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </Band>
+
+  <Band offset="0050" label="Education">
+    <h2 class="h2">Education</h2>
+    <div class="findings">
+      {education.map((e) => (
+        <article class="finding">
+          <div class="finding__head">
+            <h3 class="h3">{e.qualification}</h3>
+            <span class="finding__kind">{e.school}</span>
+            <span class="mono-label" style="margin-left:auto">{e.period}</span>
+          </div>
+          <p class="finding__body">{e.detail}</p>
+        </article>
+      ))}
+    </div>
+  </Band>
+
+  <Band offset="0060" label="Credentials">
+    <h2 class="h2">Certifications &amp; study</h2>
+    <div class="entries">
+      {credentials.map((c) => (
+        <div class="entry" style="cursor:default">
+          <span class="entry__title">{c.name}</span>
+          <span class="entry__meta">{c.kind}</span>
+          <span class="entry__sum">{c.issuer}</span>
+        </div>
+      ))}
+    </div>
+    <p class="mono-label" style="margin-top:1rem">
+      Competition certificates at divyansh404.xyz/certifications/
+    </p>
+  </Band>
+
+  <Band offset="0070" label="Toolkit">
+    <h2 class="h2">Tools &amp; technologies</h2>
+    {toolkit.map((g) => (
+      <div class="tool-group">
+        <h4>{g.group}</h4>
+        <div class="chip-row">
+          {g.items.map((i) => <span class="chip">{i}</span>)}
+        </div>
+      </div>
+    ))}
+  </Band>
+</Base>
+
+<script>
+  document.querySelector<HTMLButtonElement>('[data-print]')?.addEventListener('click', () => {
+    window.print();
+  });
+</script>

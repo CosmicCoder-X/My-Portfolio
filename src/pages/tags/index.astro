@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import Band from '../../components/Band.astro';
+import { getCollection } from 'astro:content';
+import { tagCounts } from '../../lib/evidence';
+
+const all = await getCollection('writeups', ({ data }) => !data.draft);
+
+// Only tags used more than once get their own page — a page holding a
+// single writeup is a thin page, and a few hundred of them would bury
+// the pages that matter in search results.
+const indexed = tagCounts(all, 2);
+const singles = tagCounts(all, 1).filter((t) => t.count === 1);
+
+const tiers = [
+  { label: '10 or more', items: indexed.filter((t) => t.count >= 10) },
+  { label: '5 to 9', items: indexed.filter((t) => t.count >= 5 && t.count < 10) },
+  { label: '2 to 4', items: indexed.filter((t) => t.count >= 2 && t.count < 5) },
+].filter((t) => t.items.length > 0);
+---
+
+<Base
+  title="Tags — Divyansh404"
+  description="Every technique, tool and protocol covered across the writeups on this site."
+>
+  <Band offset="0000" label="Index">
+    <h1 class="page-title">Tags</h1>
+    <p class="lede">
+      {indexed.length + singles.length} distinct techniques, tools and
+      protocols across {all.length} writeups. If you're looking for
+      something specific, this is the fastest way in.
+    </p>
+  </Band>
+
+  {tiers.map((tier, i) => (
+    <Band offset={String((i + 1) * 10).padStart(4, '0')} label={tier.label}>
+      <div style="display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem">
+        <h2 class="h2" style="margin-bottom:0">Used in {tier.label} writeups</h2>
+        <span class="mono-label">{tier.items.length} tags</span>
+      </div>
+      <div class="tag-cloud">
+        {tier.items.map((t) => (
+          <a href={`/tags/${t.slug}/`}>{t.label} <b>{t.count}</b></a>
+        ))}
+      </div>
+    </Band>
+  ))}
+
+  {singles.length > 0 && (
+    <Band offset="0040" label="Long tail">
+      <h2 class="h2">Used once</h2>
+      <p class="muted" style="max-width:38rem;margin-bottom:1.25rem">
+        {singles.length} tags appear in exactly one writeup — one-off CVEs,
+        single-use tools, specific protocol quirks. They don't get their own
+        page, but the search on each platform index will find them.
+      </p>
+      <p class="mono-label" style="line-height:1.9;max-width:52rem;text-transform:none;letter-spacing:.04em">
+        {singles.map((t) => t.tag).join(' · ')}
+      </p>
+    </Band>
+  )}
+</Base>

@@ -1,0 +1,91 @@
+---
+import Base from '../../layouts/Base.astro';
+import Band from '../../components/Band.astro';
+import { getCollection } from 'astro:content';
+import { roles } from '../../data/site';
+import { capabilityCounts, tagCounts } from '../../lib/evidence';
+
+const all = await getCollection('writeups', ({ data }) => !data.draft);
+
+const caps = capabilityCounts(all);
+
+const roleCounts = Object.keys(roles)
+  .map((r) => ({ key: r, label: roles[r], count: all.filter((w) => w.data.role === r).length }))
+  .filter((r) => r.count > 0)
+  .sort((a, b) => b.count - a.count);
+const roleMax = Math.max(...roleCounts.map((r) => r.count));
+
+const topTags = tagCounts(all, 3).slice(0, 60);
+---
+
+<Base
+  title="Skills — evidence index — Divyansh404"
+  description="Every capability claim on this site, with the count of writeups that demonstrate it."
+>
+  <Band offset="0000" label="Index">
+    <h1 class="page-title">Skills</h1>
+    <p class="lede">
+      A skills list is a claim. This is the same list with the receipts
+      attached — each capability counted from the writeups that demonstrate
+      it, each one clickable through to the work.
+    </p>
+  </Band>
+
+  <Band offset="0010" label="Capability">
+    <h2 class="h2">By capability</h2>
+    <p class="muted" style="max-width:38rem;margin-bottom:1.75rem">
+      A writeup counts toward a capability when its tags say it exercised
+      that skill. One writeup can evidence several — that's how real
+      engagements work.
+    </p>
+
+    <div class="matrix">
+      {caps.map((c) => (
+        <a class="cap" href={`/skills/${c.slug}/`}>
+          <span class="cap__name">{c.name}</span>
+          <span class="cap__n">{c.count} <span>writeups</span></span>
+          <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
+        </a>
+      ))}
+    </div>
+  </Band>
+
+  <Band offset="0020" label="Discipline">
+    <h2 class="h2">By discipline</h2>
+    <p class="muted" style="max-width:38rem;margin-bottom:1.5rem">
+      Every writeup is filed against the role it evidences. The spread matters
+      as much as the total: this is offensive work with real blue-team and
+      forensics depth behind it, not one trick repeated.
+    </p>
+
+    <div class="dist">
+      {roleCounts.map((r) => (
+        <a class="dist__row" href={`/writeups/?role=${r.key}`}>
+          <span class="dist__label">{r.label}</span>
+          <span class="dist__track">
+            <span class="dist__fill" style={`width:${Math.round((r.count / roleMax) * 100)}%`}></span>
+          </span>
+          <span class="dist__n">{r.count}</span>
+        </a>
+      ))}
+    </div>
+  </Band>
+
+  <Band offset="0030" label="Techniques">
+    <h2 class="h2">By technique</h2>
+    <p class="muted" style="max-width:38rem;margin-bottom:1.5rem">
+      The techniques that come up most often across {all.length} writeups.
+      Number is how many writeups use it.
+    </p>
+
+    <div class="tag-cloud">
+      {topTags.map((t) => (
+        <a href={`/tags/${t.slug}/`}>{t.label} <b>{t.count}</b></a>
+      ))}
+    </div>
+
+    <p style="margin-top:1.5rem">
+      <a class="go" href="/tags/">Every tag →</a>
+    </p>
+  </Band>
+</Base>

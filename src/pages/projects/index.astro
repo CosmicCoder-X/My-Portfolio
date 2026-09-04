@@ -1,17 +1,37 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Band from '../../components/Band.astro';
-import { projects } from '../../data/site';
+import { projects, person } from '../../data/site';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Projects',
+  url: new URL('/projects/', Astro.site).toString(),
+  hasPart: projects
+    .filter((p) => p.repo)
+    .map((p) => ({
+      '@type': 'SoftwareSourceCode',
+      name: p.name,
+      description: p.blurb.replace(/\s+/g, ' ').trim(),
+      codeRepository: p.repo,
+      programmingLanguage: p.stack[0],
+      author: { '@type': 'Person', name: person.name },
+    })),
+};
 ---
 
-<Base title="Projects — Divyansh404" description="Security tooling and other things I've built.">
+<Base
+  title="Projects — Divyansh404"
+  description="Security tooling I wrote because I wanted it to exist: an IDS, a prompt-injection fuzzer, a phishing simulator."
+  jsonLd={jsonLd}
+>
   <Band offset="0000" label="Built">
-    <h1 class="display display--caps" style="font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem">
-      Projects
-    </h1>
+    <h1 class="page-title">Projects</h1>
     <p class="lede">
-      Tools I wrote because I wanted them to exist. Each one came out of a gap I
-      hit while testing something.
+      Tools I wrote because I wanted them to exist. Each one came out of a gap
+      I hit while testing something — the writeups are what I found, these are
+      what I built afterwards.
     </p>
   </Band>
 
@@ -23,17 +43,37 @@ import { projects } from '../../data/site';
             <h2 class="h3">{p.name}</h2>
             <span class="finding__kind">{p.kind}</span>
           </div>
+
           <p class="finding__body">{p.blurb}</p>
+
+          <ul class="finding__points">
+            {p.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+
           <div class="chip-row">
             {p.stack.map((s) => <span class="chip">{s}</span>)}
           </div>
-          {p.repo && (
-            <p class="link-list" style="margin-top:.25rem">
-              <a href={p.repo} target="_blank" rel="noopener">Source →</a>
+
+          {p.repo ? (
+            <p class="link-list" style="margin-top:.35rem">
+              <a href={p.repo} target="_blank" rel="noopener">Source on GitHub →</a>
             </p>
+          ) : (
+            <p class="mono-label" style="margin-top:.35rem">Private repository</p>
           )}
         </article>
       ))}
+    </div>
+  </Band>
+
+  <Band offset="0020" label="Note">
+    <div class="callout">
+      <div class="callout__k">On the phishing simulator</div>
+      <p style="margin:0">
+        It exists for consented awareness training inside an organisation that
+        asked for it. It is not distributed as, and not useful as, a tool for
+        targeting anyone who hasn't agreed to be tested.
+      </p>
     </div>
   </Band>
 </Base>

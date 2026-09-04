@@ -1,0 +1,80 @@
+---
+import Base from '../../layouts/Base.astro';
+import Band from '../../components/Band.astro';
+import WriteupList from '../../components/WriteupList.astro';
+import { getCollection } from 'astro:content';
+import { tagCounts, writeupsByTag, tagLabel, tagSlug } from '../../lib/evidence';
+
+export async function getStaticPaths() {
+  const all = await getCollection('writeups', ({ data }) => !data.draft);
+  return tagCounts(all, 2).map((t) => ({
+    params: { tag: t.slug },
+    props: { label: t.label, count: t.count },
+  }));
+}
+
+const { tag } = Astro.params;
+const { label, count } = Astro.props;
+
+const all = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const items = writeupsByTag(all, tag!);
+
+// Tags that keep company with this one — a decent map of how the
+// technique actually gets chained in practice. Keyed by slug so a
+// tag never shows up as chained with itself under another spelling.
+const co = new Map<string, number>();
+for (const w of items) {
+  const seen = new Set<string>();
+  for (const t of w.data.tags) {
+    const s = tagSlug(t);
+    if (!s || s === tag || seen.has(s)) continue;
+    seen.add(s);
+    co.set(s, (co.get(s) ?? 0) + 1);
+  }
+}
+const together = [...co.entries()]
+  .filter(([, n]) => n >= 2)
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .slice(0, 18);
+
+const indexed = new Set(tagCounts(all, 2).map((t) => t.slug));
+---
+
+<Base
+  title={`${label} — ${count} writeups — Divyansh404`}
+  description={`Every writeup on divyansh404.xyz covering ${label}.`}
+>
+  <Band offset="0000" label="Tag">
+    <a class="back" href="/tags/">← All tags</a>
+    <h1 class="page-title" style="font-size:clamp(2rem,5.5vw,3.25rem)">{label}</h1>
+    <p class="lede">
+      {count} {count === 1 ? 'writeup' : 'writeups'} on this site cover {label}.
+    </p>
+  </Band>
+
+  <Band offset="0010" label="Writeups">
+    <WriteupList items={items} showPlatform={true} />
+  </Band>
+
+  {together.length > 0 && (
+    <Band offset="0020" label="Chained with">
+      <h2 class="h2">Usually seen alongside</h2>
+      <p class="muted" style="max-width:38rem;margin-bottom:1.25rem">
+        Techniques that appear in the same writeups. Number is how often
+        they co-occur with {label}.
+      </p>
+      <div class="tag-cloud">
+        {together.map(([slug, n]) =>
+          indexed.has(slug) ? (
+            <a href={`/tags/${slug}/`}>{tagLabel(slug)} <b>{n}</b></a>
+          ) : (
+            <span class="chip">{tagLabel(slug)} · {n}</span>
+          ),
+        )}
+      </div>
+    </Band>
+  )}
+</Base>

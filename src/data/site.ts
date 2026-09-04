@@ -1,6 +1,9 @@
 // ─────────────────────────────────────────────────────────────
 //  EVERYTHING PERSONAL LIVES HERE.
 //  To change text on the site, edit this file. Nothing else.
+//
+//  Set `portrait` below once you have a photo you want on the site;
+//  everything else here is confirmed.
 // ─────────────────────────────────────────────────────────────
 
 export const person = {
@@ -9,6 +12,21 @@ export const person = {
   role: 'Security researcher',
   location: 'Prayagraj, India',
   email: 'divyanshagrawal121ag@gmail.com',
+
+  // One line. This is what shows up in search results and on shared links.
+  tagline:
+    'Offensive security — web, network, Active Directory, and the LLM attack surface. I build the tooling I test with.',
+
+  // Shown as the status line in the sidebar. Set to '' to hide it.
+  availability: 'Available for hire',
+
+  // Optional portrait for the cover. Drop a square-ish photo into
+  // public/ (e.g. '/portrait.jpg') and it appears beside the hero;
+  // leave it '' and the layout closes up with nothing missing.
+  portrait: '',
+
+  // Where you'll work. Recruiters filter on this hard.
+  openTo: 'Security engineering · Penetration testing · India & remote / relocation',
 
   // The 100–150 word first-person story. Recruiters read this.
   statement: `I'm a fourth-year engineering student at NIT Allahabad who spends
@@ -24,16 +42,18 @@ export const person = {
 };
 
 // ── Links ────────────────────────────────────────────────────
-// TODO(Divyansh): confirm each of these resolves to your profile.
-// The ones marked VERIFY are guesses based on your handle.
+// All confirmed by Divyansh. `primary: true` picks the handful shown
+// in the sidebar; every one of them appears in the footer and on the
+// About page regardless.
 export const links = [
-  { label: 'GitHub', url: 'https://github.com/CosmicCoder-X', note: '' },
-  { label: 'LinkedIn', url: 'https://linkedin.com/in/divyansh-agrawal1337', note: '' },
-  { label: 'TryHackMe', url: 'https://tryhackme.com/p/Divyansh404', note: 'VERIFY' },
-  { label: 'HackTheBox', url: 'https://app.hackthebox.com/profile/overview', note: 'VERIFY' },
-  { label: 'HackerOne', url: 'https://hackerone.com/divyansh404', note: 'VERIFY' },
-  { label: 'Bugcrowd', url: 'https://bugcrowd.com/divyansh404', note: 'VERIFY' },
-  { label: 'Intigriti', url: 'https://app.intigriti.com/researcher/divyansh404', note: 'VERIFY' },
+  { label: 'GitHub', url: 'https://github.com/CosmicCoder-X', primary: true },
+  { label: 'LinkedIn', url: 'https://linkedin.com/in/divyansh-agrawal1337', primary: true },
+  { label: 'TryHackMe', url: 'https://tryhackme.com/p/Divyansh404', primary: true },
+  { label: 'Hack The Box', url: 'https://app.hackthebox.com/public/users/2193965', primary: true },
+  { label: 'HackerOne', url: 'https://hackerone.com/divyansh404', primary: false },
+  { label: 'Bugcrowd', url: 'https://bugcrowd.com/h/Divyansh404', primary: false },
+  { label: 'Intigriti', url: 'https://app.intigriti.com/profile/divyansh_404', primary: false },
+  { label: 'Cylab Academy', url: 'https://learn.cylabacademy.org/users/Divyansh404', primary: false },
 ];
 
 // ── Cover metadata (the report header on the homepage) ────────
@@ -42,7 +62,7 @@ export const cover = [
   { k: 'Focus', v: 'Offensive security, LLM security, detection engineering' },
   { k: 'Standing', v: 'Top 1% globally, TryHackMe' },
   { k: 'Programs', v: 'HackerOne · Bugcrowd · Intigriti' },
-  { k: 'Based', v: 'Prayagraj, India' },
+  { k: 'Based', v: 'Prayagraj, India — open to relocation' },
   { k: 'Status', v: 'Open to security roles' },
 ];
 
@@ -55,8 +75,13 @@ export const projects = [
       catches the known-bad; an anomaly scoring model flags the rest. Incidents
       log to JSONL and surface on a browser dashboard so you can actually watch
       traffic rather than grep it after the fact.`,
+    points: [
+      'Live packet capture through Scapy and Npcap, parsed and scored inline.',
+      'Rule-based signatures plus online anomaly scoring, tuned to cut the false-positive noise that makes most home-grown IDS unusable.',
+      'JSONL incident log and a browser dashboard for triage.',
+    ],
     stack: ['Python', 'Scapy', 'Npcap', 'ML anomaly scoring'],
-    repo: '',
+    repo: 'https://github.com/CosmicCoder-X/TrafficLens',
   },
   {
     name: 'PromptProbe',
@@ -65,8 +90,13 @@ export const projects = [
       suites are defined in JSON, findings are scored with regex rules, and it
       runs against OpenAI, Gemini and Claude behind one interface. Reports come
       out as HTML, JSON or CSV so they can go straight into a ticket.`,
+    points: [
+      'JSON-defined attack suites mapped to the OWASP LLM Top 10.',
+      'Provider adapters for OpenAI, Gemini, Claude and any plain HTTP endpoint, behind one interface.',
+      'HTML, JSON and CSV reporting so a finding can be filed without re-typing it.',
+    ],
     stack: ['Python', 'OWASP LLM Top 10', 'Multi-provider'],
-    repo: '',
+    repo: 'https://github.com/CosmicCoder-X/PromptProbe',
   },
   {
     name: 'Phishing Simulator',
@@ -74,8 +104,13 @@ export const projects = [
     blurb: `A platform for running controlled phishing scenarios against a
       willing organisation. Built to demonstrate how ordinary the successful
       lures look, and to give awareness training something concrete to point at.`,
+    points: [
+      'Campaign setup, delivery and click-through tracking in a Flask app.',
+      'CSV reporting designed to be handed to whoever runs the training.',
+      'Built for consented, in-scope awareness exercises only.',
+    ],
     stack: ['Flask', 'Python', 'CSV reporting'],
-    repo: '',
+    repo: 'https://github.com/CosmicCoder-X/Phishing-Simulator',
   },
   {
     name: 'Crypt Raider',
@@ -83,8 +118,45 @@ export const projects = [
     blurb: `A physics-driven puzzle game in Unreal Engine 5. Not security work —
       it's here because writing gameplay systems in C++ taught me more about
       memory, state and engine internals than any tutorial did.`,
+    points: [
+      'Grab-and-carry physics interaction system written in C++.',
+      'The reason I read memory layout and object lifetime problems fluently.',
+    ],
     stack: ['Unreal Engine 5', 'C++', 'Physics simulation'],
     repo: '',
+  },
+];
+
+// ── Education ────────────────────────────────────────────────
+export const education = [
+  {
+    school: 'Motilal Nehru National Institute of Technology, Allahabad',
+    qualification: 'B.Tech, Chemical Engineering',
+    period: 'Expected 2027',
+    detail: `Process thinking is the transferable part: you learn to read a system
+      as a chain of dependencies where the failure is rarely where the alarm goes off.`,
+  },
+];
+
+// ── Experience ───────────────────────────────────────────────
+export const experience = [
+  {
+    role: 'Coordinator, Cybersecurity Club',
+    org: 'MNNIT Allahabad',
+    period: 'Current',
+    points: [
+      'Run workshops and mentor members through CTF strategy.',
+      'Mentored project teams across robotics, aeromodelling and astronomy.',
+    ],
+  },
+  {
+    role: 'Intern',
+    org: 'PPGCL Bara',
+    period: '2025',
+    points: [
+      'Studied the control logic driving physical plant — valves, pumps, filtration.',
+      'Watching a command travel from a screen to industrial hardware is the clearest lesson in why OT security matters that I could have asked for.',
+    ],
   },
 ];
 
@@ -173,3 +245,5 @@ export const roles: Record<string, string> = {
   llm: 'LLM security',
   forensics: 'Forensics / IR',
 };
+
+export const difficulties = ['easy', 'medium', 'hard', 'insane'] as const;

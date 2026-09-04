@@ -1,29 +1,73 @@
 ---
 import '../styles/global.css';
-import { person, links } from '../data/site';
+import { person, links, platforms } from '../data/site';
 
 interface Props {
   title?: string;
   description?: string;
+  /** Absolute-from-root path to a social preview image. */
+  image?: string;
+  /** Page-specific structured data, merged alongside the sitewide Person. */
+  jsonLd?: Record<string, unknown>;
+  /** og:type — 'website' for indexes, 'article' for writeups and posts. */
+  ogType?: 'website' | 'article';
 }
 
 const {
   title = `${person.name} — ${person.role}`,
-  description = 'Security researcher. Penetration testing, LLM security, and the tooling in between.',
+  description = person.tagline,
+  image = '/og.png',
+  jsonLd,
+  ogType = 'website',
 } = Astro.props;
 
 const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
 const nav = [
-  { href: '/', label: 'Cover' },
+  { href: '/', label: 'Overview' },
   { href: '/writeups/', label: 'Writeups' },
-  { href: '/certifications/', label: 'Certifications' },
+  { href: '/skills/', label: 'Skills' },
   { href: '/projects/', label: 'Projects' },
+  { href: '/certifications/', label: 'Certifications' },
   { href: '/blog/', label: 'Blog' },
   { href: '/about/', label: 'About' },
+  { href: '/resume/', label: 'Résumé' },
 ];
 
 const isCurrent = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
+
+// Initials for the mark, derived rather than hardcoded.
+const initials = person.name
+  .split(/\s+/)
+  .slice(0, 2)
+  .map((w) => w[0])
+  .join('');
+
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.name,
+  alternateName: person.handle,
+  jobTitle: person.role,
+  description: person.tagline,
+  email: `mailto:${person.email}`,
+  url: Astro.site?.toString(),
+  address: { '@type': 'PostalAddress', addressLocality: 'Prayagraj', addressCountry: 'IN' },
+  sameAs: links.map((l) => l.url),
+  knowsAbout: [
+    'Penetration testing',
+    'Web application security',
+    'Active Directory security',
+    'LLM security',
+    'Digital forensics',
+    'Detection engineering',
+  ],
+};
+
+const year = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -34,12 +78,26 @@ const isCurrent = (href: string) =>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={person.name} />
-    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <link rel="canonical" href={canonical} />
 
-    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#f7f4ec" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title={`${person.name} — writeups & notes`} href="/rss.xml" />
+
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="divyansh404.xyz" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,44 +105,99 @@ const isCurrent = (href: string) =>
       href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
       rel="stylesheet"
     />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
 
   <body>
-    <nav class="nav">
-      <div class="nav__in">
-        <a class="nav__brand" href="/">divyansh404<i>.xyz</i></a>
-        <div class="nav__links">
-          {nav.map((n) => (
-            <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>
-              {n.label}
-            </a>
-          ))}
+    <a class="skip" href="#main">Skip to content</a>
+
+    <div class="frame">
+      <!-- Persistent identity rail. Orientation stays put; the content
+           column does the moving. On narrow screens it collapses to a
+           compact bar with a scrolling nav strip. -->
+      <aside class="rail">
+        <div class="rail__in">
+          <a class="rail__id" href="/">
+            <span class="mark" aria-hidden="true">{initials}</span>
+            <span>
+              <span class="rail__name">{person.name}</span>
+              <span class="rail__role">{person.role}</span>
+            </span>
+          </a>
+
+          {person.availability && <span class="status">{person.availability}</span>}
+
+          <nav class="rail__nav" aria-label="Primary">
+            {nav.map((n) => (
+              <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>
+                {n.label}
+              </a>
+            ))}
+          </nav>
+
+          <div class="rail__foot">
+            <div class="rail__links">
+              {links.filter((l) => l.primary).map((l) => (
+                <a href={l.url} rel="me noopener" target="_blank">{l.label}</a>
+              ))}
+            </div>
+            <a href={`mailto:${person.email}`}>{person.email}</a>
+            <div style="margin-top:.5rem">{person.location}</div>
+          </div>
         </div>
-      </div>
-    </nav>
+      </aside>
 
-    <slot name="cover" />
+      <div class="frame__main">
+        <slot name="cover" />
 
-    <main class="shell">
-      <slot />
-    </main>
+        <main class="shell" id="main">
+          <slot />
+        </main>
 
-    <footer class="foot">
-      <div class="shell">
-        <div class="foot__grid">
-          <div>
-            <div>{person.name} — {person.location}</div>
-            <div style="margin-top:.35rem">
-              <a href={`mailto:${person.email}`}>{person.email}</a>
+        <footer class="foot">
+          <div class="shell">
+            <div class="foot__grid">
+              <div class="foot__col">
+                <div class="foot__h">Contact</div>
+                <a href={`mailto:${person.email}`}>{person.email}</a>
+                <div style="color:var(--ink-3);margin-top:.5rem">{person.location}</div>
+                <div style="color:var(--ink-3)">{person.openTo}</div>
+              </div>
+
+              <div class="foot__col">
+                <div class="foot__h">Evidence</div>
+                {platforms.slice(0, 3).map((p) => (
+                  <a href={`/writeups/${p.slug}/`}>{p.name}</a>
+                ))}
+                <a href="/skills/">Skills index</a>
+                <a href="/tags/">All tags</a>
+              </div>
+
+              <div class="foot__col">
+                <div class="foot__h">Elsewhere</div>
+                {links.map((l) => (
+                  <a href={l.url} rel="me noopener" target="_blank">{l.label}</a>
+                ))}
+              </div>
+
+              <div class="foot__col">
+                <div class="foot__h">This site</div>
+                <a href="/resume/">Résumé</a>
+                <a href="/rss.xml">RSS feed</a>
+                <a href="/sitemap-index.xml">Sitemap</a>
+                <a href="https://github.com/CosmicCoder-X/My-Portfolio" target="_blank" rel="noopener">Source</a>
+              </div>
+            </div>
+
+            <div class="foot__bar">
+              <span>© {year} {person.name}</span>
+              <span>Built with Astro · Archivo / Source Serif 4 / IBM Plex Mono</span>
             </div>
           </div>
-          <div class="link-list">
-            {links.map((l) => (
-              <a href={l.url} rel="me noopener" target="_blank">{l.label}</a>
-            ))}
-          </div>
-        </div>
+        </footer>
       </div>
-    </footer>
+    </div>
   </body>
 </html>

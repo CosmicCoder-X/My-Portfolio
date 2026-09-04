@@ -1,13 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
 import Band from '../components/Band.astro';
+import EvidenceGrid from '../components/EvidenceGrid.astro';
 import { getCollection } from 'astro:content';
-import { person, cover, projects, roles } from '../data/site';
+import { person, cover, projects, roles, platforms } from '../data/site';
+import { capabilityCounts, tagCounts } from '../lib/evidence';
 
 const all = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
-const latest = all.slice(0, 4);
+const latest = all.slice(0, 5);
+
+const caps = capabilityCounts(all).slice(0, 6);
+
+const activePlatforms = platforms.filter((p) =>
+  all.some((w) => w.id.split('/')[0] === p.slug),
+).length;
+
+const disciplines = new Set(all.map((w) => w.data.role)).size;
+const harder = all.filter(
+  (w) => w.data.difficulty === 'hard' || w.data.difficulty === 'insane',
+).length;
+// Tags used in two or more writeups. The raw distinct-tag count is
+// ~740, but most of that tail is one-off CVE ids — quoting it would
+// read as padding on a row whose whole job is credibility.
+const techniques = tagCounts(all, 2).length;
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
@@ -15,62 +32,126 @@ const fmt = (d: Date) =>
 
 <Base>
   <header class="cover" slot="cover">
-    <div class="cover__in">
-      <div class="cover__rail" aria-hidden="true">
-        <b>0000</b>
-        <span>Cover</span>
+    <div class="shell">
+      <div class={`cover__split${person.portrait ? ' has-portrait' : ''}`}>
+        <div>
+          <p class="cover__eyebrow rise rise-1">Offensive security · Prayagraj, India</p>
+
+          <h1 class="cover__name rise rise-1">Divyansh<br />Agrawal</h1>
+
+          <p class="cover__lede rise rise-2">
+            I break web applications, networks and — increasingly — language
+            models, then write the tool that would have caught me.
+          </p>
+
+          <div class="btn-row rise rise-3">
+            <a class="btn" href="/writeups/">Read the evidence</a>
+            <a class="btn btn--ghost" href="/resume/">Résumé</a>
+            <a class="btn btn--ghost" href={`mailto:${person.email}`}>Get in touch</a>
+          </div>
+        </div>
+
+        {person.portrait && (
+          <div class="portrait rise rise-3">
+            <img src={person.portrait} alt={person.name} width="480" height="600" />
+          </div>
+        )}
       </div>
-      <div>
-        <p class="cover__eyebrow rise rise-1">Assessment subject — self</p>
 
-        <h1 class="cover__name rise rise-2">Divyansh<br />Agrawal</h1>
-
-        <p class="cover__lede rise rise-3">
-          I break web applications, networks and — increasingly — language
-          models, then write the tool that would have caught me.
-        </p>
-
-        <table class="meta rise rise-3">
-          <tbody>
-            {cover.map((row) => (
-              <tr>
-                <th scope="row">{row.k}</th>
-                <td>{row.v}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <!-- The thesis: every square is a documented engagement. -->
+      <div class="rise rise-4" style="margin-top:clamp(2.25rem,5vw,3.5rem)">
+        <EvidenceGrid items={all} />
       </div>
     </div>
   </header>
 
-  <Band offset="0010" label="Statement">
+  <Band label="By the numbers">
+    {/* Four, not five. The grid resolves to 4, 2 or 1 columns as the
+        viewport narrows, and four items fill every one of those —
+        five left a dead cell stranded on mobile. Platform count is
+        dropped rather than padded; it is on the writeups page. */}
+    <div class="stats">
+      <div class="stat">
+        <span class="stat__num">{all.length}</span>
+        <span class="stat__label">Published writeups</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">{disciplines}</span>
+        <span class="stat__label">Security disciplines</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">{harder}</span>
+        <span class="stat__label">Hard / insane rated</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">{techniques}</span>
+        <span class="stat__label">Recurring techniques</span>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:1rem;font-size:.9375rem;max-width:40rem">
+      Every number in this row is counted from the writeups themselves at
+      build time. Nothing here is a rounded-up claim.
+    </p>
+  </Band>
+
+  <Band label="Statement">
     <h2 class="h2">In my own words</h2>
     <div class="prose">
       <p>{person.statement}</p>
     </div>
+
+    <table class="meta" style="margin-top:2rem">
+      <tbody>
+        {cover.map((row) => (
+          <tr>
+            <th scope="row">{row.k}</th>
+            <td>{row.v}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </Band>
 
-  <Band offset="0020" label="Evidence">
-    <h2 class="h2">Recent writeups</h2>
+  <Band label="Capability">
+    <h2 class="h2">What I can actually do</h2>
+    <p class="muted" style="max-width:38rem;margin-bottom:1.75rem">
+      Not a skills list. Each line is a count of writeups on this site that
+      demonstrate it — click through and read the work.
+    </p>
+
+    <div class="matrix">
+      {caps.map((c) => (
+        <a class="cap" href={`/skills/${c.slug}/`}>
+          <span class="cap__name">{c.name}</span>
+          <span class="cap__n">{c.count} <span>writeups</span></span>
+          <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
+        </a>
+      ))}
+    </div>
+
+    <p style="margin-top:1.5rem">
+      <a class="go" href="/skills/">Full capability index →</a>
+    </p>
+  </Band>
+
+  <Band label="Recent work">
+    <h2 class="h2">Latest writeups</h2>
     <p class="muted" style="max-width:36rem;margin-bottom:1.75rem">
       Every room and machine here is written as a case: what the problem was,
       what I did, what came out of it. Not a list of commands.
     </p>
 
     {latest.length === 0 ? (
-      <p class="muted">
-        No writeups published yet. Drop a markdown file into
-        <code style="font-family:var(--font-mono);font-size:.85em"> src/content/writeups/ </code>
-        and it appears here.
-      </p>
+      <p class="muted">No writeups published yet.</p>
     ) : (
       <div class="entries">
         {latest.map((w) => (
           <a class="entry" href={`/writeups/${w.id}/`}>
             <span class="entry__title">{w.data.title}</span>
             <span class="entry__meta">
-              {roles[w.data.role]} · {fmt(w.data.date)}
+              <span class={`chip chip--sev chip--${w.data.difficulty}`}>{w.data.difficulty}</span>
+              <span>{roles[w.data.role]}</span>
+              <span>{fmt(w.data.date)}</span>
             </span>
             <span class="entry__sum">{w.data.summary}</span>
           </a>
@@ -79,12 +160,15 @@ const fmt = (d: Date) =>
     )}
 
     <p style="margin-top:1.5rem">
-      <a class="go" href="/writeups/">All writeups →</a>
+      <a class="go" href="/writeups/">All {all.length} writeups →</a>
     </p>
   </Band>
 
-  <Band offset="0030" label="Built">
+  <Band label="Built">
     <h2 class="h2">Things I've built</h2>
+    <p class="muted" style="max-width:38rem;margin-bottom:0.5rem">
+      Each one came out of a gap I hit while testing something.
+    </p>
     <div class="findings">
       {projects.slice(0, 3).map((p) => (
         <article class="finding">
@@ -96,6 +180,11 @@ const fmt = (d: Date) =>
           <div class="chip-row">
             {p.stack.map((s) => <span class="chip">{s}</span>)}
           </div>
+          {p.repo && (
+            <p class="link-list" style="margin-top:.25rem">
+              <a href={p.repo} target="_blank" rel="noopener">Source →</a>
+            </p>
+          )}
         </article>
       ))}
     </div>
@@ -105,15 +194,19 @@ const fmt = (d: Date) =>
     </p>
   </Band>
 
-  <Band offset="0040" label="Contact">
+  <Band label="Contact">
     <h2 class="h2">Get in touch</h2>
-    <p class="prose" style="margin-bottom:1.25rem">
-      I'm looking for security engineering and penetration testing work. If
-      you've got something you'd like tested, or a team that needs someone who
-      writes their own tooling, mail is the fastest way to reach me.
-    </p>
-    <p class="link-list">
-      <a href={`mailto:${person.email}`}>{person.email}</a>
-    </p>
+    <div class="prose" style="margin-bottom:1.5rem">
+      <p>
+        I'm looking for security engineering and penetration testing work — in
+        India or abroad. If you've got something you'd like tested, or a team
+        that needs someone who writes their own tooling, mail is the fastest
+        way to reach me.
+      </p>
+    </div>
+    <div class="btn-row">
+      <a class="btn" href={`mailto:${person.email}`}>{person.email}</a>
+      <a class="btn btn--ghost" href="/resume/">Résumé</a>
+    </div>
   </Band>
 </Base>

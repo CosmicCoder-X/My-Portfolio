@@ -1,0 +1,168 @@
+---
+// Client-side behaviour for long-form pages: image lightbox, code
+// copy, and table-of-contents scrollspy. All three are additive —
+// the page is fully readable and navigable without any of them.
+---
+
+<dialog class="lb" data-lightbox aria-label="Enlarged screenshot">
+  <button class="lb__close" data-lb-close type="button">Close · Esc</button>
+  <img data-lb-img src="" alt="" />
+  <p class="lb__cap" data-lb-cap></p>
+</dialog>
+
+<script>
+  // ── Lightbox ───────────────────────────────────────────────
+  // These are dense terminal captures. At the width of a reading
+  // column they're decorative; at full size they're the evidence.
+  (() => {
+    const dlg = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+    if (!dlg) return;
+
+    const img = dlg.querySelector<HTMLImageElement>('[data-lb-img]')!;
+    const cap = dlg.querySelector<HTMLElement>('[data-lb-cap]')!;
+    const closeBtn = dlg.querySelector<HTMLButtonElement>('[data-lb-close]')!;
+
+    const zoomable = 'article.doc img, .cert-tile__img-wrap img';
+
+    function open(src: string, alt: string) {
+      img.src = src;
+      img.alt = alt;
+      cap.textContent = alt;
+      cap.hidden = !alt;
+      if (typeof dlg.showModal === 'function') dlg.showModal();
+    }
+
+    document.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      if (!t.matches?.(zoomable)) return;
+      e.preventDefault();
+      const el = t as HTMLImageElement;
+      open(el.currentSrc || el.src, el.alt || '');
+    });
+
+    // Keyboard route to the same thing: certificate tiles are buttons.
+    document.querySelectorAll<HTMLElement>('[data-zoom]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const el = btn.querySelector('img');
+        if (el) open(el.currentSrc || el.src, el.alt || '');
+      });
+    });
+
+    const close = () => dlg.close();
+    closeBtn.addEventListener('click', close);
+    // Clicking the backdrop (i.e. the dialog itself, not the image) closes.
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) close();
+    });
+    dlg.addEventListener('close', () => {
+      img.src = '';
+    });
+  })();
+
+  // ── Long figure captions ───────────────────────────────────
+  // The caption is the image's alt text and often runs to a paragraph.
+  // Clamp it here rather than in CSS so that a reader without
+  // JavaScript sees the whole thing instead of two orphaned lines.
+  (() => {
+    document.querySelectorAll<HTMLElement>('article.doc figure').forEach((fig) => {
+      const cap = fig.querySelector<HTMLElement>('figcaption');
+      if (!cap) return;
+
+      const full = cap.scrollHeight;
+      fig.classList.add('is-clamped');
+      // Nothing gained by a toggle on a caption that already fits.
+      if (cap.clientHeight >= full) {
+        fig.classList.remove('is-clamped');
+        return;
+      }
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cap-toggle';
+      btn.textContent = 'Full caption';
+      btn.setAttribute('aria-expanded', 'false');
+
+      btn.addEventListener('click', () => {
+        const open = fig.hasAttribute('data-open');
+        if (open) fig.removeAttribute('data-open');
+        else fig.setAttribute('data-open', '');
+        btn.textContent = open ? 'Full caption' : 'Collapse caption';
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+
+      cap.insertAdjacentElement('afterend', btn);
+    });
+  })();
+
+  // ── Copy buttons on code blocks ────────────────────────────
+  (() => {
+    document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const pre = btn.parentElement?.querySelector('pre');
+        const text = pre?.innerText ?? '';
+        if (!text) return;
+
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          // Clipboard API needs a secure context; fall back quietly.
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch { /* give up silently */ }
+          ta.remove();
+        }
+
+        btn.textContent = 'Copied';
+        btn.dataset.done = '1';
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          delete btn.dataset.done;
+        }, 1600);
+      });
+    });
+  })();
+
+  // ── Table of contents scrollspy ────────────────────────────
+  (() => {
+    const toc = document.querySelector<HTMLElement>('[data-toc]');
+    if (!toc) return;
+
+    const linkFor = new Map<string, HTMLAnchorElement>();
+    toc.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
+      linkFor.set(decodeURIComponent(a.getAttribute('href')!.slice(1)), a);
+    });
+
+    const headings = [...linkFor.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (headings.length === 0) return;
+
+    let current: HTMLAnchorElement | null = null;
+    const setActive = (id: string) => {
+      const a = linkFor.get(id);
+      if (!a || a === current) return;
+      current?.classList.remove('is-active');
+      a.classList.add('is-active');
+      current = a;
+    };
+
+    const io = new IntersectionObserver(
+      (records) => {
+        // Prefer whichever tracked heading is highest on screen and
+        // still above the fold.
+        const visible = records
+          .filter((r) => r.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-80px 0px -70% 0px', threshold: 0 },
+    );
+
+    headings.forEach((h) => io.observe(h));
+  })();
+</script>

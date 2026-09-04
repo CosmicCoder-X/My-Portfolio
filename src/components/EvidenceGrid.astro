@@ -1,0 +1,87 @@
+---
+// The evidence matrix.
+//
+// One cell per published writeup, grouped by platform, ink density
+// keyed to difficulty. It is the single most characteristic thing
+// about this portfolio — 155 documented engagements — rendered at a
+// scale where the volume and the spread read in one glance.
+//
+// Deliberately monochrome: the site is a duotone, and five arbitrary
+// discipline hues would fight the accent. Difficulty is the only
+// variable encoded in colour, and it earns it.
+import type { CollectionEntry } from 'astro:content';
+import { platforms, roles } from '../data/site';
+
+interface Props {
+  items: CollectionEntry<'writeups'>[];
+  /** Cap the number of cells drawn per platform. 0 = no cap. */
+  limit?: number;
+}
+
+const { items, limit = 0 } = Astro.props;
+
+const groups = platforms
+  .map((p) => {
+    const all = items
+      .filter((w) => w.id.split('/')[0] === p.slug)
+      .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+    return { ...p, all, shown: limit > 0 ? all.slice(-limit) : all };
+  })
+  .filter((g) => g.all.length > 0);
+
+const legend = [
+  { k: 'easy', label: 'Easy' },
+  { k: 'medium', label: 'Medium' },
+  { k: 'hard', label: 'Hard' },
+  { k: 'insane', label: 'Insane' },
+].filter((l) => items.some((w) => w.data.difficulty === l.k));
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<figure class="matrix-fig">
+  <div class="matrix-grid">
+    {groups.map((g) => (
+      <div class="matrix-row">
+        <div class="matrix-row__head">
+          <span class="matrix-row__name">{g.name}</span>
+          <span class="matrix-row__n">{g.all.length}</span>
+        </div>
+        <div class="matrix-cells">
+          {g.shown.map((w) => (
+            <a
+              class={`cell cell--${w.data.difficulty}`}
+              href={`/writeups/${w.id}/`}
+              title={`${w.data.title} — ${w.data.difficulty} · ${roles[w.data.role]} · ${fmt(w.data.date)}`}
+            >
+              <span class="sr-only">{w.data.title}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <figcaption class="matrix-key">
+    <span class="matrix-key__label">Difficulty</span>
+    {legend.map((l) => (
+      <span class="matrix-key__item">
+        <i class={`cell cell--${l.k}`} aria-hidden="true"></i>{l.label}
+      </span>
+    ))}
+    <span class="matrix-key__note">Each square is one published writeup. Hover for the target.</span>
+  </figcaption>
+</figure>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

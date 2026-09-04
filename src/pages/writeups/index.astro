@@ -1,73 +1,72 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Band from '../../components/Band.astro';
+import WriteupList from '../../components/WriteupList.astro';
 import { getCollection } from 'astro:content';
-import { platforms } from '../../data/site';
+import { platforms, roles } from '../../data/site';
 
 const all = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
-const countFor = (slug: string) =>
-  all.filter((w) => w.id.split('/')[0] === slug).length;
-
-const latestFor = (slug: string) => {
-  const items = all.filter((w) => w.id.split('/')[0] === slug);
-  return items.length > 0 ? items[0] : null;
-};
+const onPlatform = (slug: string) => all.filter((w) => w.id.split('/')[0] === slug);
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
 const difficultySpread = (slug: string) => {
-  const items = all.filter((w) => w.id.split('/')[0] === slug);
   const counts: Record<string, number> = {};
-  items.forEach((w) => {
+  onPlatform(slug).forEach((w) => {
     counts[w.data.difficulty] = (counts[w.data.difficulty] || 0) + 1;
   });
   return counts;
 };
+
+const roleCounts = Object.keys(roles)
+  .map((r) => ({ key: r, label: roles[r], count: all.filter((w) => w.data.role === r).length }))
+  .filter((r) => r.count > 0)
+  .sort((a, b) => b.count - a.count);
+const roleMax = Math.max(...roleCounts.map((r) => r.count));
 ---
 
-<Base title="Writeups — Divyansh404" description="Penetration testing and CTF writeups, written as case studies.">
+<Base
+  title="Writeups — Divyansh404"
+  description={`${all.length} penetration testing, CTF and forensics writeups, written as case studies.`}
+>
   <Band offset="0000" label="Index">
-    <h1 class="display display--caps" style="font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem">
-      Writeups
-    </h1>
+    <h1 class="page-title">Writeups</h1>
     <p class="lede">
-      Rooms, machines and challenges, each written the way a finding gets
-      written up: the problem, the action, the outcome. Pick a platform to browse.
+      {all.length} rooms, machines and challenges, each written the way a
+      finding gets written up: the problem, the action, the outcome. Browse by
+      platform, or search everything below.
     </p>
   </Band>
 
   <Band offset="0010" label="Platforms">
     <div class="platform-grid">
       {platforms.map((p) => {
-        const count = countFor(p.slug);
-        const latest = latestFor(p.slug);
+        const items = onPlatform(p.slug);
         const spread = difficultySpread(p.slug);
         return (
           <a class="platform-card" href={`/writeups/${p.slug}/`}>
             <div class="platform-card__head">
               <h2 class="platform-card__name">{p.name}</h2>
-              <span class="platform-card__count">{count}</span>
+              <span class="platform-card__count">{items.length}</span>
             </div>
             <p class="platform-card__blurb">{p.blurb}</p>
-            {count > 0 && (
+            {items.length > 0 && (
               <div class="platform-card__meta">
                 <div class="platform-card__spread">
                   {Object.entries(spread).map(([diff, n]) => (
                     <span class={`chip chip--sev chip--${diff}`}>{diff} {n}</span>
                   ))}
                 </div>
-                {latest && (
-                  <div class="platform-card__latest">
-                    Latest: <strong>{latest.data.title}</strong> — {fmt(latest.data.date)}
-                  </div>
-                )}
+                <div class="platform-card__latest">
+                  Latest: <strong>{items[0].data.title}</strong> — {fmt(items[0].data.date)}
+                </div>
               </div>
             )}
-            {count === 0 && (
+            {items.length === 0 && (
               <p class="platform-card__empty">Nothing published here yet.</p>
             )}
             <span class="platform-card__arrow">View all →</span>
@@ -77,20 +76,36 @@ const difficultySpread = (slug: string) => {
     </div>
   </Band>
 
-  <Band offset="0020" label="Stats">
-    <div class="writeup-stats">
-      <div class="stat">
-        <span class="stat__num">{all.length}</span>
-        <span class="stat__label">Total writeups</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num">{platforms.filter((p) => countFor(p.slug) > 0).length}</span>
-        <span class="stat__label">Active platforms</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num">{all.filter((w) => w.data.difficulty === 'hard' || w.data.difficulty === 'insane').length}</span>
-        <span class="stat__label">Hard / Insane</span>
-      </div>
+  <Band offset="0020" label="Discipline">
+    <h2 class="h2">What they evidence</h2>
+    <p class="muted" style="max-width:38rem;margin-bottom:1.5rem">
+      Filed by the role each one demonstrates. Offensive work is the bulk of
+      it, with real depth on the defensive side.
+    </p>
+    <div class="dist">
+      {roleCounts.map((r) => (
+        <div class="dist__row">
+          <span class="dist__label">{r.label}</span>
+          <span class="dist__track">
+            <span class="dist__fill" style={`width:${Math.round((r.count / roleMax) * 100)}%`}></span>
+          </span>
+          <span class="dist__n">{r.count}</span>
+        </div>
+      ))}
     </div>
+    <p style="margin-top:1.5rem">
+      <a class="go" href="/skills/">Browse by capability instead →</a>
+    </p>
+  </Band>
+
+  <Band offset="0030" label="Search">
+    <h2 class="h2">Everything, searchable</h2>
+    <p class="muted" style="max-width:38rem;margin-bottom:1.5rem">
+      All {all.length} writeups in one list. Search matches titles, targets,
+      summaries and tags — try <code style="font-family:var(--font-mono);font-size:.85em">kerberos</code>,
+      <code style="font-family:var(--font-mono);font-size:.85em">ssrf</code> or
+      <code style="font-family:var(--font-mono);font-size:.85em">volatility</code>.
+    </p>
+    <WriteupList items={all} showPlatform={true} />
   </Band>
 </Base>

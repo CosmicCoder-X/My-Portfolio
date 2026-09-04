@@ -1,16 +1,26 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Band from '../../components/Band.astro';
-import { person, credentials, toolkit, links } from '../../data/site';
+import { getCollection } from 'astro:content';
+import { person, credentials, toolkit, links, education, experience } from '../../data/site';
+import { capabilityCounts } from '../../lib/evidence';
+
+const all = await getCollection('writeups', ({ data }) => !data.draft);
+const top = capabilityCounts(all).slice(0, 4);
 ---
 
-<Base title="About — Divyansh404" description="Who I am, what I've studied, and what I can do.">
+<Base
+  title="About — Divyansh404"
+  description="Who I am, what I've studied, and what I can do — with the work to back it."
+>
   <Band offset="0000" label="Subject">
-    <h1 class="display display--caps" style="font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.5rem">
-      About
-    </h1>
+    <h1 class="page-title">About</h1>
     <div class="prose lede">
       <p>{person.statement}</p>
+    </div>
+    <div class="btn-row" style="margin-top:1.75rem">
+      <a class="btn" href="/resume/">Résumé</a>
+      <a class="btn btn--ghost" href="/skills/">Capability index</a>
     </div>
   </Band>
 
@@ -38,7 +48,54 @@ import { person, credentials, toolkit, links } from '../../data/site';
     </div>
   </Band>
 
-  <Band offset="0020" label="Credentials">
+  <Band offset="0020" label="Strengths">
+    <h2 class="h2">Where the depth is</h2>
+    <p class="muted" style="max-width:38rem;margin-bottom:1.5rem">
+      Counted from {all.length} published writeups rather than asserted.
+    </p>
+    <div class="matrix">
+      {top.map((c) => (
+        <a class="cap" href={`/skills/${c.slug}/`}>
+          <span class="cap__name">{c.name}</span>
+          <span class="cap__n">{c.count} <span>writeups</span></span>
+          <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
+        </a>
+      ))}
+    </div>
+    <p style="margin-top:1.5rem">
+      <a class="go" href="/skills/">Full index →</a>
+    </p>
+  </Band>
+
+  <Band offset="0030" label="Experience">
+    <h2 class="h2">Roles</h2>
+    <div class="findings">
+      {experience.map((e) => (
+        <article class="finding">
+          <div class="finding__head">
+            <h3 class="h3">{e.role}</h3>
+            <span class="finding__kind">{e.org}</span>
+            <span class="mono-label" style="margin-left:auto">{e.period}</span>
+          </div>
+          <ul class="finding__points">
+            {e.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+        </article>
+      ))}
+      {education.map((e) => (
+        <article class="finding">
+          <div class="finding__head">
+            <h3 class="h3">{e.qualification}</h3>
+            <span class="finding__kind">{e.school}</span>
+            <span class="mono-label" style="margin-left:auto">{e.period}</span>
+          </div>
+          <p class="finding__body">{e.detail}</p>
+        </article>
+      ))}
+    </div>
+  </Band>
+
+  <Band offset="0040" label="Credentials">
     <h2 class="h2">Certifications and study</h2>
     <div class="entries">
       {credentials.map((c) => (
@@ -49,9 +106,12 @@ import { person, credentials, toolkit, links } from '../../data/site';
         </div>
       ))}
     </div>
+    <p style="margin-top:1.25rem">
+      <a class="go" href="/certifications/">Competition certificates →</a>
+    </p>
   </Band>
 
-  <Band offset="0030" label="Toolkit">
+  <Band offset="0050" label="Toolkit">
     <h2 class="h2">What I work with</h2>
     {toolkit.map((g) => (
       <div class="tool-group">
@@ -63,15 +123,15 @@ import { person, credentials, toolkit, links } from '../../data/site';
     ))}
   </Band>
 
-  <Band offset="0040" label="Elsewhere">
+  <Band offset="0060" label="Elsewhere">
     <h2 class="h2">Find me</h2>
-    <p class="link-list" style="margin-bottom:1.25rem">
+    <p class="link-list" style="margin-bottom:1.5rem">
       {links.map((l) => (
         <a href={l.url} target="_blank" rel="me noopener">{l.label}</a>
       ))}
     </p>
-    <p class="link-list">
-      <a href={`mailto:${person.email}`}>{person.email}</a>
-    </p>
+    <div class="btn-row">
+      <a class="btn" href={`mailto:${person.email}`}>{person.email}</a>
+    </div>
   </Band>
 </Base>

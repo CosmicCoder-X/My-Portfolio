@@ -1,8 +1,10 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Band from '../../../components/Band.astro';
+import WriteupList from '../../../components/WriteupList.astro';
 import { getCollection } from 'astro:content';
-import { platforms, roles } from '../../../data/site';
+import { platforms } from '../../../data/site';
+import { capabilityCounts } from '../../../lib/evidence';
 
 export async function getStaticPaths() {
   const { platforms } = await import('../../../data/site');
@@ -12,26 +14,73 @@ export async function getStaticPaths() {
 const { platform } = Astro.params;
 const meta = platforms.find((p) => p.slug === platform)!;
 
-const items = (
-  await getCollection('writeups', ({ data }) => !data.draft)
-)
+const items = (await getCollection('writeups', ({ data }) => !data.draft))
   .filter((w) => w.id.split('/')[0] === platform)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const fmt = (d: Date) =>
-  d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+const caps = capabilityCounts(items).slice(0, 5);
+
+const harder = items.filter(
+  (w) => w.data.difficulty === 'hard' || w.data.difficulty === 'insane',
+).length;
+
+// A stat tile reading "0" advertises an absence. Only show figures
+// that say something.
+const stats = [
+  { n: items.length, label: 'Writeups' },
+  { n: new Set(items.map((w) => w.data.role)).size, label: 'Disciplines' },
+  { n: harder, label: 'Hard / insane' },
+  { n: new Set(items.flatMap((w) => w.data.tags.map((t) => t.toLowerCase()))).size, label: 'Distinct techniques' },
+].filter((s) => s.n > 0);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `${meta.name} writeups`,
+  description: meta.blurb,
+  url: new URL(Astro.url.pathname, Astro.site).toString(),
+  numberOfItems: items.length,
+};
 ---
 
-<Base title={`${meta.name} writeups — Divyansh404`} description={meta.blurb}>
+<Base
+  title={`${meta.name} writeups — Divyansh404`}
+  description={`${items.length} ${meta.name} writeups. ${meta.blurb}`}
+  jsonLd={jsonLd}
+>
   <Band offset="0000" label={meta.name}>
     <a class="back" href="/writeups/">← All writeups</a>
-    <h1 class="display display--caps" style="font-size:clamp(2rem,5.5vw,3.25rem);margin-bottom:1rem">
-      {meta.name}
-    </h1>
-    <p class="lede">{meta.blurb}</p>
+    <h1 class="page-title" style="font-size:clamp(2rem,5.5vw,3.25rem)">{meta.name}</h1>
+    <p class="lede" style="margin-bottom:1.5rem">{meta.blurb}</p>
+
+    {stats.length > 0 && (
+      <div class="stats" style="max-width:38rem">
+        {stats.map((s) => (
+          <div class="stat">
+            <span class="stat__num">{s.n}</span>
+            <span class="stat__label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    )}
   </Band>
 
-  <Band offset="0010" label="Entries">
+  {caps.length > 0 && (
+    <Band offset="0010" label="Covers">
+      <h2 class="h2">What this platform covers</h2>
+      <div class="matrix">
+        {caps.map((c) => (
+          <a class="cap" href={`/skills/${c.slug}/`}>
+            <span class="cap__name">{c.name}</span>
+            <span class="cap__n">{c.count} <span>here</span></span>
+            <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
+          </a>
+        ))}
+      </div>
+    </Band>
+  )}
+
+  <Band offset="0020" label="Entries">
     {items.length === 0 ? (
       <p class="muted">
         Nothing published here yet. Add a markdown file to
@@ -41,20 +90,7 @@ const fmt = (d: Date) =>
         and it will show up.
       </p>
     ) : (
-      <div class="entries">
-        {items.map((w) => (
-          <a class="entry" href={`/writeups/${w.id}/`}>
-            <span class="entry__title">{w.data.title}</span>
-            <span class="entry__meta">
-              <span class={`chip chip--sev chip--${w.data.difficulty}`}>
-                {w.data.difficulty}
-              </span>
-              &nbsp;{fmt(w.data.date)}
-            </span>
-            <span class="entry__sum">{w.data.summary}</span>
-          </a>
-        ))}
-      </div>
+      <WriteupList items={items} />
     )}
   </Band>
 </Base>

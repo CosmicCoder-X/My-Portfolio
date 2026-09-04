@@ -1,31 +1,72 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Band from '../../../components/Band.astro';
+import ArticleUX from '../../../components/ArticleUX.astro';
 import { getCollection, render } from 'astro:content';
-import { platforms, roles } from '../../../data/site';
+import { platforms, roles, person } from '../../../data/site';
+import { related, tagSlug, tagCounts } from '../../../lib/evidence';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('writeups', ({ data }) => !data.draft);
-  return entries.map((entry) => {
+  const entries = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
+
+  return entries.map((entry, i) => {
     const [platform, ...rest] = entry.id.split('/');
     return {
       params: { platform, slug: rest.join('/') },
-      props: { entry },
+      props: {
+        entry,
+        // The list is newest-first, so the *next* index is the older post.
+        newer: i > 0 ? entries[i - 1] : null,
+        older: i < entries.length - 1 ? entries[i + 1] : null,
+      },
     };
   });
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { entry, newer, older } = Astro.props;
+const { Content, headings } = await render(entry);
 const d = entry.data;
 
+const all = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
 const platformMeta = platforms.find((p) => p.slug === Astro.params.platform);
+const siblings = related(all, entry, 3);
+
+// Only tags that have their own page become links.
+const linkable = new Set(tagCounts(all, 2).map((t) => t.slug));
+
+// Skip h1 (the page title is the h1) and anything deeper than h3 —
+// a four-level contents list is noise.
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 const fmt = (date: Date) =>
   date.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: d.title,
+  description: d.summary,
+  datePublished: d.date.toISOString(),
+  author: { '@type': 'Person', name: person.name, url: Astro.site?.toString() },
+  publisher: { '@type': 'Person', name: person.name },
+  keywords: d.tags.join(', '),
+  about: d.target,
+  url: new URL(Astro.url.pathname, Astro.site).toString(),
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+};
 ---
 
-<Base title={`${d.title} — Divyansh404`} description={d.summary}>
+<Base
+  title={`${d.title} — ${platformMeta?.name ?? 'Writeup'} — Divyansh404`}
+  description={d.summary}
+  ogType="article"
+  jsonLd={jsonLd}
+>
   <Band offset="0000" label="Finding">
     <a class="back" href={`/writeups/${Astro.params.platform}/`}>
       ← {platformMeta?.name ?? 'Writeups'}
@@ -62,14 +103,77 @@ const fmt = (date: Date) =>
 
     {d.tags.length > 0 && (
       <div class="chip-row">
-        {d.tags.map((t) => <span class="chip">{t}</span>)}
+        {d.tags.map((t) =>
+          linkable.has(tagSlug(t)) ? (
+            <a class="chip" href={`/tags/${tagSlug(t)}/`}>{t}</a>
+          ) : (
+            <span class="chip">{t}</span>
+          ),
+        )}
       </div>
     )}
   </Band>
 
   <Band offset="0020" label="Walkthrough">
-    <article class="doc">
-      <Content />
-    </article>
+    <div class="reading">
+      <article class="doc">
+        <Content />
+      </article>
+
+      {toc.length > 2 && (
+        <nav class="toc" data-toc aria-label="On this page">
+          <div class="toc__title">On this page</div>
+          <ol>
+            {toc.map((h) => (
+              <li class={`lvl-${h.depth}`}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+    </div>
   </Band>
+
+  {siblings.length > 0 && (
+    <Band offset="0030" label="Related">
+      <h2 class="h2">Related work</h2>
+      <p class="muted" style="max-width:36rem;margin-bottom:1.25rem">
+        Writeups sharing the most techniques with this one.
+      </p>
+      <div class="entries">
+        {siblings.map((w) => (
+          <a class="entry" href={`/writeups/${w.id}/`}>
+            <span class="entry__title">{w.data.title}</span>
+            <span class="entry__meta">
+              <span class={`chip chip--sev chip--${w.data.difficulty}`}>{w.data.difficulty}</span>
+              <span>{platforms.find((p) => p.slug === w.id.split('/')[0])?.name}</span>
+            </span>
+            <span class="entry__sum">{w.data.summary}</span>
+          </a>
+        ))}
+      </div>
+    </Band>
+  )}
+
+  {(newer || older) && (
+    <Band offset="0040" label="Continue">
+      <div class="pager">
+        {newer && (
+          <a href={`/writeups/${newer.id}/`}>
+            <span>← Newer</span>
+            <b>{newer.data.title}</b>
+          </a>
+        )}
+        {older && (
+          <a class="next" href={`/writeups/${older.id}/`}>
+            <span>Older →</span>
+            <b>{older.data.title}</b>
+          </a>
+        )}
+      </div>
+    </Band>
+  )}
+
+  <ArticleUX />
 </Base>

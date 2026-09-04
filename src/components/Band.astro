@@ -1,20 +1,23 @@
 ---
-// A section of the report. The rail carries a byte offset — a nod to the
-// packet dumps this work actually lives in — plus the section name.
+// A section of the dossier.
+//
+// This used to render a left rail carrying a hex byte-offset. With a
+// permanent identity rail on the left of every page that became a
+// second competing rail, and the offsets were decoration dressed as
+// structure — they numbered sections that aren't a sequence. The
+// label survives as an eyebrow, which is the job it was really doing.
+//
+// `offset` is still accepted so callers don't all need editing, but
+// it is intentionally unused.
 interface Props {
-  offset: string;
+  offset?: string;
   label?: string;
   id?: string;
 }
-const { offset, label, id } = Astro.props;
+const { label, id } = Astro.props;
 ---
 
 <section class="band" id={id}>
-  <div class="band__rail" aria-hidden="true">
-    <b>{offset}</b>
-    {label && <span>{label}</span>}
-  </div>
-  <div>
-    <slot />
-  </div>
+  {label && <p class="band__label">{label}</p>}
+  <slot />
 </section>

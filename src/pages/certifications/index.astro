@@ -1,23 +1,46 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Band from '../../components/Band.astro';
+import ArticleUX from '../../components/ArticleUX.astro';
 import { certCategories } from '../../data/site';
 
-const offsets = ['0000', '0010', '0020', '0030'];
+const total = certCategories.reduce((n, c) => n + c.items.length, 0);
+const withImages = certCategories.reduce(
+  (n, c) => n + c.items.filter((i) => i.image).length,
+  0,
+);
+
+// Built from the categories rather than fixed tiles, so adding a
+// fourth category (or reordering them) needs no change here.
+const stats = [
+  { n: total, label: 'Credentials' },
+  ...certCategories.map((c) => ({ n: c.items.length, label: c.name })),
+].filter((s) => s.n > 0);
 ---
 
-<Base title="Certifications — Divyansh404" description="CTF certificates and professional certifications.">
+<Base
+  title="Certifications — Divyansh404"
+  description="CTF competition certificates, learning pathways and professional certifications."
+>
   <Band offset="0000" label="Index">
-    <h1 class="display display--caps" style="font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem">
-      Certifications
-    </h1>
-    <p class="lede">
+    <h1 class="page-title">Certifications</h1>
+    <p class="lede" style="margin-bottom:1.5rem">
       Platform milestones, competition certificates, and industry credentials.
+      {withImages > 0 && ' Click any certificate to see it full size.'}
     </p>
+
+    <div class="stats">
+      {stats.map((s) => (
+        <div class="stat">
+          <span class="stat__num">{s.n}</span>
+          <span class="stat__label">{s.label}</span>
+        </div>
+      ))}
+    </div>
   </Band>
 
   {certCategories.map((cat, i) => (
-    <Band offset={offsets[i + 1]} label={cat.name}>
+    <Band offset={String((i + 1) * 10).padStart(4, '0')} label={cat.name}>
       <div style="display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.5rem">
         <h2 class="h2" style="margin-bottom:0">{cat.name}</h2>
         <span class="mono-label">{cat.items.length} entries</span>
@@ -25,17 +48,20 @@ const offsets = ['0000', '0010', '0020', '0030'];
       <p class="muted" style="margin-bottom:1.5rem">{cat.blurb}</p>
 
       {cat.items.length === 0 ? (
-        <p class="muted" style="font-size:.9375rem">
-          Nothing here yet.
-        </p>
+        <p class="muted" style="font-size:.9375rem">Nothing here yet.</p>
       ) : (
         <div class="cert-gallery">
           {cat.items.map((c) => (
             <div class="cert-tile">
               {c.image ? (
-                <div class="cert-tile__img-wrap">
-                  <img src={c.image} alt={`${c.name} certificate`} loading="lazy" />
-                </div>
+                <button
+                  class="cert-tile__img-wrap"
+                  type="button"
+                  data-zoom
+                  aria-label={`View ${c.name} certificate full size`}
+                >
+                  <img src={c.image} alt={`${c.name} certificate — ${c.issuer}`} loading="lazy" />
+                </button>
               ) : (
                 <div class="cert-tile__placeholder">
                   <span>Certificate</span>
@@ -54,4 +80,6 @@ const offsets = ['0000', '0010', '0020', '0030'];
       )}
     </Band>
   ))}
+
+  <ArticleUX />
 </Base>
