@@ -1,43 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-      <path d="M80 0H0v80" fill="none" stroke="#c5bca7" stroke-width="1" opacity="0.5"/>
-    </pattern>
-    <linearGradient id="fade" x1="1" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
-      <stop offset="70%" stop-color="#fff" stop-opacity="0"/>
-    </linearGradient>
-    <mask id="gridmask">
-      <rect width="1200" height="630" fill="url(#fade)"/>
-    </mask>
-  </defs>
+  <rect width="1200" height="630" fill="#f5f6f8"/>
 
-  <rect width="1200" height="630" fill="#f5f1e8"/>
-  <rect width="1200" height="630" fill="url(#grid)" mask="url(#gridmask)"/>
-  <rect width="1200" height="10" fill="#9e2b25"/>
+  <!-- rail, echoing the site's sidebar -->
+  <rect x="0" y="0" width="14" height="630" fill="#252830"/>
 
   <!-- eyebrow -->
-  <text x="80" y="118" font-family="Consolas, 'Courier New', monospace" font-size="21" letter-spacing="4.5" fill="#9e2b25">ASSESSMENT SUBJECT — SELF</text>
+  <text x="88" y="132" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" font-weight="500" letter-spacing="2.6" fill="#8b919d">OFFENSIVE SECURITY · PRAYAGRAJ, INDIA</text>
 
-  <!-- name -->
-  <text x="76" y="248" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="116" letter-spacing="-4" fill="#1a1815">DIVYANSH</text>
-  <text x="76" y="358" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="116" letter-spacing="-4" fill="#1a1815">AGRAWAL</text>
+  <!-- name, light serif -->
+  <text x="84" y="248" font-family="Georgia, Times New Roman, serif" font-size="88" fill="#252830">Divyansh Agrawal</text>
 
-  <!-- rule -->
-  <rect x="80" y="404" width="620" height="1" fill="#c5bca7"/>
+  <!-- tagline, italic serif -->
+  <text x="86" y="322" font-family="Georgia, Times New Roman, serif" font-style="italic" font-size="34" fill="#252830">I break web applications, networks and language</text>
+  <text x="86" y="368" font-family="Georgia, Times New Roman, serif" font-style="italic" font-size="34" fill="#252830">models, then write the tool that would have caught me.</text>
 
-  <!-- role line -->
-  <text x="80" y="452" font-family="Georgia, 'Times New Roman', serif" font-size="31" fill="#4e483f">Offensive security · LLM security · Detection engineering</text>
+  <!-- stat row -->
+  <rect x="86" y="424" width="1030" height="1" fill="#dde1e8"/>
 
-  <!-- stamp -->
-  <g transform="translate(1010 150) rotate(-9)" opacity="0.62">
-    <rect x="-124" y="-38" width="248" height="76" fill="none" stroke="#9e2b25" stroke-width="3"/>
-    <text x="0" y="-4" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="23" font-weight="bold" letter-spacing="4" fill="#9e2b25">AVAILABLE</text>
-    <text x="0" y="24" text-anchor="middle" font-family="Consolas, 'Courier New', monospace" font-size="23" font-weight="bold" letter-spacing="4" fill="#9e2b25">FOR HIRE</text>
-  </g>
+  <text x="88" y="486" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#252830">156</text>
+  <text x="88" y="516" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17" font-weight="500" letter-spacing="1.8" fill="#8b919d">WRITEUPS</text>
 
-  <!-- footer bar -->
-  <rect x="0" y="540" width="1200" height="1" fill="#c5bca7"/>
-  <text x="80" y="588" font-family="Consolas, 'Courier New', monospace" font-size="22" letter-spacing="2" fill="#6f6759">155 WRITEUPS  ·  TOP 1% TRYHACKME</text>
-  <text x="1120" y="588" text-anchor="end" font-family="Consolas, 'Courier New', monospace" font-size="22" letter-spacing="2" fill="#9e2b25">divyansh404.xyz</text>
+  <text x="330" y="486" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#252830">5</text>
+  <text x="330" y="516" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17" font-weight="500" letter-spacing="1.8" fill="#8b919d">DISCIPLINES</text>
+
+  <text x="600" y="486" font-family="Georgia, Times New Roman, serif" font-size="42" fill="#252830">222</text>
+  <text x="600" y="516" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17" font-weight="500" letter-spacing="1.8" fill="#8b919d">TECHNIQUES</text>
+
+  <text x="1116" y="516" text-anchor="end" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" font-weight="500" fill="#252830">divyansh404.xyz</text>
 </svg>
