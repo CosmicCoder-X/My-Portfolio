@@ -9,7 +9,10 @@ tags: ['Template', 'Meta']
 problem: 'You want to publish a writeup and you have never touched a static site generator.'
 action: 'Copy this file, rename it, edit the block at the top and then the text underneath.'
 outcome: 'The page below builds itself — listing, difficulty chip, URL and all.'
-draft: true
+# Visible for now while the site is still being built out. Set this to
+# `draft: true` (or delete the file) before the link goes to anyone
+# hiring — it is site documentation, not a writeup.
+draft: false
 ---
 
 This page is a real writeup as far as the site is concerned. It renders exactly

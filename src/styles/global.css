@@ -427,21 +427,26 @@ h1, h2, h3, h4, .display, .h2, .h3, .page-title, .cover__name {
 }
 
 /* Portrait slot. Degrades to nothing if no image is supplied — the
-   layout does not depend on it. */
+   layout does not depend on it. Sized for a landscape line drawing
+   rather than a head-and-shoulders crop. */
 .cover__split {
   display: grid;
-  gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: start;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  align-items: center;
 }
-@media (min-width: 60rem) {
-  .cover__split.has-portrait { grid-template-columns: minmax(0, 1fr) 15rem; }
+@media (min-width: 62rem) {
+  .cover__split.has-portrait { grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem); }
 }
-.portrait {
-  border: 1px solid var(--rule-2);
-  background: var(--paper-2);
-  padding: 0.5rem;
+
+.portrait { position: relative; }
+.portrait img {
+  width: 100%;
+  height: auto;
+  /* Line art arrives on a near-white ground. `multiply` drops that
+     ground out so only the strokes sit on the cream — no white box
+     floating in the hero, and no cut-out needed. */
+  mix-blend-mode: multiply;
 }
-.portrait img { width: 100%; height: auto; filter: grayscale(1) contrast(1.05); }
 
 /* ══════════════════════════════════════════════════════════════
    EVIDENCE MATRIX — one cell per writeup. The signature element.
