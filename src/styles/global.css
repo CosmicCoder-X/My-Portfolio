@@ -246,6 +246,30 @@ h1, h2, h3, h4, .display, .h2, .h3, .page-title, .cover__name { text-wrap: balan
   font-variant-numeric: lining-nums tabular-nums;
 }
 
+/* Same old-style-figure problem, wider blast radius: every other place
+   Cormorant sets a heading or label is just as exposed, and content
+   (writeup/blog titles, ## headings inside post bodies) routinely puts
+   a bare digit in one — "WEB1", "Flag 1"..."Flag 5", "Cyber Security
+   101". Left alone, Cormorant renders that digit small and dropped
+   below the baseline, which at heading size reads as a typo (a "1"
+   that looks like a stray "ı") rather than a stylistic figure. Forcing
+   lining figures everywhere the display face is used for a heading or
+   label — never leaving it to be caught title-by-title. */
+.display,
+.page-title,
+.h2,
+.h3,
+.cover__name,
+.cover__lede,
+.entry__title,
+.platform-card__name,
+.cert-tile__name,
+.doc h2,
+.doc h3,
+.pager b {
+  font-variant-numeric: lining-nums;
+}
+
 .display,
 .page-title {
   font-family: var(--font-display);
