@@ -138,26 +138,9 @@ a { color: inherit; }
 }
 .rail__in { padding: 16px 24px; }
 
-.rail__id { text-decoration: none; display: block; margin-bottom: 36px; }
+.rail__id { text-decoration: none; display: block; margin-bottom: 26px; }
 
-.mark { margin-bottom: 18px; flex: none; }
-
-.rail__name {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 24px;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  color: var(--ink);
-}
-.rail__role {
-  display: block;
-  font-size: 13px;
-  color: var(--ink-2);
-  margin-top: 4px;
-  letter-spacing: 0.02em;
-}
+.mark { flex: none; }
 
 .status {
   display: inline-flex;
@@ -207,10 +190,9 @@ a { color: inherit; }
 
 @media (max-width: 899px) {
   .rail__in { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  .rail__id { display: flex; align-items: center; gap: 10px; margin-bottom: 0; }
-  .mark { width: 76px; margin-bottom: 0; }
-  .rail__name { font-size: 17px; }
-  .rail__role, .status, .rail__foot { display: none; }
+  .rail__id { display: flex; align-items: center; margin-bottom: 0; }
+  .mark { width: 96px; }
+  .status, .rail__foot { display: none; }
   .rail__nav {
     margin: 0 -24px;
     margin-top: 0;

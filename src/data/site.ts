@@ -190,6 +190,8 @@ export const certCategories = [
       { name: 'NexHUNT CTF', issuer: 'NexHUNT', year: '', image: '/certifications/NexHUNT CTF Certificate.png' },
       { name: 'World Wide CTF', issuer: 'WWCTF', year: '', image: '/certifications/World Wide CTF Certificate.png' },
       { name: 'scriptCTF 2026', issuer: 'scriptCTF', year: '2026', image: '/certifications/scriptCTF_26 Certificate.png' },
+      { name: 'Advent of Cyber 2025', issuer: 'TryHackMe', year: '2025', image: '/certifications/advent-of-cyber-2025.png' },
+      { name: 'Hacker Holidays', issuer: 'TryHackMe', year: '2026', image: '/certifications/hacker-holidays.png' },
     ],
   },
   {
@@ -197,8 +199,10 @@ export const certCategories = [
     name: 'Pathway Certificates',
     blurb: 'Certificates earned by completing structured learning paths and roadmaps.',
     items: [
-      { name: 'Junior Penetration Tester', issuer: 'TryHackMe', year: '', image: '' },
-      { name: 'Blue Team Junior Analyst', issuer: 'Security Blue Team', year: '', image: '' },
+      { name: 'Cyber Security 101', issuer: 'TryHackMe', year: '2025', image: '/certifications/cybersecurity-101-pathway.png' },
+      { name: 'Junior Penetration Tester', issuer: 'TryHackMe', year: '2025', image: '/certifications/junior-penetration-tester-pathway.png' },
+      { name: 'Web Fundamentals', issuer: 'TryHackMe', year: '2025', image: '/certifications/web-fundamentals-learning-path.png' },
+      { name: 'Blue Team Junior Analyst', issuer: 'Security Blue Team', year: '2026', image: '/certifications/blue-team-junior-analyst.png' },
     ],
   },
   {
@@ -206,6 +210,7 @@ export const certCategories = [
     name: 'Professional Certifications',
     blurb: 'Industry certifications and structured coursework.',
     items: [
+      { name: 'Web App Pentester Level 1 (WEB1)', issuer: 'TryHackMe', year: '2026', image: '/certifications/web1-professional-certification.png' },
       { name: 'Ethical Hacking', issuer: 'Cisco', year: '', image: '' },
       { name: 'FOR589 — Cybercrime Investigations', issuer: 'SANS curriculum', year: '', image: '' },
       { name: 'AI Hacking 101', issuer: 'Self-study', year: '', image: '' },

@@ -125,12 +125,13 @@ const year = new Date().getFullYear();
            compact bar with a scrolling nav strip. -->
       <aside class="rail">
         <div class="rail__in">
+          <!-- Name/role text used to repeat here under the logo — dropped
+               to match the reference (abigaeldonahue.com), whose sidebar
+               is just the mark and the nav. The name is still carried by
+               <title>, the cover headline, the mark's aria-label, and
+               the footer, so nothing is actually lost. -->
           <a class="rail__id" href="/">
-            <Monogram width={104} class="mark" />
-            <span>
-              <span class="rail__name">{person.name}</span>
-              <span class="rail__role">{person.role}</span>
-            </span>
+            <Monogram width={140} class="mark" />
           </a>
 
           {person.availability && <span class="status">{person.availability}</span>}
