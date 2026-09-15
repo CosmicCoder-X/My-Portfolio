@@ -72,6 +72,22 @@ export const cover = [
 // ── Projects ─────────────────────────────────────────────────
 export const projects = [
   {
+    name: 'Palisade',
+    kind: 'MCP security',
+    blurb: `A security scanner for Model Context Protocol servers. It reads what a
+      server advertises — its tools, prompts and schemas — rather than trusting it,
+      and reports the ways that surface can be used to manipulate the agent connected
+      to it. It pins what it saw on first use, so a server that behaves during review
+      and changes afterwards gets caught.`,
+    points: [
+      '25 pattern-based detection rules — hidden-Unicode payloads, homoglyph impersonation, cross-server tool-name collisions, and rug pulls (an approved tool definition that quietly changes later).',
+      'An opt-in semantic layer sends the surface to Claude or Gemini to judge intent rather than vocabulary, with every returned quote checked against the actual surface before a finding is trusted — the judge is deliberately given no tools and a schema-constrained response, so text designed to manipulate it can change what it says, not what it does.',
+      'SARIF output with a --fail-on threshold for CI, so a poisoned MCP server fails a pipeline instead of shipping.',
+    ],
+    stack: ['Python', 'MCP', 'Claude · Gemini', 'SARIF / CI'],
+    repo: 'https://github.com/CosmicCoder-X/mcp-palisade',
+  },
+  {
     name: 'TrafficLens',
     kind: 'Detection engineering',
     blurb: `A real-time network intrusion detection system. Signature matching
