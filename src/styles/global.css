@@ -354,7 +354,26 @@ h1, h2, h3, h4, .display, .h2, .h3, .page-title, .cover__name { text-wrap: balan
 @media (min-width: 900px) {
   .cover__split.has-portrait { grid-template-columns: 1.3fr 1fr; gap: 72px; }
 }
+.portrait { position: relative; }
 .portrait img { width: 100%; height: auto; }
+
+/* Small connective mark between the lede column and the portrait —
+   ties the two halves of the split together instead of leaving a bare
+   gap. Hidden below 900px since the columns stack there. */
+.cover__tick {
+  display: none;
+}
+@media (min-width: 900px) {
+  .cover__tick {
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: -37px;
+    width: 1px;
+    height: 52px;
+    background: var(--ink-3);
+  }
+}
 
 /* ══════════════════════════════════════════════════════════════
    EVIDENCE MATRIX
@@ -1157,6 +1176,22 @@ a.dist__row:hover .dist__fill { background: var(--d-insane); }
 .btn--ghost { background: transparent; color: var(--ink); }
 .btn--ghost:hover { background: var(--ink); color: var(--paper); opacity: 1; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* Icon-only companions to .btn, for secondary links that don't need a
+   text label competing with the primary CTA. */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-icon:hover { background: var(--ink); color: var(--paper); }
 
 /* ── entrance ──────────────────────────────────────────────── */
 @keyframes rise {
