@@ -71,6 +71,22 @@ export const cover = [
 // ── Projects ─────────────────────────────────────────────────
 export const projects = [
   {
+    name: 'ransomprint',
+    kind: 'Ransomware triage',
+    blurb: `Ransomware family fingerprinting and recovery triage. Point it at a
+      folder that's already been hit and it tells you two things honestly:
+      what probably did this, and whether that's actually recoverable —
+      rather than the false hope or blanket pessimism most "decrypt my
+      files" search results land on.`,
+    points: [
+      'Fingerprints ransom notes and encrypted-file evidence against a curated family database, then gives a confidence-ranked recovery verdict per family — solved outright (a public master key exists), solved for some victims only (a law-enforcement seizure or a code path like WannaCry\'s un-rebooted-machine requirement), not solved, or not actually ransomware at all (NotPetya was a wiper — paying could never have produced a key).',
+      'Implements one real recovery technique itself rather than faking more: keystream-reuse recovery, exploiting the historically real bug class where a stream cipher reuses the same key and nonce across files, letting a known plaintext/ciphertext pair recover every other file under that key — verified by checking the output\'s entropy rather than trusting a blind guess.',
+      'Ships an explicit "honest limitations" section admitting where it can mislead — entropy-based detection false-positives on already-compressed formats, the family database is a curated starting set rather than an authoritative feed — the same rigor the tool asks of a ransom note.',
+    ],
+    stack: ['Python', 'Entropy analysis', 'Keystream recovery'],
+    repo: 'https://github.com/CosmicCoder-X/ransomprint',
+  },
+  {
     name: 'Canary',
     kind: 'Deception engineering',
     blurb: `A self-hosted honeytoken generator. It mints tripwire artifacts —
