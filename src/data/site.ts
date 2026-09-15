@@ -203,6 +203,7 @@ export const certCategories = [
       { name: 'Junior Penetration Tester', issuer: 'TryHackMe', year: '2025', image: '/certifications/junior-penetration-tester-pathway.png' },
       { name: 'Web Fundamentals', issuer: 'TryHackMe', year: '2025', image: '/certifications/web-fundamentals-learning-path.png' },
       { name: 'Blue Team Junior Analyst', issuer: 'Security Blue Team', year: '2026', image: '/certifications/blue-team-junior-analyst.png' },
+      { name: 'Web Application Pentesting', issuer: 'TryHackMe', year: '2026', image: '/certifications/web-pentesting-pathway.png' },
     ],
   },
   {
