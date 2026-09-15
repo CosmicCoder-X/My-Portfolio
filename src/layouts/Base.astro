@@ -137,7 +137,11 @@ const year = new Date().getFullYear();
           {person.availability && <span class="status">{person.availability}</span>}
 
           <nav class="rail__nav" aria-label="Primary">
-            {nav.map((n) => (
+            <a href={nav[0].href} aria-current={isCurrent(nav[0].href) ? 'page' : undefined}>
+              {nav[0].label}
+            </a>
+            <hr class="rail__rule" />
+            {nav.slice(1).map((n) => (
               <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>
                 {n.label}
               </a>
@@ -145,14 +149,10 @@ const year = new Date().getFullYear();
           </nav>
 
           <div class="rail__foot">
-            <div class="rail__links">
-              {links.filter((l) => l.primary).map((l) => (
-                <a href={l.url} rel="me noopener" target="_blank">{l.label}</a>
-              ))}
-            </div>
             <a href={`mailto:${person.email}`}>{person.email}</a>
             <div style="margin-top:.5rem">{person.location}</div>
-            <div style="margin-top:.5rem">Built with Astro · Coded with Claude</div>
+            <div style="margin-top:.5rem">Built with Astro</div>
+            <div>Coded with Claude</div>
           </div>
         </div>
       </aside>

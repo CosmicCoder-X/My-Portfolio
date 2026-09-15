@@ -20,13 +20,13 @@ const live = links.filter((l) => l.primary);
 
 <Base
   title={`Résumé — ${person.name}`}
-  description={`${person.role} — ${person.tagline}`}
+  description={`${person.role} · ${person.tagline}`}
 >
   <Band offset="0000" label="Résumé">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem">
       <div>
         <h1 class="page-title" style="margin-bottom:.5rem">{person.name}</h1>
-        <p class="lede" style="margin-bottom:.75rem">{person.role} — {person.tagline}</p>
+        <p class="lede" style="margin-bottom:.75rem">{person.role} · {person.tagline}</p>
         <p class="link-list">
           <a href={`mailto:${person.email}`}>{person.email}</a>
           <span style="color:var(--ink-3)">{person.location}</span>

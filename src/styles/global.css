@@ -175,6 +175,7 @@ a { color: inherit; }
 }
 .rail__nav a:hover { color: var(--ink); }
 .rail__nav a[aria-current='page'] { color: var(--ink); font-weight: 500; }
+.rail__rule { border: 0; border-top: 1px solid var(--rule); margin: 10px 0; }
 
 .rail__foot {
   margin-top: auto;
@@ -186,7 +187,6 @@ a { color: inherit; }
 }
 .rail__foot a { color: var(--ink-2); text-decoration: none; }
 .rail__foot a:hover { color: var(--ink); }
-.rail__links { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 12px; }
 
 @media (max-width: 899px) {
   .rail__in { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }

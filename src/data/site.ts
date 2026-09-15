@@ -15,7 +15,7 @@ export const person = {
 
   // One line. This is what shows up in search results and on shared links.
   tagline:
-    'Offensive security: web, network, Active Directory, and the LLM attack surface. I build the tooling I test with.',
+    'Offensive security: web, network, infrastructure, and the LLM attack surface. I build the tooling I test with.',
 
   // Shown as the status line in the sidebar. Set to '' to hide it.
   availability: 'Available for hire',
@@ -28,12 +28,12 @@ export const person = {
   portraitAlt: 'Line-art portrait of Divyansh Agrawal.',
 
   // Where you'll work. Recruiters filter on this hard.
-  openTo: 'Security engineering · Penetration testing · India & remote / relocation',
+  openTo: 'Security roles · Penetration testing · India & remote / relocation',
 
   // The first-person story, written conversationally rather than as a
   // resume restated in prose. Recruiters read this.
-  statement: `Hi, I'm Divyansh. I break web applications, networks, Active
-    Directory setups, and lately the language models everyone's shipping
+  statement: `Hi, I'm Divyansh. I break web applications, networks,
+    infrastructure, and lately the language models everyone's shipping
     without testing them properly. I'm energized by the parts most people
     skip: reading the actual protocol spec instead of the summary, building
     the tool instead of downloading someone else's, chasing a bug until the
@@ -43,9 +43,8 @@ export const person = {
     I'm a fourth-year engineering student at NIT Allahabad, currently top 1%
     globally on TryHackMe, and I hunt on HackerOne, Bugcrowd and Intigriti. I
     built this site with Claude, but every writeup on it is mine: what broke,
-    what I tried, what actually worked. I'm looking for a security
-    engineering or penetration testing role where the work is hands on
-    keyboard.`,
+    what I tried, what actually worked. I'm looking for security roles or
+    penetration testing work where the job is hands on keyboard.`,
 };
 
 // ── Links ────────────────────────────────────────────────────
@@ -66,7 +65,7 @@ export const links = [
 // ── Cover metadata (the report header on the homepage) ────────
 export const cover = [
   { k: 'Subject', v: 'Divyansh Agrawal · Divyansh404' },
-  { k: 'Focus', v: 'Offensive security, LLM security, detection engineering' },
+  { k: 'Focus', v: 'Offensive security, defensive security, LLM security' },
   { k: 'Standing', v: 'Top 1% globally, TryHackMe' },
   { k: 'Programs', v: 'HackerOne · Bugcrowd · Intigriti' },
   { k: 'Based', v: 'India · open to relocation' },
@@ -203,7 +202,38 @@ export const experience = [
     period: 'Current',
     points: [
       'Run workshops and mentor members through CTF strategy.',
-      'Mentored project teams across robotics, aeromodelling and astronomy.',
+    ],
+  },
+  {
+    role: 'Technical Project Mentor',
+    org: 'Astro Club, Aerodynamics Club & Robotics Club, MNNIT Allahabad',
+    period: 'Current',
+    points: [
+      'Mentor student project teams across astronomy, aerodynamics and robotics builds.',
+    ],
+  },
+  {
+    role: 'Coordinator',
+    org: 'Astro Club & Aeromodelling Club, MNNIT Allahabad',
+    period: 'Current',
+    points: [
+      'Coordinate club activities and events for both clubs.',
+    ],
+  },
+  {
+    role: 'Content Team Coordinator',
+    org: "Institute's Innovation Council, MNNIT Allahabad",
+    period: 'Current',
+    points: [
+      'Coordinate the content team and have organized events featuring invited external speakers.',
+    ],
+  },
+  {
+    role: 'Coordinator, Music Club',
+    org: 'MNNIT Allahabad',
+    period: 'Current',
+    points: [
+      'Coordinate club activities and events.',
     ],
   },
   {
@@ -211,7 +241,7 @@ export const experience = [
     org: 'PPGCL Bara',
     period: '2025',
     points: [
-      'Studied the control logic driving physical plant — valves, pumps, filtration.',
+      'Studied the control logic driving physical plant: valves, pumps, filtration.',
       'Watching a command travel from a screen to industrial hardware is the clearest lesson in why OT security matters that I could have asked for.',
     ],
   },
