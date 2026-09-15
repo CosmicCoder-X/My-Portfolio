@@ -10,7 +10,7 @@ export const person = {
   name: 'Divyansh Agrawal',
   handle: 'Divyansh404',
   role: 'Security researcher',
-  location: 'Prayagraj, India',
+  location: 'India',
   email: 'divyanshagrawal121ag@gmail.com',
 
   // One line. This is what shows up in search results and on shared links.
@@ -65,7 +65,7 @@ export const cover = [
   { k: 'Focus', v: 'Offensive security, LLM security, detection engineering' },
   { k: 'Standing', v: 'Top 1% globally, TryHackMe' },
   { k: 'Programs', v: 'HackerOne · Bugcrowd · Intigriti' },
-  { k: 'Based', v: 'Prayagraj, India — open to relocation' },
+  { k: 'Based', v: 'India — open to relocation' },
   { k: 'Status', v: 'Open to security roles' },
 ];
 
@@ -187,8 +187,8 @@ export const certCategories = [
       { name: "CyberGeek'26 CTF", issuer: 'CyberGeek', year: '2026', image: "/certifications/CyberGeek'26 CTF Certificate.png" },
       { name: 'Kaspersky CTF 2025', issuer: 'Kaspersky', year: '2025', image: '/certifications/KasperskyCTF_2025_certificate.png' },
       { name: 'Kaspersky CTF 2026', issuer: 'Kaspersky', year: '2026', image: '/certifications/KasperskyCTF_2026_certificate.png' },
-      { name: 'NexHUNT CTF', issuer: 'NexHUNT', year: '', image: '/certifications/NexHUNT CTF Certificate.png' },
-      { name: 'World Wide CTF', issuer: 'WWCTF', year: '', image: '/certifications/World Wide CTF Certificate.png' },
+      { name: 'NexHUNT CTF', issuer: 'NexHUNT', year: '2025', image: '/certifications/NexHUNT CTF Certificate.png' },
+      { name: 'World Wide CTF', issuer: 'WWCTF', year: '2025', image: '/certifications/World Wide CTF Certificate.png' },
       { name: 'scriptCTF 2026', issuer: 'scriptCTF', year: '2026', image: '/certifications/scriptCTF_26 Certificate.png' },
       { name: 'Advent of Cyber 2025', issuer: 'TryHackMe', year: '2025', image: '/certifications/advent-of-cyber-2025.png' },
       { name: 'Hacker Holidays', issuer: 'TryHackMe', year: '2026', image: '/certifications/hacker-holidays.png' },

@@ -57,7 +57,7 @@ const personLd = {
   description: person.tagline,
   email: `mailto:${person.email}`,
   url: Astro.site?.toString(),
-  address: { '@type': 'PostalAddress', addressLocality: 'Prayagraj', addressCountry: 'IN' },
+  address: { '@type': 'PostalAddress', addressCountry: 'IN' },
   sameAs: links.map((l) => l.url),
   knowsAbout: [
     'Penetration testing',
