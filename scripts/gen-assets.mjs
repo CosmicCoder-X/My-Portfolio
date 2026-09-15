@@ -44,7 +44,7 @@ await sharp(favicon, { density: 600 })
 // its own stacking context, so the blend is dropped and you get a white
 // rectangle on the cream. Instead, bake a real alpha channel — darkness
 // becomes opacity — so the strokes composite correctly on any ground.
-const src = join(root, 'assets/portrait-source.jpg');
+const src = join(root, 'assets/portrait-source.png');
 if (existsSync(src)) {
   const { data, info } = await sharp(src)
     .greyscale()
@@ -54,9 +54,14 @@ if (existsSync(src)) {
   const px = info.width * info.height;
   const out = Buffer.alloc(px * 4);
 
-  // Ink tone, matching --ink. Alpha is driven by how dark the source
-  // pixel is, which keeps the antialiasing on every stroke.
-  const [r, g, b] = [0x14, 0x12, 0x0f];
+  // Ink tone, matching --ink in global.css. Keep these in sync by hand —
+  // this runs outside the build and has no access to the CSS custom
+  // property. (Was 0x14/0x12/0x0f, the old cream palette's --ink; the
+  // site moved to the cool blue-black system and this constant was
+  // never updated, so the portrait was quietly rendering the wrong ink
+  // until this pass.) Alpha is driven by how dark the source pixel is,
+  // which keeps the antialiasing on every stroke.
+  const [r, g, b] = [0x25, 0x28, 0x30];
 
   for (let i = 0; i < px; i++) {
     // 255 = paper, 0 = ink.

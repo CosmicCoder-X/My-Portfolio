@@ -23,11 +23,14 @@ want in the sidebar; every link appears in the footer and on the About page
 either way.
 
 The hero illustration is `public/portrait.png`, generated from
-`assets/portrait-source.jpg` by `npm run assets`. To change it, replace the
+`assets/portrait-source.png` by `npm run assets`. To change it, replace the
 source file and re-run that command — it cuts a real alpha channel from the
-line art so the strokes sit on the cream with no visible panel behind them.
-Set `person.portrait` to `''` to remove it; the layout closes up with nothing
-missing.
+line art so the strokes sit on the page ground with no visible panel behind
+them. Update `person.portraitAlt` and the `width`/`height` on the `<img>` in
+`src/pages/index.astro` to match the new source's actual pixel dimensions —
+they're not derived automatically, and leaving them stale causes a small
+layout shift when the image loads. Set `person.portrait` to `''` to remove
+it; the layout closes up with nothing missing.
 
 ### Publish a writeup
 

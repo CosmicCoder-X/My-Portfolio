@@ -20,13 +20,12 @@ export const person = {
   // Shown as the status line in the sidebar. Set to '' to hide it.
   availability: 'Available for hire',
 
-  // Illustration beside the hero. Generated from assets/portrait-source.jpg
+  // Illustration beside the hero. Generated from assets/portrait-source.png
   // by `npm run assets`, which cuts a real alpha channel so the strokes sit
-  // on the cream with no visible panel. Set to '' and the layout closes up
-  // with nothing missing.
+  // on the page ground with no visible panel behind them. Set to '' and the
+  // layout closes up with nothing missing.
   portrait: '/portrait.png',
-  portraitAlt:
-    'Line drawing of a person at a laptop, the screen listing nmap, burpsuite, nikto, hydra and john the ripper.',
+  portraitAlt: 'Line-art portrait of Divyansh Agrawal.',
 
   // Where you'll work. Recruiters filter on this hard.
   openTo: 'Security engineering · Penetration testing · India & remote / relocation',
