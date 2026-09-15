@@ -16,7 +16,9 @@ const top = capabilityCounts(all).slice(0, 4);
   <Band offset="0000" label="Subject">
     <h1 class="page-title">About</h1>
     <div class="prose lede">
-      <p>{person.statement}</p>
+      {person.statement.split(/\n\s*\n/).map((para) => (
+        <p>{para.replace(/\s+/g, ' ').trim()}</p>
+      ))}
     </div>
     <div class="btn-row" style="margin-top:1.75rem">
       <a class="btn" href="/resume/">Résumé</a>

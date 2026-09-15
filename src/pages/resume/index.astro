@@ -50,7 +50,9 @@ const live = links.filter((l) => l.primary);
   <Band offset="0010" label="Profile">
     <h2 class="h2">Profile</h2>
     <div class="prose" style="max-width:44rem">
-      <p>{person.statement}</p>
+      {person.statement.split(/\n\s*\n/).map((para) => (
+        <p>{para.replace(/\s+/g, ' ').trim()}</p>
+      ))}
     </div>
   </Band>
 

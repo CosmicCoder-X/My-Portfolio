@@ -30,17 +30,22 @@ export const person = {
   // Where you'll work. Recruiters filter on this hard.
   openTo: 'Security engineering · Penetration testing · India & remote / relocation',
 
-  // The 100–150 word first-person story. Recruiters read this.
-  statement: `I'm a fourth-year engineering student at NIT Allahabad who spends
-    most of his time somewhere he wasn't assigned: breaking things on purpose.
-    I work offensive security: web and network penetration testing, Active
-    Directory, and lately the attack surface nobody has good answers for yet,
-    which is LLM applications. I'm in the top 1% globally on TryHackMe and I
-    hunt on HackerOne, Bugcrowd and Intigriti. What I care about more than the
-    ranking is that I build the tooling I test with: an IDS with an anomaly
-    model behind it, a prompt-injection fuzzer, a phishing simulator for
-    awareness training. I'm looking for a security engineering or penetration
-    testing role where the work is hands on keyboard.`,
+  // The first-person story, written conversationally rather than as a
+  // resume restated in prose. Recruiters read this.
+  statement: `Hi, I'm Divyansh. I break web applications, networks, Active
+    Directory setups, and lately the language models everyone's shipping
+    without testing them properly. I'm energized by the parts most people
+    skip: reading the actual protocol spec instead of the summary, building
+    the tool instead of downloading someone else's, chasing a bug until the
+    repro is boring and repeatable. I do my best work somewhere between a
+    terminal and a half-written exploit.
+
+    I'm a fourth-year engineering student at NIT Allahabad, currently top 1%
+    globally on TryHackMe, and I hunt on HackerOne, Bugcrowd and Intigriti. I
+    built this site with Claude, but every writeup on it is mine: what broke,
+    what I tried, what actually worked. I'm looking for a security
+    engineering or penetration testing role where the work is hands on
+    keyboard.`,
 };
 
 // ── Links ────────────────────────────────────────────────────
