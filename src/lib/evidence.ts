@@ -140,11 +140,12 @@ export const capabilities: Capability[] = [
   },
   {
     slug: 'osint',
-    name: 'OSINT',
-    blurb: 'Open sources, correlated into an identity or a location.',
+    name: 'OSINT & social engineering',
+    blurb: 'Open sources correlated into an identity or a location, and the human-layer attacks built on top of them.',
     match: [
       'osint', 'geolocation', 'social-media', 'twitter', 'google-dorking',
-      'imint', 'reverse-image-search', 'metadata', 'exif',
+      'imint', 'reverse-image-search', 'metadata', 'exif', 'phishing',
+      'social-engineering', 'pretexting', 'vishing',
     ],
   },
   {
@@ -186,22 +187,40 @@ const tagMatches = (tag: string, fragment: string) => {
   return a.some((_, i) => b.every((tok, j) => a[i + j] === tok));
 };
 
+/** Anything with a tags array can be scored against a capability — a
+ *  writeup, or a project from site.ts's `projects`. */
+interface Taggable {
+  tags?: string[];
+}
+
+const tagsHit = (tags: string[], cap: Capability) =>
+  tags.some((t) => cap.match.some((m) => tagMatches(t, m)));
+
 /** Does this writeup evidence this capability? */
-const hits = (w: Writeup, cap: Capability) =>
-  w.data.tags.some((t) => cap.match.some((m) => tagMatches(t, m)));
+const hits = (w: Writeup, cap: Capability) => tagsHit(w.data.tags, cap);
+
+/** Does this project (or anything else tagged the same way) evidence it? */
+const hitsItem = (item: Taggable, cap: Capability) => tagsHit(item.tags ?? [], cap);
 
 export interface CapabilityCount extends Capability {
   count: number;
+  writeupCount: number;
+  projectCount: number;
   pct: number;
 }
 
-/** Capability clusters with real counts, strongest first. */
-export function capabilityCounts(all: Writeup[]): CapabilityCount[] {
-  const scored = capabilities.map((cap) => ({
-    ...cap,
-    count: all.filter((w) => hits(w, cap)).length,
-    pct: 0,
-  }));
+/**
+ * Capability clusters with real counts, strongest first. `projects` is
+ * optional so existing writeups-only call sites keep working — pass it
+ * to fold project work into the same evidence count instead of leaving
+ * skills backed by writeups alone.
+ */
+export function capabilityCounts(all: Writeup[], projects: Taggable[] = []): CapabilityCount[] {
+  const scored = capabilities.map((cap) => {
+    const writeupCount = all.filter((w) => hits(w, cap)).length;
+    const projectCount = projects.filter((p) => hitsItem(p, cap)).length;
+    return { ...cap, writeupCount, projectCount, count: writeupCount + projectCount, pct: 0 };
+  });
   const max = Math.max(1, ...scored.map((c) => c.count));
   return scored
     .filter((c) => c.count > 0)
@@ -214,6 +233,13 @@ export function writeupsFor(all: Writeup[], slug: string): Writeup[] {
   const cap = capabilities.find((c) => c.slug === slug);
   if (!cap) return [];
   return all.filter((w) => hits(w, cap));
+}
+
+/** Projects evidencing one capability. */
+export function projectsFor<T extends Taggable>(projects: T[], slug: string): T[] {
+  const cap = capabilities.find((c) => c.slug === slug);
+  if (!cap) return [];
+  return projects.filter((p) => hitsItem(p, cap));
 }
 
 // ── Tag index ────────────────────────────────────────────────

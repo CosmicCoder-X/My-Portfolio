@@ -79,46 +79,49 @@ export const projects = [
     kind: 'Ransomware triage',
     blurb: `Ransomware family fingerprinting and recovery triage. Point it at a
       folder that's already been hit and it tells you two things honestly:
-      what probably did this, and whether that's actually recoverable —
+      what probably did this, and whether that's actually recoverable,
       rather than the false hope or blanket pessimism most "decrypt my
       files" search results land on.`,
     points: [
-      'Fingerprints ransom notes and encrypted-file evidence against a curated family database, then gives a confidence-ranked recovery verdict per family — solved outright (a public master key exists), solved for some victims only (a law-enforcement seizure or a code path like WannaCry\'s un-rebooted-machine requirement), not solved, or not actually ransomware at all (NotPetya was a wiper — paying could never have produced a key).',
-      'Implements one real recovery technique itself rather than faking more: keystream-reuse recovery, exploiting the historically real bug class where a stream cipher reuses the same key and nonce across files, letting a known plaintext/ciphertext pair recover every other file under that key — verified by checking the output\'s entropy rather than trusting a blind guess.',
-      'Ships an explicit "honest limitations" section admitting where it can mislead — entropy-based detection false-positives on already-compressed formats, the family database is a curated starting set rather than an authoritative feed — the same rigor the tool asks of a ransom note.',
+      'Fingerprints ransom notes and encrypted-file evidence against a curated family database, then gives a confidence-ranked recovery verdict per family: solved outright (a public master key exists), solved for some victims only (a law-enforcement seizure or a code path like WannaCry\'s un-rebooted-machine requirement), not solved, or not actually ransomware at all (NotPetya was a wiper, so paying could never have produced a key).',
+      'Implements one real recovery technique itself rather than faking more: keystream-reuse recovery, exploiting the historically real bug class where a stream cipher reuses the same key and nonce across files, letting a known plaintext/ciphertext pair recover every other file under that key, verified by checking the output\'s entropy rather than trusting a blind guess.',
+      'Ships an explicit "honest limitations" section admitting where it can mislead: entropy-based detection false-positives on already-compressed formats, the family database is a curated starting set rather than an authoritative feed, the same rigor the tool asks of a ransom note.',
     ],
     stack: ['Python', 'Entropy analysis', 'Keystream recovery'],
+    tags: ['malware-analysis', 'cryptography', 'python'],
     repo: 'https://github.com/CosmicCoder-X/ransomprint',
   },
   {
     name: 'Canary',
     kind: 'Deception engineering',
-    blurb: `A self-hosted honeytoken generator. It mints tripwire artifacts —
-      files and links designed to look like something worth stealing — and
+    blurb: `A self-hosted honeytoken generator. It mints tripwire artifacts:
+      files and links designed to look like something worth stealing, and
       fires an alert the instant one gets touched, turning an attacker's own
       curiosity into the detection signal.`,
     points: [
       'Seven token types, each a real artifact rather than a stub: invisible web bugs, booby-trapped PDF and DOCX files, fake .env and kubeconfig credentials, and a TCP listener that speaks the actual MySQL wire protocol and replies to a connection attempt with a real handshake.',
       'GeoIP enrichment and browser fingerprinting on every trigger, with a 15-minute Redis dedup window per token/source pair so a curious attacker reloading the page does not spam the alert channel.',
-      'Self-hostable behind a single justfile command — Go backend, React/TypeScript frontend, Postgres and Redis in Docker Compose, with an optional Cloudflare Tunnel overlay so it can go live without opening a port.',
+      'Self-hostable behind a single justfile command: Go backend, React/TypeScript frontend, Postgres and Redis in Docker Compose, with an optional Cloudflare Tunnel overlay so it can go live without opening a port.',
     ],
     stack: ['Go', 'React · TypeScript', 'PostgreSQL · Redis', 'Docker'],
+    tags: ['incident-response'],
     repo: 'https://github.com/CosmicCoder-X/canary-token-generator',
   },
   {
     name: 'Palisade',
     kind: 'MCP security',
     blurb: `A security scanner for Model Context Protocol servers. It reads what a
-      server advertises — its tools, prompts and schemas — rather than trusting it,
+      server advertises (its tools, prompts and schemas) rather than trusting it,
       and reports the ways that surface can be used to manipulate the agent connected
       to it. It pins what it saw on first use, so a server that behaves during review
       and changes afterwards gets caught.`,
     points: [
-      '25 pattern-based detection rules — hidden-Unicode payloads, homoglyph impersonation, cross-server tool-name collisions, and rug pulls (an approved tool definition that quietly changes later).',
-      'An opt-in semantic layer sends the surface to Claude or Gemini to judge intent rather than vocabulary, with every returned quote checked against the actual surface before a finding is trusted — the judge is deliberately given no tools and a schema-constrained response, so text designed to manipulate it can change what it says, not what it does.',
+      '25 pattern-based detection rules: hidden-Unicode payloads, homoglyph impersonation, cross-server tool-name collisions, and rug pulls (an approved tool definition that quietly changes later).',
+      'An opt-in semantic layer sends the surface to Claude or Gemini to judge intent rather than vocabulary, with every returned quote checked against the actual surface before a finding is trusted. The judge is deliberately given no tools and a schema-constrained response, so text designed to manipulate it can change what it says, not what it does.',
       'SARIF output with a --fail-on threshold for CI, so a poisoned MCP server fails a pipeline instead of shipping.',
     ],
     stack: ['Python', 'MCP', 'Claude · Gemini', 'SARIF / CI'],
+    tags: ['llm-security', 'python'],
     repo: 'https://github.com/CosmicCoder-X/mcp-palisade',
   },
   {
@@ -134,6 +137,7 @@ export const projects = [
       'JSONL incident log and a browser dashboard for triage.',
     ],
     stack: ['Python', 'Scapy', 'Npcap', 'ML anomaly scoring'],
+    tags: ['network-analysis', 'threat-hunting', 'python'],
     repo: 'https://github.com/CosmicCoder-X/TrafficLens',
   },
   {
@@ -147,11 +151,12 @@ export const projects = [
       hardened demo targets so a report is an actual before/after, not just
       a score.`,
     points: [
-      'JSON-defined attack suites that matrix-expand — one templated case with a few variables generates dozens of concrete payload variants.',
+      'JSON-defined attack suites that matrix-expand: one templated case with a few variables generates dozens of concrete payload variants.',
       'Real SDK adapters for OpenAI, Gemini and Claude, plus a generic HTTP adapter for any other endpoint, all behind one interface.',
-      'Weighted regex checks scored by severity, concurrent multi-worker runs, and HTML/JSON/CSV reports — validated against shipped vulnerable and hardened demo targets.',
+      'Weighted regex checks scored by severity, concurrent multi-worker runs, and HTML/JSON/CSV reports, validated against shipped vulnerable and hardened demo targets.',
     ],
     stack: ['Python', 'Matrix-expanded suites', 'Multi-provider'],
+    tags: ['llm-security', 'prompt-injection', 'python'],
     repo: 'https://github.com/CosmicCoder-X/PromptProbe',
   },
   {
@@ -166,12 +171,13 @@ export const projects = [
       'Built for consented, in-scope awareness exercises only.',
     ],
     stack: ['Flask', 'Python', 'CSV reporting'],
+    tags: ['social-engineering', 'python'],
     repo: 'https://github.com/CosmicCoder-X/Phishing-Simulator',
   },
   {
     name: 'Crypt Raider',
     kind: 'Game development',
-    blurb: `A physics-driven puzzle game in Unreal Engine 5. Not security work —
+    blurb: `A physics-driven puzzle game in Unreal Engine 5. Not security work:
       it's here because writing gameplay systems in C++ taught me more about
       memory, state and engine internals than any tutorial did.`,
     points: [
@@ -179,6 +185,7 @@ export const projects = [
       'The reason I read memory layout and object lifetime problems fluently.',
     ],
     stack: ['Unreal Engine 5', 'C++', 'Physics simulation'],
+    tags: [],
     repo: '',
   },
 ];
@@ -233,7 +240,7 @@ export const experience = [
     org: 'MNNIT Allahabad',
     period: 'Current',
     points: [
-      'Coordinate club activities and events.',
+      'Coordinate band logistics and rehearsal schedules for the club, playing synthesizer myself.',
     ],
   },
   {

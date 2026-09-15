@@ -3,8 +3,8 @@ import Base from '../../layouts/Base.astro';
 import Band from '../../components/Band.astro';
 import WriteupList from '../../components/WriteupList.astro';
 import { getCollection } from 'astro:content';
-import { capabilities, writeupsFor, capabilityCounts } from '../../lib/evidence';
-import { platforms } from '../../data/site';
+import { capabilities, writeupsFor, projectsFor, capabilityCounts } from '../../lib/evidence';
+import { platforms, projects } from '../../data/site';
 
 export async function getStaticPaths() {
   return capabilities.map((c) => ({ params: { cap: c.slug } }));
@@ -18,9 +18,10 @@ const all = (await getCollection('writeups', ({ data }) => !data.draft)).sort(
 );
 
 const items = writeupsFor(all, cap!);
+const projectItems = projectsFor(projects, cap!);
 
 // Sibling capabilities, for lateral navigation.
-const others = capabilityCounts(all).filter((c) => c.slug !== cap).slice(0, 6);
+const others = capabilityCounts(all, projects).filter((c) => c.slug !== cap).slice(0, 6);
 
 // Which platforms this capability shows up on — useful signal that a
 // skill isn't confined to one platform's house style.
@@ -31,6 +32,7 @@ const spread = platforms
 // Zero-value tiles advertise an absence — drop them.
 const stats = [
   { n: items.length, label: 'Writeups' },
+  { n: projectItems.length, label: 'Projects' },
   { n: spread.length, label: 'Platforms' },
   {
     n: items.filter((w) => w.data.difficulty === 'hard' || w.data.difficulty === 'insane').length,
@@ -38,19 +40,21 @@ const stats = [
   },
 ].filter((s) => s.n > 0);
 
+const total = items.length + projectItems.length;
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: `${meta.name} — documented work`,
+  name: `${meta.name}: documented work`,
   description: meta.blurb,
   url: new URL(Astro.url.pathname, Astro.site).toString(),
-  numberOfItems: items.length,
+  numberOfItems: total,
 };
 ---
 
 <Base
-  title={`${meta.name} — ${items.length} writeups — Divyansh404`}
-  description={`${meta.blurb} ${items.length} documented writeups.`}
+  title={`${meta.name} — ${total} proof points — Divyansh404`}
+  description={`${meta.blurb} ${total} documented proof points.`}
   jsonLd={jsonLd}
 >
   <Band offset="0000" label="Capability">
@@ -74,7 +78,30 @@ const jsonLd = {
     )}
   </Band>
 
-  <Band offset="0010" label="Evidence">
+  {projectItems.length > 0 && (
+    <Band offset="0010" label="Built">
+      <h2 class="h2">Projects</h2>
+      <div class="findings">
+        {projectItems.map((p) => (
+          <article class="finding">
+            <div class="finding__head">
+              <h3 class="h3">{p.name}</h3>
+              <span class="finding__kind">{p.kind}</span>
+            </div>
+            <p class="finding__body">{p.blurb}</p>
+            {p.repo && (
+              <p class="link-list" style="margin-top:.25rem">
+                <a href={p.repo} target="_blank" rel="noopener">Source →</a>
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </Band>
+  )}
+
+  <Band offset="0020" label="Evidence">
+    <h2 class="h2">Writeups</h2>
     {items.length === 0 ? (
       <p class="muted">Nothing filed under this yet.</p>
     ) : (
@@ -82,13 +109,13 @@ const jsonLd = {
     )}
   </Band>
 
-  <Band offset="0020" label="Adjacent">
+  <Band offset="0030" label="Adjacent">
     <h2 class="h2">Other capabilities</h2>
     <div class="matrix">
       {others.map((c) => (
         <a class="cap" href={`/skills/${c.slug}/`}>
           <span class="cap__name">{c.name}</span>
-          <span class="cap__n">{c.count} <span>writeups</span></span>
+          <span class="cap__n">{c.count} <span>proof points</span></span>
           <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
         </a>
       ))}

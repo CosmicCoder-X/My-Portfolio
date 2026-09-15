@@ -2,11 +2,11 @@
 import Base from '../../layouts/Base.astro';
 import Band from '../../components/Band.astro';
 import { getCollection } from 'astro:content';
-import { person, credentials, toolkit, links, education, experience } from '../../data/site';
+import { person, credentials, toolkit, links, education, experience, projects } from '../../data/site';
 import { capabilityCounts } from '../../lib/evidence';
 
 const all = await getCollection('writeups', ({ data }) => !data.draft);
-const top = capabilityCounts(all).slice(0, 4);
+const top = capabilityCounts(all, projects).slice(0, 4);
 ---
 
 <Base
@@ -47,9 +47,12 @@ const top = capabilityCounts(all).slice(0, 4);
         running workshops and mentoring members through CTF strategy. I also
         mentor project teams across the Astro, Aerodynamics and Robotics
         clubs, coordinate the Astro and Aeromodelling clubs, and run content
-        for the Institute's Innovation Council, including events with outside
-        speakers. I coordinate the Music Club too, mostly because saying no
-        to things I find interesting has never really worked out for me.
+        for the Institute's Innovation Council, including events with
+        outside speakers. I coordinate the Music Club too, where I play
+        synthesizer myself. Between the project teams, the event logistics
+        and the band, most of what I know about getting a group of people to
+        actually ship something together came from these rooms, not a
+        classroom.
       </p>
     </div>
   </Band>
@@ -63,7 +66,7 @@ const top = capabilityCounts(all).slice(0, 4);
       {top.map((c) => (
         <a class="cap" href={`/skills/${c.slug}/`}>
           <span class="cap__name">{c.name}</span>
-          <span class="cap__n">{c.count} <span>writeups</span></span>
+          <span class="cap__n">{c.count} <span>proof points</span></span>
           <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
         </a>
       ))}

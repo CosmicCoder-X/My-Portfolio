@@ -8,7 +8,7 @@ import {
 import { capabilityCounts } from '../../lib/evidence';
 
 const all = await getCollection('writeups', ({ data }) => !data.draft);
-const caps = capabilityCounts(all).slice(0, 8);
+const caps = capabilityCounts(all, projects).slice(0, 8);
 
 const roleCounts = Object.keys(roles)
   .map((r) => ({ label: roles[r], count: all.filter((w) => w.data.role === r).length }))
@@ -68,7 +68,7 @@ const live = links.filter((l) => l.primary);
       {caps.map((c) => (
         <a class="cap" href={`/skills/${c.slug}/`}>
           <span class="cap__name">{c.name}</span>
-          <span class="cap__n">{c.count} <span>writeups</span></span>
+          <span class="cap__n">{c.count} <span>proof points</span></span>
           <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
         </a>
       ))}

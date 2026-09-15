@@ -770,6 +770,20 @@ a.dist__row:hover .dist__fill { background: var(--d-insane); }
 .tag-cloud a:hover { border-color: var(--rule-2); box-shadow: var(--shadow); }
 .tag-cloud b { color: var(--ink-3); font-weight: 400; font-size: 11px; }
 
+.disclose { margin-top: 10px; }
+.disclose summary {
+  display: inline-block;
+  list-style: none;
+  font-size: 12px;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--rule-2);
+  padding-bottom: 1px;
+  cursor: pointer;
+}
+.disclose summary::-webkit-details-marker { display: none; }
+.disclose summary:hover { color: var(--ink); }
+.disclose[open] summary { margin-bottom: 4px; }
+
 /* ── certificates ──────────────────────────────────────────── */
 .cert-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
 .cert-tile {

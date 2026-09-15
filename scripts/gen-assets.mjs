@@ -4,8 +4,8 @@
  *   node scripts/gen-assets.mjs
  *
  * Outputs are committed to public/, so this only needs re-running when
- * you edit assets/og.svg or public/favicon.svg. Not part of the build —
- * Netlify never runs it.
+ * you edit assets/og.svg or public/favicon.svg. Not part of the build:
+ * Cloudflare Pages never runs it.
  *
  * Uses the `sharp` that ships with Astro's image pipeline.
  */
