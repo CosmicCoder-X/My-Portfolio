@@ -71,6 +71,21 @@ export const cover = [
 // ── Projects ─────────────────────────────────────────────────
 export const projects = [
   {
+    name: 'Canary',
+    kind: 'Deception engineering',
+    blurb: `A self-hosted honeytoken generator. It mints tripwire artifacts —
+      files and links designed to look like something worth stealing — and
+      fires an alert the instant one gets touched, turning an attacker's own
+      curiosity into the detection signal.`,
+    points: [
+      'Seven token types, each a real artifact rather than a stub: invisible web bugs, booby-trapped PDF and DOCX files, fake .env and kubeconfig credentials, and a TCP listener that speaks the actual MySQL wire protocol and replies to a connection attempt with a real handshake.',
+      'GeoIP enrichment and browser fingerprinting on every trigger, with a 15-minute Redis dedup window per token/source pair so a curious attacker reloading the page does not spam the alert channel.',
+      'Self-hostable behind a single justfile command — Go backend, React/TypeScript frontend, Postgres and Redis in Docker Compose, with an optional Cloudflare Tunnel overlay so it can go live without opening a port.',
+    ],
+    stack: ['Go', 'React · TypeScript', 'PostgreSQL · Redis', 'Docker'],
+    repo: 'https://github.com/CosmicCoder-X/canary-token-generator',
+  },
+  {
     name: 'Palisade',
     kind: 'MCP security',
     blurb: `A security scanner for Model Context Protocol servers. It reads what a
