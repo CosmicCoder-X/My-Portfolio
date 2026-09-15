@@ -15,7 +15,7 @@ export const person = {
 
   // One line. This is what shows up in search results and on shared links.
   tagline:
-    'Offensive security — web, network, Active Directory, and the LLM attack surface. I build the tooling I test with.',
+    'Offensive security: web, network, Active Directory, and the LLM attack surface. I build the tooling I test with.',
 
   // Shown as the status line in the sidebar. Set to '' to hide it.
   availability: 'Available for hire',
@@ -33,7 +33,7 @@ export const person = {
   // The 100–150 word first-person story. Recruiters read this.
   statement: `I'm a fourth-year engineering student at NIT Allahabad who spends
     most of his time somewhere he wasn't assigned: breaking things on purpose.
-    I work offensive security — web and network penetration testing, Active
+    I work offensive security: web and network penetration testing, Active
     Directory, and lately the attack surface nobody has good answers for yet,
     which is LLM applications. I'm in the top 1% globally on TryHackMe and I
     hunt on HackerOne, Bugcrowd and Intigriti. What I care about more than the
@@ -60,11 +60,11 @@ export const links = [
 
 // ── Cover metadata (the report header on the homepage) ────────
 export const cover = [
-  { k: 'Subject', v: 'Divyansh Agrawal — Divyansh404' },
+  { k: 'Subject', v: 'Divyansh Agrawal · Divyansh404' },
   { k: 'Focus', v: 'Offensive security, LLM security, detection engineering' },
   { k: 'Standing', v: 'Top 1% globally, TryHackMe' },
   { k: 'Programs', v: 'HackerOne · Bugcrowd · Intigriti' },
-  { k: 'Based', v: 'India — open to relocation' },
+  { k: 'Based', v: 'India · open to relocation' },
   { k: 'Status', v: 'Open to security roles' },
 ];
 
