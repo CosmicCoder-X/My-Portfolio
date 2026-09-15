@@ -136,15 +136,18 @@ export const projects = [
     name: 'PromptProbe',
     kind: 'LLM security',
     blurb: `A prompt-injection testing framework for LLM applications. Attack
-      suites are defined in JSON, findings are scored with regex rules, and it
-      runs against OpenAI, Gemini and Claude behind one interface. Reports come
-      out as HTML, JSON or CSV so they can go straight into a ticket.`,
+      suites are JSON-defined and matrix-expand, so a handful of templated
+      cases generate dozens of concrete payload variants automatically. It
+      ships with real SDK adapters for OpenAI, Gemini and Claude plus a
+      generic HTTP adapter for anything else, and includes vulnerable and
+      hardened demo targets so a report is an actual before/after, not just
+      a score.`,
     points: [
-      'JSON-defined attack suites mapped to the OWASP LLM Top 10.',
-      'Provider adapters for OpenAI, Gemini, Claude and any plain HTTP endpoint, behind one interface.',
-      'HTML, JSON and CSV reporting so a finding can be filed without re-typing it.',
+      'JSON-defined attack suites that matrix-expand — one templated case with a few variables generates dozens of concrete payload variants.',
+      'Real SDK adapters for OpenAI, Gemini and Claude, plus a generic HTTP adapter for any other endpoint, all behind one interface.',
+      'Weighted regex checks scored by severity, concurrent multi-worker runs, and HTML/JSON/CSV reports — validated against shipped vulnerable and hardened demo targets.',
     ],
-    stack: ['Python', 'OWASP LLM Top 10', 'Multi-provider'],
+    stack: ['Python', 'Matrix-expanded suites', 'Multi-provider'],
     repo: 'https://github.com/CosmicCoder-X/PromptProbe',
   },
   {
