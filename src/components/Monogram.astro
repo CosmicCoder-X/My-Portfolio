@@ -1,20 +1,15 @@
 ---
-// Monogram mark — "DA", drawn the way the reference's "AJD" is: a bold
-// letterform rendered as an outline (stroke, no fill) so you read the
-// contour of a thick stroke rather than the stroke itself, with the two
-// letters overlapping so the lines cross.
+// Monogram mark — "DyA", supplied by Divyansh as a vector recreation of
+// a commissioned intertwined-letterform logo (assets/logo.svg) and
+// inlined here path-for-path.
 //
-// Built from live <text> rather than hand-authored path data: the glyphs
-// come from Cormorant Garamond, which the page already loads, so the mark
-// stays in the same voice as every heading on the site and needs no
-// separate asset. Inline SVG inherits the document's fonts — this would
-// not work referenced as <img src>.
-//
-// Georgia is the fallback in the stack; both are serifs, so a fallback
-// degrades in proportion rather than changing character.
+// Inlined rather than referenced as <img src> so it can take
+// `currentColor`: the source shipped a fixed fill (#151719), swapped
+// here for currentColor so the mark follows --ink like the rest of the
+// UI and gets the same hover treatment as the old placeholder mark.
 
 interface Props {
-  /** Rendered width in px. Height follows the viewBox ratio. */
+  /** Rendered width in px. Height follows the viewBox ratio (~1.545:1). */
   width?: number;
   class?: string;
 }
@@ -25,40 +20,20 @@ const { width = 120, class: cls = '' } = Astro.props;
 <svg
   class={`monogram ${cls}`}
   width={width}
-  viewBox="0 0 146 74"
-  fill="none"
+  viewBox="0 0 1558 1009"
+  fill="currentColor"
+  fill-rule="evenodd"
   role="img"
   aria-label="Divyansh Agrawal"
   xmlns="http://www.w3.org/2000/svg"
 >
-  <!-- D and A overlap by design; the A sits into the D's bowl so the
-       outlines intersect the way the reference's letters do. -->
-  <text
-    x="2"
-    y="58"
-    font-family="'Cormorant Garamond', Georgia, serif"
-    font-weight="600"
-    font-size="74"
-    stroke="currentColor"
-    stroke-width="1.3"
-    stroke-linejoin="round"
-    fill="none"
-  >D</text>
-
-  <!-- The A is set just far enough right that its left leg grazes the
-       D's bowl instead of cutting through it: the outlines should kiss,
-       not collide. -->
-  <text
-    x="56"
-    y="58"
-    font-family="'Cormorant Garamond', Georgia, serif"
-    font-weight="600"
-    font-size="74"
-    stroke="currentColor"
-    stroke-width="1.3"
-    stroke-linejoin="round"
-    fill="none"
-  >A</text>
+  <path d="M 952.00,504.00 L 926.00,517.00 L 877.00,548.00 L 865.00,555.00 L 850.00,562.00 L 849.00,565.00 L 835.00,589.00 L 824.00,611.00 L 815.00,620.00 L 853.00,619.00 L 880.00,566.00 L 893.00,548.00 L 909.00,533.00 L 925.00,521.00 L 937.00,513.00 L 949.00,507.00 Z" />
+  <path d="M 1042.00,496.00 L 1052.00,519.00 L 1095.00,610.00 L 1096.00,614.00 L 1096.00,620.00 L 1155.00,619.00 L 1153.00,619.00 L 1143.00,613.00 L 1133.00,602.00 L 1123.00,582.00 L 1119.00,571.00 L 1106.00,543.00 L 1096.00,524.00 L 1095.00,520.00 L 1084.00,513.00 L 1070.00,506.00 L 1053.00,499.00 L 1047.00,498.00 Z" />
+  <path d="M 430.00,462.00 L 430.00,613.00 L 563.00,613.00 L 589.00,608.00 L 632.00,588.00 L 661.00,562.00 L 674.00,545.00 L 642.00,521.00 L 635.00,536.00 L 613.00,565.00 L 594.00,582.00 L 569.00,596.00 L 535.00,604.00 L 468.00,603.00 L 469.00,448.00 L 509.00,444.00 L 555.00,455.00 L 603.00,483.00 L 677.00,539.00 L 599.00,473.00 L 572.00,456.00 L 543.00,444.00 L 520.00,439.00 L 484.00,440.00 L 453.00,449.00 Z" />
+  <path d="M 1153.00,588.00 L 1146.00,547.00 L 1112.00,503.00 L 1076.00,480.00 L 1027.00,465.00 L 990.00,465.00 L 957.00,474.00 L 843.00,544.00 L 816.00,554.00 L 875.00,434.00 L 901.00,413.00 L 869.00,413.00 L 798.00,559.00 L 790.00,561.00 L 761.00,559.00 L 725.00,545.00 L 608.00,446.00 L 569.00,424.00 L 530.00,414.00 L 483.00,417.00 L 439.00,434.00 L 398.00,469.00 L 378.00,508.00 L 401.00,476.00 L 435.00,449.00 L 479.00,432.00 L 529.00,430.00 L 590.00,453.00 L 710.00,549.00 L 744.00,564.00 L 793.00,570.00 L 750.00,657.00 L 717.00,691.00 L 691.00,695.00 L 673.00,688.00 L 654.00,664.00 L 650.00,625.00 L 636.00,634.00 L 631.00,660.00 L 640.00,681.00 L 658.00,697.00 L 687.00,706.00 L 723.00,700.00 L 751.00,679.00 L 811.00,566.00 L 857.00,548.00 L 929.00,503.00 L 973.00,484.00 L 1025.00,480.00 L 1086.00,500.00 L 1132.00,539.00 Z" />
+  <path d="M 705.00,414.00 L 710.00,416.00 L 719.00,426.00 L 732.00,451.00 L 732.00,453.00 L 777.00,539.00 L 783.00,553.00 L 785.00,556.00 L 795.00,556.00 L 807.00,532.00 L 807.00,530.00 L 786.00,489.00 L 769.00,458.00 L 751.00,421.00 L 748.00,417.00 L 744.00,414.00 L 741.00,413.00 Z" />
+  <path d="M 995.00,303.00 L 989.00,311.00 L 879.00,511.00 L 897.00,499.00 L 902.00,493.00 L 977.00,357.00 L 980.00,360.00 L 1023.00,453.00 L 1031.00,454.00 L 1052.00,461.00 L 1073.00,470.00 Z" />
+  <path d="M 401.00,303.00 L 412.00,307.00 L 422.00,316.00 L 429.00,332.00 L 430.00,432.00 L 467.00,414.00 L 469.00,309.00 L 554.00,310.00 L 575.00,315.00 L 604.00,330.00 L 628.00,352.00 L 647.00,382.00 L 655.00,404.00 L 660.00,430.00 L 658.00,476.00 L 691.00,508.00 L 699.00,483.00 L 703.00,455.00 L 702.00,426.00 L 697.00,402.00 L 691.00,385.00 L 675.00,357.00 L 646.00,329.00 L 612.00,311.00 L 579.00,303.00 Z" />
 </svg>
 
 <style>
@@ -66,7 +41,6 @@ const { width = 120, class: cls = '' } = Astro.props;
     display: block;
     height: auto;
     color: var(--ink);
-    overflow: visible;
     transition: opacity 0.2s;
   }
   a:hover .monogram { opacity: 0.6; }
