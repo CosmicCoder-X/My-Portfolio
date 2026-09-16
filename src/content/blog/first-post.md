@@ -1,9 +1,9 @@
 ---
 title: 'Starting this thing'
 date: 2026-08-26
-summary: 'A placeholder first post. Rewrite it in your own voice or delete it — the site works either way.'
+summary: 'A placeholder first post. Rewrite it in your own voice or delete it, the site works either way.'
 tags: ['Meta']
-# Placeholder scaffolding, not a real post — kept in the repo for
+# Placeholder scaffolding, not a real post: kept in the repo for
 # reference but hidden from the live site.
 draft: true
 ---
@@ -36,5 +36,5 @@ about why some class of vulnerability is underrated, notes from building a tool,
 or what it's actually like learning offensive security alongside a degree in
 something else entirely.
 
-Posts here are also the part of a portfolio that shows you can write — which,
+Posts here are also the part of a portfolio that shows you can write, which,
 for anyone who has read enough pentest reports, is not a small thing.
