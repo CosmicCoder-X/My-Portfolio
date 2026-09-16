@@ -201,9 +201,9 @@ export const education = [
   },
   {
     school: 'Ewing Christian Public Senior Secondary School, Allahabad',
-    qualification: 'CBSE, Class 12',
+    qualification: 'CBSE, Class 12 (PCM + CS)',
     period: '2022',
-    detail: '96.4%.',
+    detail: '96.4%. Physics, Chemistry, Maths and Computer Science.',
   },
   {
     school: 'Ewing Christian Public Senior Secondary School, Allahabad',
