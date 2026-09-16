@@ -1,26 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Band from '../../components/Band.astro';
-import { getCollection } from 'astro:content';
-import { person, credentials, toolkit, links, education, experience, projects } from '../../data/site';
-import { capabilityCounts } from '../../lib/evidence';
-
-const all = await getCollection('writeups', ({ data }) => !data.draft);
-const top = capabilityCounts(all, projects).slice(0, 4);
+import { person, links } from '../../data/site';
 ---
 
 <Base
   title="About — Divyansh404"
-  description="Who I am, what I've studied, and what I can do, backed by the work itself."
+  description="The story behind the work: where it comes from, and who's doing it."
 >
   <Band offset="0000" label="Subject">
     <h1 class="page-title">About</h1>
-    <div class="prose lede">
-      {person.statement.split(/\n\s*\n/).map((para) => (
-        <p>{para.replace(/\s+/g, ' ').trim()}</p>
-      ))}
-    </div>
-    <div class="btn-row" style="margin-top:1.75rem">
+    <div class="btn-row" style="margin-top:.5rem">
       <a class="btn" href="/resume/">Résumé</a>
       <a class="btn btn--ghost" href="/skills/">Capability index</a>
     </div>
@@ -55,84 +45,12 @@ const top = capabilityCounts(all, projects).slice(0, 4);
         classroom.
       </p>
     </div>
-  </Band>
-
-  <Band offset="0020" label="Strengths">
-    <h2 class="h2">Where the depth is</h2>
-    <p class="muted" style="max-width:38rem;margin-bottom:1.5rem">
-      Counted from {all.length} published writeups rather than asserted.
-    </p>
-    <div class="matrix">
-      {top.map((c) => (
-        <a class="cap" href={`/skills/${c.slug}/`}>
-          <span class="cap__name">{c.name}</span>
-          <span class="cap__n">{c.count} <span>proof points</span></span>
-          <span class="cap__bar"><i style={`width:${c.pct}%`}></i></span>
-        </a>
-      ))}
-    </div>
     <p style="margin-top:1.5rem">
-      <a class="go" href="/skills/">Full index →</a>
+      <a class="go" href="/resume/">The full breakdown of roles, education, certifications and tools is on the résumé →</a>
     </p>
   </Band>
 
-  <Band offset="0030" label="Experience">
-    <h2 class="h2">Roles</h2>
-    <div class="findings">
-      {experience.map((e) => (
-        <article class="finding">
-          <div class="finding__head">
-            <h3 class="h3">{e.role}</h3>
-            <span class="finding__kind">{e.org}</span>
-            <span class="mono-label" style="margin-left:auto">{e.period}</span>
-          </div>
-          <ul class="finding__points">
-            {e.points.map((pt) => <li>{pt}</li>)}
-          </ul>
-        </article>
-      ))}
-      {education.map((e) => (
-        <article class="finding">
-          <div class="finding__head">
-            <h3 class="h3">{e.qualification}</h3>
-            <span class="finding__kind">{e.school}</span>
-            <span class="mono-label" style="margin-left:auto">{e.period}</span>
-          </div>
-          <p class="finding__body">{e.detail}</p>
-        </article>
-      ))}
-    </div>
-  </Band>
-
-  <Band offset="0040" label="Credentials">
-    <h2 class="h2">Certifications and study</h2>
-    <div class="entries">
-      {credentials.map((c) => (
-        <div class="entry" style="cursor:default">
-          <span class="entry__title">{c.name}</span>
-          <span class="entry__meta">{c.kind}</span>
-          <span class="entry__sum">{c.issuer}</span>
-        </div>
-      ))}
-    </div>
-    <p style="margin-top:1.25rem">
-      <a class="go" href="/certifications/">Competition certificates →</a>
-    </p>
-  </Band>
-
-  <Band offset="0050" label="Toolkit">
-    <h2 class="h2">What I work with</h2>
-    {toolkit.map((g) => (
-      <div class="tool-group">
-        <h4>{g.group}</h4>
-        <div class="chip-row">
-          {g.items.map((i) => <span class="chip">{i}</span>)}
-        </div>
-      </div>
-    ))}
-  </Band>
-
-  <Band offset="0060" label="Elsewhere">
+  <Band offset="0020" label="Elsewhere">
     <h2 class="h2">Find me</h2>
     <p class="link-list" style="margin-bottom:1.5rem">
       {links.map((l) => (
