@@ -6,8 +6,6 @@ Divyansh Agrawal's portfolio: security writeups, built tools, certifications
 and a blog, on a domain won from a CTF competition. Built with
 [Astro](https://astro.build), deployed on [Cloudflare Pages](https://pages.cloudflare.com).
 
-![Site preview](public/og.png)
-
 ## What it does differently
 
 Most portfolio sites are a skills list someone typed once and never revisited.
