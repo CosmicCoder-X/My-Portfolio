@@ -203,7 +203,13 @@ export const education = [
     school: 'Ewing Christian Public Senior Secondary School, Allahabad',
     qualification: 'CBSE, Class 12',
     period: '2022',
-    detail: '97.6% in Class 10 (2020), 96.4% in Class 12 (2022).',
+    detail: '96.4%.',
+  },
+  {
+    school: 'Ewing Christian Public Senior Secondary School, Allahabad',
+    qualification: 'CBSE, Class 10',
+    period: '2020',
+    detail: '97.6%.',
   },
 ];
 
