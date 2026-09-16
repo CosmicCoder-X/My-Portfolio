@@ -199,6 +199,12 @@ export const education = [
     detail: `Process thinking is the transferable part: you learn to read a system
       as a chain of dependencies where the failure is rarely where the alarm goes off.`,
   },
+  {
+    school: 'Ewing Christian Public Senior Secondary School, Allahabad',
+    qualification: 'CBSE, Class 12',
+    period: '2022',
+    detail: '97.6% in Class 10 (2020), 96.4% in Class 12 (2022).',
+  },
 ];
 
 // ── Experience ───────────────────────────────────────────────
