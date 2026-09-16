@@ -3,6 +3,9 @@ title: 'Starting this thing'
 date: 2026-08-26
 summary: 'A placeholder first post. Rewrite it in your own voice or delete it — the site works either way.'
 tags: ['Meta']
+# Placeholder scaffolding, not a real post — kept in the repo for
+# reference but hidden from the live site.
+draft: true
 ---
 
 This post exists so the blog listing has something in it on day one. Replace the
