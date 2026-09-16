@@ -75,6 +75,24 @@ export const cover = [
 // ── Projects ─────────────────────────────────────────────────
 export const projects = [
   {
+    name: 'IAM Oracle',
+    kind: 'Cloud IAM security',
+    blurb: `An SMT-backed attack-path engine for AWS IAM. Most privesc scanners
+      pattern-match policy JSON and get burned by the parts that actually
+      decide access: Condition blocks, SCPs, permission boundaries and
+      deny-overrides stacked across every layer. This compiles the real
+      evaluation semantics into a Z3 formula over the attacker's request
+      context and asks the solver to prove a path exists, not guess at one.`,
+    points: [
+      'Full AWS policy evaluation compiled to Z3: SCP, permission boundary, identity policy and trust policy each with independent explicit-deny override, so a chain that only looks exploitable on paper comes back UNSAT instead of a false positive.',
+      "Session-scoped vs call-scoped symbolic variables catch chains that look fine step-by-step but can't actually happen together, like a PassRole that needs one source-IP range and a Lambda invoke that needs another in the same session.",
+      'Conservative by design: an unmodeled condition operator resolves to False in an Allow and True in a Deny, so the tool under-reports rather than handing back a broken exploit chain. 197 tests at 99% line coverage, with CI-friendly exit codes (0 clean, 1 proven path, 2 unresolved).',
+    ],
+    stack: ['Python', 'Z3 SMT solver', 'NetworkX'],
+    tags: ['privilege-escalation', 'python'],
+    repo: 'https://github.com/CosmicCoder-X/iam-oracle',
+  },
+  {
     name: 'ransomprint',
     kind: 'Ransomware triage',
     blurb: `Ransomware family fingerprinting and recovery triage. Point it at a
