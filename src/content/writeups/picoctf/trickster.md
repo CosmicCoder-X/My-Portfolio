@@ -2,7 +2,7 @@
 title: 'Trickster'
 target: 'picoCTF — Trickster'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-07-06
 summary: "A picoCTF Web Exploitation challenge where a PNG upload validator checked for .png in the filename and PNG magic bytes in the file header. Bypassed both by prepending literal PNG text to a PHP webshell and naming it webshell.png.php, then used the uploaded shell to locate and read the flag file."
 role: 'appsec'
 tags: ['web-exploitation', 'file-upload', 'webshell', 'php', 'magic-bytes', 'extension-bypass', 'directory-enumeration', 'gobuster', 'rce', 'picoctf']

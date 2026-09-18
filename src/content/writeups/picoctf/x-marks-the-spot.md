@@ -2,7 +2,7 @@
 title: 'X marks the spot'
 target: 'picoCTF — X marks the spot'
 difficulty: 'hard'
-date: 2026-07-22
+date: 2026-07-11
 summary: 'A picoCTF Web Exploitation challenge where a login page used XPath instead of SQL for authentication, and a blind XPath injection with the starts-with() function allowed brute-forcing the flag one character at a time from the XML data store.'
 role: 'appsec'
 tags: ['web-exploitation', 'xpath-injection', 'blind-injection', 'brute-force', 'python', 'picoctf']

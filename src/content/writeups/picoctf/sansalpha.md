@@ -2,7 +2,7 @@
 title: 'SansAlpha'
 target: "picoCTF — SansAlpha"
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-24
 summary: "A picoCTF General Skills challenge where the remote shell blocked all alphabetic characters and backslashes, forcing the use of bash glob wildcards and character class negation to invoke /bin/base64 on the flag file."
 role: 'pentest'
 tags: ['general-skills', 'bash', 'globbing', 'wildcards', 'restricted-shell', 'base64', 'picoctf']

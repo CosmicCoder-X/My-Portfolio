@@ -2,7 +2,7 @@
 title: 'Operation Orchid'
 target: 'picoCTF — Operation Orchid'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-18
 summary: "A picoCTF Forensics challenge where a disk image contained an encrypted flag file and a deleted plaintext copy. The shell history in .ash_history revealed the openssl encryption command with its password, and reversing it decrypted the flag."
 role: 'forensics'
 tags: ['forensics', 'disk-image', 'sleuthkit', 'openssl', 'encryption', 'ash-history', 'picoctf']

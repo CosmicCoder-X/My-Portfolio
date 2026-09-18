@@ -2,7 +2,7 @@
 title: 'St3g0'
 target: 'picoCTF — St3g0'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-07-01
 summary: "A picoCTF Forensics challenge where the flag was hidden in the least significant bits of a PNG image's RGB pixel data, extracted with zsteg after binwalk and exiftool turned up nothing."
 role: 'forensics'
 tags: ['forensics', 'steganography', 'lsb', 'zsteg', 'png', 'picoctf']

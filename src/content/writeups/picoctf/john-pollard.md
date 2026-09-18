@@ -2,7 +2,7 @@
 title: 'john_pollard'
 target: 'picoCTF — john_pollard'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-07
 summary: "A picoCTF Cryptography challenge where an X.509 certificate contained a deliberately small 53-bit RSA modulus, and factoring it with Alpertron's integer factorisation calculator revealed the two primes that formed the flag."
 role: 'appsec'
 tags: ['cryptography', 'rsa', 'certificate', 'factorisation', 'openssl', 'picoctf']

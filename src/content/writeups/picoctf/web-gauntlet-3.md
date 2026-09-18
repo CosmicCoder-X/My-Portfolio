@@ -2,7 +2,7 @@
 title: 'Web Gauntlet 3'
 target: 'picoCTF — Web Gauntlet 3'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-07-09
 summary: 'A picoCTF Web Exploitation challenge where a SQLite login page filtered common SQL keywords, operators, and the word "admin" with a 25-character limit, bypassed by concatenating the username with || and using GLOB for a password-always-true condition.'
 role: 'appsec'
 tags: ['web-exploitation', 'sql-injection', 'sqlite', 'filter-bypass', 'glob', 'concatenation', 'picoctf']

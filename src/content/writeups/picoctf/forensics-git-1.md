@@ -2,7 +2,7 @@
 title: 'Forensics Git 1'
 target: 'picoCTF — Forensics Git 1'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-10-11
 summary: "A picoCTF Forensics challenge building on Git 0, where the flag was added in an earlier commit and then removed in the latest one. Checking out the previous commit restored flag.txt with the flag inside."
 role: 'forensics'
 tags: ['forensics', 'disk-image', 'git', 'git-history', 'partition', 'picoctf']

@@ -2,7 +2,7 @@
 title: 'More Cookies'
 target: 'picoCTF — More Cookies'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-12
 summary: 'A picoCTF Web Exploitation challenge where the auth_name cookie was homomorphically encrypted using CBC mode, and brute-forcing a single-bit flip across all byte positions revealed the admin flag without needing to decrypt the ciphertext.'
 role: 'appsec'
 tags: ['web-exploitation', 'cookies', 'cbc-bitflip', 'homomorphic-encryption', 'brute-force', 'python', 'picoctf']

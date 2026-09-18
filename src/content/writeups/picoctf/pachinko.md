@@ -2,7 +2,7 @@
 title: 'Pachinko'
 target: 'picoCTF — Pachinko'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-19
 summary: "A picoCTF Web Exploitation challenge where a NAND Simulator submitted circuit configurations as JSON to a /check endpoint. Intercepted the request with Burp Suite and brute-forced the correct node values using Intruder's Sniper attack, identifying the flag through a response length differential."
 role: 'appsec'
 tags: ['web-exploitation', 'burp-suite', 'intruder', 'fuzzing', 'api-abuse', 'json', 'brute-force', 'picoctf']

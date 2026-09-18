@@ -2,7 +2,7 @@
 title: 'Irish-Name-Repo 3'
 target: 'picoCTF — Irish-Name-Repo 3'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-10-25
 summary: 'A picoCTF Web Exploitation challenge where an admin login applied ROT13 to the password before inserting it into a SQL query, so encoding a standard SQL injection payload with ROT13 beforehand produced the correct cleartext injection after the server decoded it.'
 role: 'appsec'
 tags: ['web-exploitation', 'sql-injection', 'rot13', 'authentication-bypass', 'hidden-fields', 'picoctf']

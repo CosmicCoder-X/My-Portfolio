@@ -2,7 +2,7 @@
 title: 'Event Viewing'
 target: 'picoCTF — Event Viewing'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-09-28
 summary: "A picoCTF Forensics challenge where three base64-encoded flag fragments were hidden across Windows Event Log entries — an MsiInstaller event (1033), a registry modification event (4657), and a shutdown event (1074) — and decoding all three pieces reconstructed the flag."
 role: 'forensics'
 tags: ['forensics', 'windows', 'event-logs', 'evtx', 'base64', 'picoctf']

@@ -2,7 +2,7 @@
 title: 'Some Assembly Required 3'
 target: 'picoCTF — Some Assembly Required 3'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-27
 summary: 'A picoCTF Web Exploitation challenge where a flag checker page loaded a WASM binary disguised with an .html extension, and decompiling it revealed a copy function that XORed input against a rotating 5-byte key to encode the flag.'
 role: 'appsec'
 tags: ['web-exploitation', 'webassembly', 'wasm', 'xor', 'reverse-engineering', 'wabt', 'picoctf']

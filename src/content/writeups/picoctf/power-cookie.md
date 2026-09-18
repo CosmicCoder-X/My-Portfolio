@@ -2,7 +2,7 @@
 title: 'Power Cookie'
 target: 'picoCTF — Power Cookie'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-06-21
 summary: 'A picoCTF Web Exploitation challenge where an "Online Gradebook" application set a cookie isAdmin=0 when continuing as guest, and changing it to isAdmin=1 before requesting /check.php returned the flag in the response.'
 role: 'appsec'
 tags: ['web-exploitation', 'cookies', 'authentication-bypass', 'burp-suite', 'picoctf']

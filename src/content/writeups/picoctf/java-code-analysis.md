@@ -2,7 +2,7 @@
 title: 'Java Code Analysis!?!'
 target: 'picoCTF — Java Code Analysis!?!'
 difficulty: 'medium'
-date: 2026-08-31
+date: 2026-06-06
 summary: 'BookShelf Pico protects its Flag book with an HS256 JWT, but source review exposes the hardcoded signing key 1234. I forged an Admin token, replaced the browser''s local-storage values, and accessed picoCTF{w34k_jwt_n0t_g00d_42f5774a}.'
 role: 'appsec'
 tags: ['web-exploitation', 'jwt', 'java', 'source-code-review', 'hardcoded-secret', 'authentication-bypass', 'authorization', 'picoctf']

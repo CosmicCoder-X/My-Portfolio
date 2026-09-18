@@ -2,7 +2,7 @@
 title: 'Timeline 1'
 target: 'picoCTF — Timeline 1'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-07-04
 summary: "A picoCTF Forensics challenge where building a Sleuthkit MAC(B) timeline from an ext4 disk image revealed a suspicious file dropped in /etc/ seconds before the attacker cleared their shell history, and extracting it by inode with icat produced a base64-encoded flag."
 role: 'forensics'
 tags: ['forensics', 'disk-image', 'sleuthkit', 'timeline-analysis', 'dfir', 'picoctf']

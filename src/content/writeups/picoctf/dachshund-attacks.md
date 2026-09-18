@@ -2,7 +2,7 @@
 title: 'Dachshund Attacks'
 target: 'picoCTF — Dachshund Attacks'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-09-20
 summary: "A picoCTF Cryptography challenge where an RSA service used a dangerously small private exponent d, making it vulnerable to Wiener's attack. Using the owiener Python module recovered d and decrypted the ciphertext to reveal the flag."
 role: 'appsec'
 tags: ['cryptography', 'rsa', 'wieners-attack', 'python', 'picoctf']

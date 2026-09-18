@@ -2,7 +2,7 @@
 title: '3v@l'
 target: 'picoCTF — 3v@l'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-09-06
 summary: "A picoCTF Web Exploitation challenge where a Bank-Loan Calculator used Python's eval() on user input with regex-based filtering blocking common keywords and characters. Bypassed using dynamic class creation via type() with a hex-encoded file path through bytes.fromhex() to read the flag."
 role: 'appsec'
 tags: ['web-exploitation', 'python', 'eval-injection', 'code-injection', 'filter-bypass', 'hex-encoding', 'dynamic-class', 'picoctf']

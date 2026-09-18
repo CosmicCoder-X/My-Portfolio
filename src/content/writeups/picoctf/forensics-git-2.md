@@ -2,7 +2,7 @@
 title: 'Forensics Git 2'
 target: 'picoCTF — Forensics Git 2'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-10-12
 summary: "A picoCTF Forensics challenge where a perpetrator's disk deletion was interrupted before Git objects were destroyed, and dumping all Git objects with cat-file recovered a deleted chat log file containing the flag."
 role: 'forensics'
 tags: ['forensics', 'disk-image', 'git', 'git-objects', 'data-recovery', 'picoctf']

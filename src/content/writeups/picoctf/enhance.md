@@ -2,7 +2,7 @@
 title: 'Enhance!'
 target: "picoCTF — Enhance!"
 difficulty: 'easy'
-date: 2026-07-22
+date: 2025-09-21
 summary: "A picoCTF Forensics challenge where the flag was split across multiple SVG text elements with near-invisible styling, and running strings on the file revealed the individual characters spread across tspan elements."
 role: 'forensics'
 tags: ['forensics', 'svg', 'strings', 'xml', 'steganography', 'picoctf']

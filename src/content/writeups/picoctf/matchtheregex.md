@@ -2,7 +2,7 @@
 title: 'MatchTheRegex'
 target: 'picoCTF — MatchTheRegex'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-06-11
 summary: "A picoCTF Web Exploitation challenge where a web page accepted text input validated against a server-side regex. Viewing the page source revealed a commented-out regex hint and a /flag endpoint, and submitting picoCTF matched the pattern and returned the flag."
 role: 'appsec'
 tags: ['web-exploitation', 'regex', 'javascript', 'source-code-review', 'client-side', 'picoctf']

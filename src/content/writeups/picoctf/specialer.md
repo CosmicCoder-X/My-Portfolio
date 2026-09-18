@@ -2,7 +2,7 @@
 title: 'Specialer'
 target: "picoCTF — Specialer"
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-29
 summary: "A picoCTF General Skills challenge where most command binaries were removed from the system, leaving only bash builtins. Shell scripting with for loops, test operators, and input redirection ($(<file)) replaced ls and cat to enumerate directories and read the flag."
 role: 'pentest'
 tags: ['general-skills', 'bash', 'builtins', 'restricted-shell', 'shell-scripting', 'picoctf']

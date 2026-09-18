@@ -2,7 +2,7 @@
 title: 'JAuth'
 target: 'picoCTF — JAuth'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-10-26
 summary: 'A picoCTF Web Exploitation challenge where logging in with provided demo credentials returned a JWT cookie using HS256, and changing the algorithm to "none" while setting the role claim from "user" to "admin" — then stripping the signature — bypassed verification and granted admin access with the flag.'
 role: 'appsec'
 tags: ['web-exploitation', 'jwt', 'authentication-bypass', 'none-algorithm', 'token-manipulation', 'picoctf']

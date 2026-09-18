@@ -2,7 +2,7 @@
 title: 'Special'
 target: "picoCTF — Special"
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-28
 summary: "A picoCTF General Skills challenge where a shell autocorrected every command input, mangling standard commands. Bash parameter expansion syntax ${parameter=command} bypassed the spell checker and executed commands directly."
 role: 'pentest'
 tags: ['general-skills', 'bash', 'parameter-expansion', 'restricted-shell', 'spell-check', 'picoctf']

@@ -2,7 +2,7 @@
 title: 'Operation Oni'
 target: 'picoCTF — Operation Oni'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-17
 summary: "A picoCTF Forensics challenge where an SSH private key was extracted from a disk image using Sleuthkit, then used to authenticate to a remote challenge server and retrieve the flag."
 role: 'forensics'
 tags: ['forensics', 'disk-image', 'sleuthkit', 'ssh', 'ed25519', 'icat', 'picoctf']

@@ -2,7 +2,7 @@
 title: 'Live Art'
 target: 'picoCTF — Live Art'
 difficulty: 'hard'
-date: 2026-07-22
+date: 2026-06-09
 summary: "A picoCTF Web Exploitation challenge where a React drawing app conditionally rendered a viewer or error page based on window width, and a state-management bug during the re-render allowed injecting arbitrary attributes into an img tag via URL hash parameters, achieving XSS through React's custom element bypass."
 role: 'appsec'
 tags: ['web-exploitation', 'xss', 'react', 'custom-elements', 'puppeteer', 'iframe', 'picoctf']

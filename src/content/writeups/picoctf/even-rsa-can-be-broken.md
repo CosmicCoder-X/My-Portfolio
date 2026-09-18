@@ -2,7 +2,7 @@
 title: 'Even RSA can be broken???'
 target: 'picoCTF — Even RSA can be broken???'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-09-27
 summary: "A picoCTF Cryptography challenge where the server's RSA key generation reused prime factors across connections, and computing the GCD of two different moduli revealed the shared prime, allowing full factorisation and decryption of the flag."
 role: 'appsec'
 tags: ['cryptography', 'rsa', 'gcd', 'common-factor-attack', 'python', 'picoctf']

@@ -2,7 +2,7 @@
 title: 'More SQLi'
 target: 'picoCTF — More SQLi'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-13
 summary: "A picoCTF Web Exploitation challenge where a SQLite-backed office directory was vulnerable to UNION-based SQL injection. Enumerated the database through sqlite_master to discover a hidden more_table, then extracted the flag from it using UNION SELECT payloads."
 role: 'appsec'
 tags: ['web-exploitation', 'sql-injection', 'sqlite', 'union-sqli', 'authentication-bypass', 'database-enumeration', 'picoctf']

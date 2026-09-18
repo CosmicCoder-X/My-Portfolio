@@ -2,7 +2,7 @@
 title: 'Forensics Git 0'
 target: 'picoCTF — Forensics Git 0'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2025-10-05
 summary: "A picoCTF Forensics challenge where a full disk image contained a Linux filesystem with a Git repository in a user's home directory, and the flag was embedded in a commit message found by examining the Git log after mounting the correct partition."
 role: 'forensics'
 tags: ['forensics', 'disk-image', 'git', 'partition', 'mount', 'picoctf']

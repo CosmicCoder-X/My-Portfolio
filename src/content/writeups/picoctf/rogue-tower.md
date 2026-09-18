@@ -2,7 +2,7 @@
 title: 'Rogue Tower'
 target: 'picoCTF — Rogue Tower'
 difficulty: 'hard'
-date: 2026-07-22
+date: 2026-06-23
 summary: "A picoCTF Forensics challenge involving a PCAP of rogue cell tower traffic, where analysing UDP broadcasts to find the cell ID, tracing HTTP User-Agent headers to extract a device IMSI, reassembling fragmented base64 data from POST requests, and XOR-decrypting with the correct portion of the IMSI revealed the flag."
 role: 'forensics'
 tags: ['forensics', 'pcap', 'wireshark', 'xor', 'cyberchef', 'cellular', 'picoctf']

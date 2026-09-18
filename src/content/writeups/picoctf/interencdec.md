@@ -2,7 +2,7 @@
 title: 'interencdec'
 target: 'picoCTF — interencdec'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2025-10-19
 summary: 'A picoCTF Cryptography challenge where the flag was double base64-encoded and then Caesar-shifted, and reversing each layer in order produced the plaintext flag.'
 role: 'appsec'
 tags: ['cryptography', 'base64', 'caesar-cipher', 'encoding', 'picoctf']

@@ -2,7 +2,7 @@
 title: 'Roboto Sans'
 target: 'picoCTF — Roboto Sans'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-06-22
 summary: 'A picoCTF Web Exploitation challenge where the challenge name hinted at robots.txt, which contained base64-encoded strings — one decoding to js/myfile.txt — and navigating to that path on the server returned the flag.'
 role: 'appsec'
 tags: ['web-exploitation', 'robots-txt', 'base64', 'enumeration', 'picoctf']

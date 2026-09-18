@@ -2,7 +2,7 @@
 title: 'Transformation'
 target: 'picoCTF — Transformation'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-07-05
 summary: 'A picoCTF Reverse Engineering challenge where the flag was encoded by combining pairs of ASCII characters into single 16-bit Unicode characters using a left bit shift, and reversing it required extracting each original byte with a right shift and a bitmask.'
 role: 'appsec'
 tags: ['reverse-engineering', 'python', 'bit-manipulation', 'unicode', 'encoding', 'picoctf']

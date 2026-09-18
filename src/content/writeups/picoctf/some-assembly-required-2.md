@@ -2,7 +2,7 @@
 title: 'Some Assembly Required 2'
 target: 'picoCTF — Some Assembly Required 2'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-26
 summary: 'A picoCTF Web Exploitation challenge where deobfuscating the page JavaScript revealed a WASM binary path, and disassembling the binary exposed a XOR-with-8 encoding on the flag string stored in the data section.'
 role: 'appsec'
 tags: ['web-exploitation', 'webassembly', 'wasm', 'xor', 'javascript-deobfuscation', 'reverse-engineering', 'picoctf']

@@ -2,7 +2,7 @@
 title: 'Blast from the past'
 target: 'picoCTF — Blast from the past'
 difficulty: 'hard'
-date: 2026-07-22
+date: 2025-09-13
 summary: "A picoCTF Forensics challenge where all seven EXIF timestamp fields in a JPEG had to be set to Unix epoch, including a Samsung-proprietary TimeStamp stored as raw millisecond bytes that required hex editing after exiftool could only modify the standard six."
 role: 'forensics'
 tags: ['forensics', 'exif', 'metadata', 'hex-editing', 'exiftool', 'samsung', 'picoctf']

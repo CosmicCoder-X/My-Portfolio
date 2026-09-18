@@ -2,7 +2,7 @@
 title: 'waves over lambda'
 target: 'picoCTF — waves over lambda'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-07-08
 summary: 'A picoCTF Cryptography challenge where a passage of text was encrypted with a simple substitution cipher, and using an automated frequency analysis solver decoded the ciphertext to reveal the flag embedded in the header.'
 role: 'appsec'
 tags: ['cryptography', 'substitution-cipher', 'frequency-analysis', 'picoctf']

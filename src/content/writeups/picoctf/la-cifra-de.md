@@ -2,7 +2,7 @@
 title: 'la cifra de'
 target: 'picoCTF — la cifra de'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-06-08
 summary: "A picoCTF Cryptography challenge where a netcat service returned text encrypted with a Vigenere cipher, and using dcode.fr's cipher identifier and Vigenere decoder with automatic key recovery revealed the flag."
 role: 'appsec'
 tags: ['cryptography', 'vigenere-cipher', 'cipher-identification', 'picoctf']

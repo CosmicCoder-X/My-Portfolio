@@ -2,7 +2,7 @@
 title: 'Tapping'
 target: 'picoCTF — Tapping'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-07-03
 summary: "A picoCTF Cryptography challenge where a netcat service returned the flag encoded in Morse code, and writing a Python script with pwntools to connect, receive, and decode the Morse automatically extracted the flag."
 role: 'appsec'
 tags: ['cryptography', 'morse-code', 'python', 'pwntools', 'picoctf']

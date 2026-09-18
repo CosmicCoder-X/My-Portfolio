@@ -2,7 +2,7 @@
 title: 'No SQL Injection'
 target: 'picoCTF — No SQL Injection'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-14
 summary: "A picoCTF Web Exploitation challenge where an Express.js/MongoDB login application JSON.parse()d user input when wrapped in curly braces, enabling NoSQL operator injection. Sent the $ne (not equal) operator as the password to bypass authentication, then decoded the base64 token in the response to retrieve the flag."
 role: 'appsec'
 tags: ['web-exploitation', 'nosql-injection', 'mongodb', 'mongoose', 'express', 'nodejs', 'burp-suite', 'base64', 'authentication-bypass', 'source-code-review', 'picoctf']

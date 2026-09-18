@@ -2,7 +2,7 @@
 title: 'Inspect HTML'
 target: 'picoCTF — Inspect HTML'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2025-10-18
 summary: 'A picoCTF Web Exploitation challenge where viewing the page source of a simple HTML page about Histiaeus revealed the flag hidden inside an HTML comment at the bottom of the document.'
 role: 'appsec'
 tags: ['web-exploitation', 'view-source', 'html-comment', 'inspection', 'picoctf']

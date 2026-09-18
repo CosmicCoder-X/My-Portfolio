@@ -2,7 +2,7 @@
 title: 'SOAP'
 target: 'picoCTF — SOAP'
 difficulty: 'medium'
-date: 2025-10-17
+date: 2025-06-25
 summary: "A picoCTF Web Exploitation challenge where a Flask web application accepted XML POST requests with no XXE protections. Injected a DOCTYPE declaration with an external entity referencing file:///etc/passwd, which the parser resolved and included in the response, revealing the flag embedded in the GECOS field of a user account."
 role: 'appsec'
 tags: ['web-exploitation', 'xxe', 'xml', 'burp-suite', 'file-read', 'injection', 'flask', 'python', 'picoctf']

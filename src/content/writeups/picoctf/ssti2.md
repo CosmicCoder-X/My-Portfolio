@@ -2,7 +2,7 @@
 title: 'SSTI2'
 target: 'picoCTF — SSTI2'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-06-30
 summary: "A picoCTF Web Exploitation challenge where a Flask/Jinja2 app was vulnerable to SSTI but enforced a blacklist blocking dots, underscores, square brackets, and the join keyword. Bypassed the filter using Jinja2's attr() filter with hex escape sequences (\\x5f for underscores) to traverse Python's object hierarchy and achieve RCE."
 role: 'appsec'
 tags: ['web-exploitation', 'ssti', 'jinja2', 'flask', 'python', 'filter-bypass', 'blacklist-bypass', 'template-injection', 'rce', 'picoctf']

@@ -2,7 +2,7 @@
 title: 'MacroHard WeakEdge'
 target: "picoCTF — MacroHard WeakEdge"
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-06-10
 summary: "A picoCTF Forensics challenge where a macro-enabled PowerPoint file contained a VBA red herring and a hidden base64-encoded flag buried in the ZIP archive structure under ppt/slideMasters/hidden."
 role: 'forensics'
 tags: ['forensics', 'pptm', 'zip', 'base64', 'vba', 'macro', 'office', 'picoctf']

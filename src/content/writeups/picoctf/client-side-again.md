@@ -2,7 +2,7 @@
 title: 'Client-side-again'
 target: 'picoCTF — Client-side-again'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2025-09-14
 summary: 'A picoCTF Web Exploitation challenge where an obfuscated JavaScript verify function checked the password against hardcoded substrings stored in a shuffled array, and deobfuscating the code revealed the flag assembled from those fragments.'
 role: 'appsec'
 tags: ['web-exploitation', 'javascript', 'obfuscation', 'client-side', 'reverse-engineering', 'picoctf']

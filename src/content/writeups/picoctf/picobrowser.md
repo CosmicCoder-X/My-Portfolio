@@ -2,7 +2,7 @@
 title: 'picobrowser'
 target: 'picoCTF — picobrowser'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-06-20
 summary: 'A picoCTF Web Exploitation challenge where clicking a Flag button returned an error saying the browser was not "picobrowser", and spoofing the User-Agent header to "picobrowser" in a curl request returned the flag.'
 role: 'appsec'
 tags: ['web-exploitation', 'user-agent', 'http-headers', 'curl', 'picoctf']

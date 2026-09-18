@@ -2,7 +2,7 @@
 title: 'Wireshark doo dooo do doo...'
 target: "picoCTF — Wireshark doo dooo do doo..."
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-07-10
 summary: "A picoCTF Forensics challenge where a PCAP file contained an HTTP response with ROT13-encoded flag text, found by following TCP streams in Wireshark and decoding the obfuscated body."
 role: 'forensics'
 tags: ['forensics', 'pcap', 'wireshark', 'rot13', 'http', 'tcp-stream', 'picoctf']

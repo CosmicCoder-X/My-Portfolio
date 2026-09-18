@@ -2,7 +2,7 @@
 title: 'Vault Door Training'
 target: 'picoCTF — Vault Door Training'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2026-07-07
 summary: 'A picoCTF Reverse Engineering challenge where the provided Java source code contained the vault password as a hardcoded string comparison inside the checkPassword method, making the flag readable directly from the source.'
 role: 'appsec'
 tags: ['reverse-engineering', 'java', 'source-code-analysis', 'picoctf']

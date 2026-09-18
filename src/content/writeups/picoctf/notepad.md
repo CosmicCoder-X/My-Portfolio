@@ -2,7 +2,7 @@
 title: 'Notepad'
 target: 'picoCTF — Notepad'
 difficulty: 'hard'
-date: 2026-07-22
+date: 2026-06-16
 summary: 'A picoCTF Web Exploitation challenge where a note-taking app used user input in the filename and rendered error templates with Jinja include, allowing path traversal via backslashes to plant a malicious template that achieved SSTI and full RCE through base64-encoded commands.'
 role: 'appsec'
 tags: ['web-exploitation', 'path-traversal', 'ssti', 'rce', 'jinja2', 'python', 'picoctf']

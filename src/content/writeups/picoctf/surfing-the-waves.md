@@ -2,7 +2,7 @@
 title: 'Surfing the Waves'
 target: 'picoCTF — Surfing the Waves'
 difficulty: 'medium'
-date: 2026-07-22
+date: 2026-07-02
 summary: 'A picoCTF Forensics challenge where a WAV audio file with an unusual 2736 Hz sample rate contained hexadecimal values encoded in its raw sample data, and mapping each sample through integer division and a hex lookup table decoded the hidden flag.'
 role: 'forensics'
 tags: ['forensics', 'steganography', 'audio', 'wav', 'python', 'picoctf']

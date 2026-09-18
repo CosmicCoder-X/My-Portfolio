@@ -2,7 +2,7 @@
 title: 'Forbidden Paths'
 target: 'picoCTF — Forbidden Paths'
 difficulty: 'easy'
-date: 2026-07-22
+date: 2025-10-04
 summary: 'A picoCTF Web Exploitation challenge where a file-reading application filtered absolute paths but allowed relative traversal, so entering ../../../../flag.txt from the webroot at /usr/share/nginx/html/ walked up to / and read the flag.'
 role: 'appsec'
 tags: ['web-exploitation', 'path-traversal', 'directory-traversal', 'lfi', 'nginx', 'picoctf']

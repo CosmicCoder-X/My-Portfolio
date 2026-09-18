@@ -2,7 +2,7 @@
 title: 'Noted'
 target: 'picoCTF — Noted'
 difficulty: 'hard'
-date: 2026-07-22
+date: 2026-06-15
 summary: 'A picoCTF Web Exploitation challenge where a notes application rendered user input through unescaped EJS output, and chaining stored XSS with a CSRF login, same-origin window access, and a data: URL payload allowed exfiltrating the flag from a Puppeteer bot.'
 role: 'appsec'
 tags: ['web-exploitation', 'xss', 'csrf', 'same-origin-policy', 'puppeteer', 'javascript', 'picoctf']
