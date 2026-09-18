@@ -2,7 +2,7 @@
 title: 'OpenAdmin'
 target: 'Hack The Box — OpenAdmin'
 difficulty: 'easy'
-date: 2025-11-19
+date: 2026-03-14
 summary: 'An HTB machine — OpenNetAdmin 18.1.1 RCE provides a shell as www-data, database password reuse escalates to jimmy, an internal web app on port 52846 leaks joanna''s encrypted SSH key (cracked with john), and passwordless sudo nano provides root via GTFOBins command execution.'
 role: 'pentest'
 tags: ['nmap', 'dirsearch', 'apache', 'opennetadmin', 'rce', 'password-reuse', 'ssh', 'john', 'ssh2john', 'nano', 'sudo', 'gtfobins', 'privilege-escalation', 'linux']

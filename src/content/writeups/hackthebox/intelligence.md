@@ -2,7 +2,7 @@
 title: 'Intelligence'
 target: 'Hack The Box — Intelligence'
 difficulty: 'medium'
-date: 2026-01-05
+date: 2026-04-18
 summary: 'An HTB AD domain controller — PDF metadata enumeration for usernames, default password spray for initial access, DNS record injection to capture NTLM hashes via a scheduled script, gMSA password dump, and Silver Ticket impersonation for SYSTEM.'
 role: 'pentest'
 tags: ['nmap', 'active-directory', 'domain-controller', 'iis', 'pdf', 'metadata', 'exiftool', 'kerbrute', 'password-spray', 'crackmapexec', 'smb', 'bloodhound', 'dns', 'dnstool', 'responder', 'ntlmv2', 'john', 'hash-cracking', 'gmsa', 'gmsadumper', 'silver-ticket', 'impacket', 'kerberos', 'psexec', 'privilege-escalation', 'windows']

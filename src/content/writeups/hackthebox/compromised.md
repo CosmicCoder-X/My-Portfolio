@@ -2,7 +2,7 @@
 title: 'Compromised'
 target: 'Hack The Box — Compromised'
 difficulty: 'easy'
-date: 2026-02-10
+date: 2026-01-03
 summary: 'An HTB Sherlock — PCAP analysis of a compromised host using Wireshark, tracing initial access through HTTP payload delivery (Pikabot DLL disguised as image/gif), C2 communications over non-standard ports with self-signed TLS certificates, and DNS tunneling exfiltration via sequential TXT queries to steasteel.net.'
 role: 'soc'
 tags: ['pcap', 'wireshark', 'network-forensics', 'pikabot', 'malware', 'virustotal', 'tls', 'self-signed-certificate', 'dns-tunneling', 'http-export', 'traffic-analysis', 'dfir', 'sherlock']

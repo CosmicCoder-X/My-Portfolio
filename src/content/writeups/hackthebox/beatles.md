@@ -2,7 +2,7 @@
 title: 'Beatles'
 target: 'Hack The Box — Beatles'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2025-12-13
 summary: 'A forensics challenge — ROT13-encoded message hints at a four-character zip password, cracked with fcrackzip to reveal a Beatles logo JPG. Steghide extraction with passphrase THEBEATLES yields a hidden ELF binary containing a base64-encoded flag.'
 role: 'forensics'
 tags: ['steganography', 'rot13', 'zip-cracking', 'fcrackzip', 'steghide', 'elf-binary', 'base64', 'strings', 'rockyou']

@@ -2,7 +2,7 @@
 title: 'Da Vinci'
 target: 'Hack The Box — Da Vinci'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-01-31
 summary: 'A forensics challenge — three JPG images with layered steganography. Steghide with passphrase TOM extracts an MD5 key (leonardo), binwalk reveals an embedded zip in monalisa.jpg, and steghide on the extracted Mona.jpg with passphrase Guernica yields a triple-base64-encoded flag.'
 role: 'forensics'
 tags: ['steganography', 'steghide', 'binwalk', 'md5', 'base64', 'strings', 'zip-cracking', 'image-forensics', 'foremost']

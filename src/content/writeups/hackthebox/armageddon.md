@@ -2,7 +2,7 @@
 title: 'Armageddon'
 target: 'Hack The Box — Armageddon'
 difficulty: 'easy'
-date: 2025-12-25
+date: 2025-12-27
 summary: 'An HTB machine — CentOS host running Drupal 7.56 on Apache (80) and SSH (22). Exploited Drupalgeddon2 (CVE-2018-7600) for a webshell as apache, extracted MySQL credentials from settings.php, cracked brucetherealadmin''s Drupal hash to get SSH access, then escalated to root via sudo snap install with the dirty_sock payload.'
 role: 'pentest'
 tags: ['nmap', 'drupal', 'drupalgeddon2', 'searchsploit', 'webshell', 'php', 'reverse-shell', 'mysql', 'credential-recovery', 'hashcat', 'hash-cracking', 'ssh', 'sudo', 'snap', 'dirty-sock', 'privilege-escalation', 'linux']

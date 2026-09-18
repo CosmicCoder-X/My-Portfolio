@@ -2,7 +2,7 @@
 title: 'Sauna'
 target: 'Hack The Box — Sauna'
 difficulty: 'easy'
-date: 2025-01-13
+date: 2026-07-18
 summary: 'An easy Windows AD box — enumerating Kerberos usernames with kerbrute, AS-REP roasting fsmith''s hash and cracking it with hashcat, discovering svc_loanmanager AutoLogon credentials via winPEAS, identifying DCSync permissions with BloodHound, dumping all domain hashes with secretsdump, and pass-the-hash with psexec for SYSTEM.'
 role: 'pentest'
 tags: ['nmap', 'rustscan', 'ldap', 'ldapsearch', 'kerberos', 'kerbrute', 'as-rep-roasting', 'impacket', 'hashcat', 'evil-winrm', 'winpeas', 'bloodhound', 'dcsync', 'secretsdump', 'psexec', 'pass-the-hash', 'active-directory', 'privilege-escalation', 'windows']

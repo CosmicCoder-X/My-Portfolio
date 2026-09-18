@@ -2,7 +2,7 @@
 title: 'Bastion'
 target: 'Hack The Box — Bastion'
 difficulty: 'easy'
-date: 2025-12-10
+date: 2025-12-20
 summary: 'An HTB machine — Windows Server 2016 with SMB, SSH, and WinRM. Guest-accessible Backups share exposed VHD files from a WindowsImageBackup. Mounted the VHD, dumped SAM/SYSTEM hives for NTLM hashes, cracked L4mpje''s password for SSH access, then decrypted the Administrator password from mRemoteNG''s stored configuration.'
 role: 'pentest'
 tags: ['nmap', 'smb', 'smbmap', 'vhd', 'guestmount', 'windows-backup', 'sam-dump', 'samdump2', 'impacket', 'secretsdump', 'hash-cracking', 'ssh', 'evil-winrm', 'mremoteng', 'credential-extraction', 'privilege-escalation', 'windows']

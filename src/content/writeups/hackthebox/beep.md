@@ -2,7 +2,7 @@
 title: 'Beep'
 target: 'Hack The Box — Beep'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2025-12-06
 summary: 'An HTB machine — heavily-serviced CentOS box with 12 open ports including Elastix/FreePBX 2.8.1.4 on HTTPS and Webmin on 10000. Exploited CVE-2012-4869 (FreePBX pre-auth RCE) after enumerating SIP extension 233, caught a shell as asterisk, then escalated to root via sudo nmap --interactive shell escape.'
 role: 'pentest'
 tags: ['nmap', 'elastix', 'freepbx', 'gobuster', 'sip', 'voip', 'sippts', 'svwar', 'cve-2012-4869', 'rce', 'reverse-shell', 'sudo', 'nmap-interactive', 'privilege-escalation']

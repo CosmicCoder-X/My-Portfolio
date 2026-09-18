@@ -2,7 +2,7 @@
 title: 'Infiltration'
 target: 'Hack The Box — Infiltration'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-04-11
 summary: 'An OSINT challenge — enumerating Evil Corp LLC employees across social media, navigating past two deliberate rabbit holes on LinkedIn and Twitter, and finding the flag on an employee badge visible in an Instagram photo.'
 role: 'soc'
 tags: ['osint', 'social-media', 'linkedin', 'twitter', 'instagram', 'reconnaissance', 'rabbit-holes', 'employee-enumeration']

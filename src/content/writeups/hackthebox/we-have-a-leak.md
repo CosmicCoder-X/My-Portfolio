@@ -2,7 +2,7 @@
 title: 'We Have A Leak'
 target: 'Hack The Box — We Have A Leak'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-09-12
 summary: 'An OSINT challenge — starting with nested password-protected zip files (outer password hackthebox), pivoting to the Twitter account @SuperSecStartup to enumerate employees, finding the username j.terranwald from a tweet welcoming a new hire, finding the password pattern SupSecStart#Winter2018! on a whiteboard in an employee photo, modifying the season to Spring2019 based on the hire date to unlock the final zip, and recovering the flag from flag.txt.'
 role: 'soc'
 tags: ['osint', 'twitter', 'employee-enumeration', 'social-media', 'password-cracking', 'zip-files', 'credential-exposure', 'social-engineering', 'reconnaissance']

@@ -2,7 +2,7 @@
 title: 'Monstrosity'
 target: 'Hack The Box — Monstrosity'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-06-27
 summary: 'An OSINT challenge — extracting geo-coordinate metadata from 3,000 identical tweets on @miounster via the Twitter API, plotting coordinates with matplotlib to reveal an MD5 hash, and cracking it on CrackStation for the flag.'
 role: 'soc'
 tags: ['osint', 'twitter', 'twitter-api', 'geo-coordinates', 'matplotlib', 'python', 'md5', 'hash-cracking', 'crackstation', 'api-enumeration', 'pagination']

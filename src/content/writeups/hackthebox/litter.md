@@ -2,7 +2,7 @@
 title: 'Litter'
 target: 'Hack The Box — Litter'
 difficulty: 'easy'
-date: 2026-02-10
+date: 2026-05-16
 summary: 'An HTB Sherlock — analyzing a PCAP to identify dnscat2 DNS tunneling from 192.168.157.144 to an internal endpoint at 192.168.157.145, decoding hex payloads from DNS subdomain queries to microsofto365.com, and reconstructing the exfiltration of 721 PII records.'
 role: 'soc'
 tags: ['pcap', 'wireshark', 'network-forensics', 'dns-tunneling', 'dnscat2', 'cyberchef', 'hex-decoding', 'traffic-analysis', 'data-exfiltration', 'pii', 'dfir', 'sherlock']

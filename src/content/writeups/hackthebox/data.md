@@ -2,7 +2,7 @@
 title: 'Data'
 target: 'Hack The Box — Data'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-01-24
 summary: 'An HTB machine — Grafana 8.0.0 path traversal (CVE-2021-43798) to extract the SQLite database, cracking a PBKDF2 hash for SSH access via password reuse, then root through sudo docker exec into a privileged container and mounting the host disk.'
 role: 'pentest'
 tags: ['nmap', 'grafana', 'cve-2021-43798', 'path-traversal', 'sqlite', 'hashcat', 'pbkdf2', 'password-reuse', 'ssh', 'docker', 'privileged-container', 'container-escape', 'privilege-escalation']

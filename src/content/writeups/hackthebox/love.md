@@ -2,7 +2,7 @@
 title: 'Love'
 target: 'Hack The Box — Love'
 difficulty: 'easy'
-date: 2025-12-30
+date: 2026-05-30
 summary: 'An HTB machine — SSRF in a staging subdomain file scanner leaks admin credentials from an internal service, unrestricted PHP upload in a Voting System admin portal provides a shell as Phoebe, and AlwaysInstallElevated policy enables MSI-based escalation to SYSTEM.'
 role: 'pentest'
 tags: ['nmap', 'ssl-certificate', 'subdomain', 'ssrf', 'server-side-request-forgery', 'voting-system', 'php', 'file-upload', 'webshell', 'powershell', 'cobalt-strike', 'alwaysinstallelevated', 'msi', 'msfvenom', 'msiexec', 'privilege-escalation', 'windows']

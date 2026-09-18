@@ -2,7 +2,7 @@
 title: 'Haystack'
 target: 'Hack The Box — Haystack'
 difficulty: 'easy'
-date: 2025-12-01
+date: 2026-02-21
 summary: 'An HTB machine exploiting the full Elastic Stack — hidden credentials in Elasticsearch found via a steganographic hint, Kibana LFI (CVE-2018-17246) for lateral movement, and a misconfigured Logstash pipeline executing commands from watched log files for root.'
 role: 'pentest'
 tags: ['nmap', 'nginx', 'elasticsearch', 'steganography', 'strings', 'base64', 'kibana', 'cve-2018-17246', 'lfi', 'logstash', 'grok', 'ssh-port-forwarding', 'elastic-stack', 'privilege-escalation', 'linux']

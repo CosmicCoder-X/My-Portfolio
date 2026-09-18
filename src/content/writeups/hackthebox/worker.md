@@ -2,7 +2,7 @@
 title: 'Worker'
 target: 'Hack The Box — Worker'
 difficulty: 'medium'
-date: 2026-01-10
+date: 2026-08-15
 summary: "SVN commit history leaks credentials for Azure DevOps portal — CI pipeline abuse deploys an ASPX webshell via pull request merge, SVN config files expose a second user's credentials for evil-winrm access, and pipeline creation permissions in a second project yield an elevated shell through the build agent."
 role: 'pentest'
 tags: ['nmap', 'iis', 'svn', 'subversion', 'version-control', 'credential-disclosure', 'azure-devops', 'ci-cd', 'pipeline', 'aspx', 'webshell', 'pull-request', 'evil-winrm', 'powershell', 'reverse-shell', 'privilege-escalation', 'windows']

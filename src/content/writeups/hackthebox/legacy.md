@@ -2,7 +2,7 @@
 title: 'Legacy'
 target: 'Hack The Box — Legacy'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2026-05-09
 summary: 'An HTB machine — Windows XP SP3 with SMB vulnerable to both MS17-010 and MS08-067. EternalBlue fails on 32-bit XP, so MS08-067 (Server service buffer overflow) provides immediate SYSTEM access via Metasploit.'
 role: 'pentest'
 tags: ['nmap', 'smb', 'windows-xp', 'ms08-067', 'ms17-010', 'metasploit', 'meterpreter', 'buffer-overflow', 'rpc']

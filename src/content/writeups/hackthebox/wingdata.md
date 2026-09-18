@@ -2,7 +2,7 @@
 title: 'WingData'
 target: 'Hack The Box — WingData'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2026-09-5
 summary: "Subdomain enumeration reveals Wing FTP Server v7.4.3 — unauthenticated RCE via Lua code injection for shell as wingftp, SHA256 salted hash cracking with the default WingFTP salt, SSH as wacky, and CVE-2025-4138 tarfile path traversal to overwrite /etc/sudoers for root."
 role: 'pentest'
 tags: ['nmap', 'ffuf', 'wing-ftp', 'rce', 'lua-injection', 'reverse-shell', 'sha256', 'hashcat', 'password-cracking', 'salt', 'ssh', 'sudo', 'cve-2025-4138', 'tarfile', 'path-traversal', 'privilege-escalation']

@@ -2,7 +2,7 @@
 title: 'Reset'
 target: 'Hack The Box — Reset'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2026-07-11
 summary: 'An easy Linux box — exploiting a password reset endpoint that leaks admin credentials in its JSON response, chaining LFI with Apache log poisoning for RCE as www-data, pivoting to sadm via hosts.equiv rlogin trust, and escalating to root through a GTFOBins nano sudo escape.'
 role: 'pentest'
 tags: ['nmap', 'apache', 'password-reset', 'information-disclosure', 'lfi', 'log-poisoning', 'rce', 'rlogin', 'hosts-equiv', 'tmux', 'gtfobins', 'nano', 'sudo', 'privilege-escalation']

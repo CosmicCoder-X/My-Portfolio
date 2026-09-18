@@ -2,7 +2,7 @@
 title: 'Devel'
 target: 'Hack The Box — Devel'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2026-02-07
 summary: 'An HTB machine — anonymous FTP mapped to the IIS 7.5 webroot on Windows 7, uploading an ASPX webshell for command execution, reverse shell as iis apppool\web via nc.exe, then MS10-059 (Chimichurri) for SYSTEM.'
 role: 'pentest'
 tags: ['nmap', 'ftp', 'iis', 'asp.net', 'webshell', 'anonymous-ftp', 'zap', 'netcat', 'impacket', 'winpeas', 'ms10-059', 'privilege-escalation', 'windows']

@@ -2,7 +2,7 @@
 title: 'Dynastic'
 target: 'Hack The Box — Dynastic'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-02-21
 summary: 'A crypto challenge — analysing a Python encryption script to identify a Trithemius cipher (position-dependent Caesar shift), then reversing it by subtracting the index instead of adding to recover the flag.'
 role: 'appsec'
 tags: ['crypto', 'python', 'reverse-engineering', 'trithemius-cipher', 'caesar-cipher', 'script-analysis', 'identity-map']

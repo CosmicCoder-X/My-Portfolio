@@ -2,7 +2,7 @@
 title: 'The Ancient Citadel'
 target: 'Hack The Box — The Ancient Citadel'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-01-17
 summary: 'An OSINT challenge — reverse image searching a stone fortress gate hinted to be in Chile, identifying it as Brunet Castle (Castillo Brunet) in Vina del Mar via Google Lens, confirming with Street View, and extracting the address from the Knowledge Panel for the flag.'
 role: 'soc'
 tags: ['osint', 'geolocation', 'google-lens', 'reverse-image-search', 'google-maps', 'chile', 'architecture']

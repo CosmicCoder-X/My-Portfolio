@@ -2,7 +2,7 @@
 title: 'Soulmate'
 target: 'Hack The Box — Soulmate'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2026-08-01
 summary: 'An easy Linux box — exploiting CVE-2025-31161 (CrushFTP auth bypass) to create an admin user, uploading a PHP webshell through the CrushFTP file manager for a shell as www-data, finding hardcoded Erlang SSH credentials for ben, and escalating to root via an Erlang OTP SSH daemon running as root on port 2222.'
 role: 'pentest'
 tags: ['nmap', 'crushftp', 'cve-2025-31161', 'authentication-bypass', 'php-webshell', 'reverse-shell', 'erlang', 'ssh', 'hardcoded-credentials', 'password-reuse', 'privilege-escalation']

@@ -2,7 +2,7 @@
 title: 'Phantom Check'
 target: 'Hack The Box — Phantom Check'
 difficulty: 'easy'
-date: 2026-02-01
+date: 2026-03-28
 summary: 'An HTB Sherlock — analysing PowerShell event logs from DESKTOP-M3AKJSD to reconstruct anti-VM reconnaissance. The attacker queried Win32_ComputerSystem and MSAcpi_ThermalZoneTemperature via WMI, loaded the Nishang Check-VM script to fingerprint hypervisors through registry services and process enumeration, and the script detected both Hyper-V and VMware.'
 role: 'soc'
 tags: ['powershell', 'event-logs', 'virtualization-detection', 'sandbox-evasion', 'wmi', 'nishang', 'registry', 'hyper-v', 'vmware', 'virtualbox', 'anti-analysis', 'dfir', 'evtx', 'sherlock', 'operation-blackout']

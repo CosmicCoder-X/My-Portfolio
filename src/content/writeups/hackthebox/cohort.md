@@ -2,7 +2,7 @@
 title: 'Cohort'
 target: 'Hack The Box — Cohort'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2025-11-08
 summary: 'An HTB machine — nginx host with SSH (22), HTTP (80), HTTPS (443) and wildcard SAN *.cohort.htb. SSRF via loopback bypass (127.1) discovered internal marimo notebook, exploited CVE-2026-39987 (WebSocket pre-auth RCE) for a shell as marimo, then escalated to root via CVE-2026-41651 (PackageKit TOCTOU race condition).'
 role: 'pentest'
 tags: ['rustscan', 'nmap', 'ssrf', 'loopback-bypass', 'marimo', 'cve-2026-39987', 'websocket', 'python', 'packagekit', 'cve-2026-41651', 'toctou', 'dbus', 'privilege-escalation', 'setuid']

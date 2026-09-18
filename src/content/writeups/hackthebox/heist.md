@@ -2,7 +2,7 @@
 title: 'Heist'
 target: 'Hack The Box — Heist'
 difficulty: 'easy'
-date: 2025-11-25
+date: 2026-04-04
 summary: 'An HTB machine — Cisco router config with crackable password hashes found on a support portal, RID brute-force and password spraying for WinRM access, Firefox process memory dump revealing cached admin credentials, and psexec to SYSTEM.'
 role: 'pentest'
 tags: ['nmap', 'cisco', 'hash-cracking', 'john', 'type-7-decode', 'crackmapexec', 'rid-brute', 'evil-winrm', 'password-spraying', 'procdump', 'process-dump', 'firefox', 'credential-extraction', 'psexec', 'impacket', 'privilege-escalation', 'windows']

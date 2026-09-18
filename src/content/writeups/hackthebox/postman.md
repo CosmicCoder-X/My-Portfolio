@@ -2,7 +2,7 @@
 title: 'Postman'
 target: 'Hack The Box — Postman'
 difficulty: 'easy'
-date: 2025-11-19
+date: 2026-07-04
 summary: 'An HTB machine — unauthenticated Redis allows SSH key injection for a shell as the redis user, linpeas finds Matt''s encrypted RSA key backup which cracks to computer2008, credential reuse grants Webmin access, and CVE-2019-12840 provides root via Metasploit.'
 role: 'pentest'
 tags: ['nmap', 'naabu', 'redis', 'ssh', 'ssh-keygen', 'webmin', 'linpeas', 'john', 'ssh2john', 'metasploit', 'cve-2019-12840', 'privilege-escalation', 'linux']

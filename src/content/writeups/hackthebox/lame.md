@@ -2,7 +2,7 @@
 title: 'Lame'
 target: 'Hack The Box — Lame'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2026-05-02
 summary: 'An HTB machine — vsftpd 2.3.4 backdoor is a dead end (port 6200 firewalled), pivoting to Samba 3.0.20 and exploiting CVE-2007-2447 (username map script command injection) for immediate root.'
 role: 'pentest'
 tags: ['nmap', 'ftp', 'vsftpd', 'smb', 'samba', 'metasploit', 'cve-2007-2447', 'rce', 'searchsploit']

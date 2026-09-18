@@ -2,7 +2,7 @@
 title: 'SpookyPass'
 target: 'Hack The Box — SpookyPass'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-08-08
 summary: 'A beginner reversing challenge — extracting a hardcoded plaintext password from an ELF binary using strings and supplying it at runtime to retrieve the flag.'
 role: 'pentest'
 tags: ['reversing', 'strings', 'elf', 'checksec', 'static-analysis', 'hardcoded-credentials']

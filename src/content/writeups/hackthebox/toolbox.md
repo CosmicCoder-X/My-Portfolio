@@ -2,7 +2,7 @@
 title: 'Toolbox'
 target: 'Hack The Box — Toolbox'
 difficulty: 'easy'
-date: 2025-12-20
+date: 2026-08-29
 summary: 'An easy Windows box — exploiting SQL injection in a PHP login backed by PostgreSQL on an admin subdomain revealed via SSL cert, using sqlmap os-shell for a reverse shell inside a Docker container, escaping to the boot2docker VM with default credentials (docker:tcuser), and reading the root flag from the mounted Windows C: drive.'
 role: 'pentest'
 tags: ['nmap', 'ftp', 'anonymous-ftp', 'smb', 'smbmap', 'sql-injection', 'postgresql', 'burp-suite', 'sqlmap', 'os-shell', 'reverse-shell', 'docker', 'boot2docker', 'container-escape', 'default-credentials', 'ssh', 'privilege-escalation', 'windows']

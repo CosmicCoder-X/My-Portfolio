@@ -2,7 +2,7 @@
 title: 'Headless'
 target: 'Hack The Box — Headless'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-02-28
 summary: 'An HTB machine — XSS cookie theft via User-Agent header reflection on a "Hacking Attempt Detected" page, command injection on the admin dashboard for a shell, and sudo abuse of a syscheck script running a user-controlled initdb.sh for root.'
 role: 'pentest'
 tags: ['xss', 'cookie-theft', 'command-injection', 'privilege-escalation', 'owasp-zap', 'steganography', 'reverse-shell', 'sudo', 'headless-browser', 'selenium']

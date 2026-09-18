@@ -2,7 +2,7 @@
 title: 'MangoBleed'
 target: 'Hack The Box — MangoBleed'
 difficulty: 'medium'
-date: 2026-02-05
+date: 2026-06-06
 summary: 'An HTB Sherlock — investigating a compromised MongoDB server via UAC triage artifacts. CVE-2025-14847 (MongoBleed) exploited against MongoDB 8.0.16, attacker at 65.0.76.43 sent 37630 rapid-fire connections to extract memory, then pivoted to SSH brute-force against mongoadmin, ran linpeas for privesc recon, and staged /var/lib/mongodb/ for exfiltration via Python HTTP server.'
 role: 'soc'
 tags: ['mongodb', 'mongobleed', 'cve', 'log-analysis', 'auth-log', 'ssh', 'brute-force', 'uac-triage', 'bash-history', 'privilege-escalation', 'peass-ng', 'linpeas', 'data-exfiltration', 'python-http-server', 'dfir', 'linux-forensics', 'sherlock']

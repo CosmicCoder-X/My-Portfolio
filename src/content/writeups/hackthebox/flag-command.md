@@ -2,7 +2,7 @@
 title: 'Flag Command'
 target: 'Hack The Box — Flag Command'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-02-14
 summary: 'A web challenge — text adventure game with a hidden secret command found by inspecting client-side JavaScript and the /api/options endpoint, bypassing the intended game flow to retrieve the flag.'
 role: 'appsec'
 tags: ['web', 'javascript', 'devtools', 'source-code-review', 'api-enumeration', 'client-side-logic', 'ctf']

@@ -2,7 +2,7 @@
 title: 'Easy Phish'
 target: 'Hack The Box — Easy Phish'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-02-28
 summary: 'An OSINT challenge — DNS enumeration of secure-startup.com revealing a misconfigured SPF record (?all) and unenforced DMARC (p=none), with the flag split across both TXT records.'
 role: 'soc'
 tags: ['osint', 'dns', 'spf', 'dmarc', 'email-authentication', 'dig', 'phishing', 'domain-spoofing']

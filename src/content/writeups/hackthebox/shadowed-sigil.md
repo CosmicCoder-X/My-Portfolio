@@ -2,7 +2,7 @@
 title: 'The Shadowed Sigil'
 target: 'Hack The Box — The Shadowed Sigil'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-07-25
 summary: 'An OSINT challenge — Googling the IP 139.5.177.205 to find a UK NCSC PDF listing it as a C2 server for the X-AGENT RAT used by APT28.'
 role: 'soc'
 tags: ['osint', 'threat-intelligence', 'apt', 'ioc', 'ip-address', 'ncsc', 'apt28', 'x-agent', 'c2-infrastructure']

@@ -2,7 +2,7 @@
 title: 'Trojan'
 target: 'Hack The Box — Trojan'
 difficulty: 'medium'
-date: 2026-02-15
+date: 2026-09-05
 summary: 'An HTB Sherlock — investigating a compromised Windows 10 workstation where user John Grunewald downloaded a trojanised file recovery tool. Correlated evidence across a memory dump (Volatility 3), network capture (Zeek/Wireshark), and Prefetch files to reconstruct the infection chain from Data_Recovery.zip download through InnoSetup-based trojan execution to C2 communications with three attacker servers.'
 role: 'soc'
 tags: ['memory-forensics', 'volatility', 'pcap', 'wireshark', 'zeek', 'malware-analysis', 'virustotal', 'prefetch', 'pecmd', 'trojan', 'innosetup', 'c2', 'finalrecovery', 'windows-forensics', 'dfir', 'sherlock']

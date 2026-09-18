@@ -2,7 +2,7 @@
 title: 'AKERVA'
 target: 'Hack The Box — AKERVA'
 difficulty: 'medium'
-date: 2026-01-01
+date: 2026-01-24
 summary: 'An HTB Fortress — eight flags across an Ubuntu host running WordPress on Apache (80), Flask/Werkzeug (5000), SSH (22), and SNMP (161/UDP). Attack chain spans HTML comment disclosure, SNMP process enumeration, HTTP verb tampering, backup archive bruteforce, Flask LFI to Werkzeug PIN bypass for RCE, sudo CVE-2019-18634 for root, and Vigenere cryptanalysis with known plaintext for the final flag.'
 role: 'pentest'
 tags: ['nmap', 'wordpress', 'apache', 'snmp', 'snmp-enumeration', 'html-comment', 'http-verb-tampering', 'burp-suite', 'wfuzz', 'backup-discovery', 'flask', 'werkzeug', 'lfi', 'local-file-inclusion', 'werkzeug-pin-bypass', 'python', 'reverse-shell', 'sudo', 'cve-2019-18634', 'privilege-escalation', 'base64', 'vigenere', 'cryptanalysis', 'frequency-analysis', 'fortress', 'linux']

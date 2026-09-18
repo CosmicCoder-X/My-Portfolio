@@ -2,7 +2,7 @@
 title: 'Labyrinth'
 target: 'Hack The Box — Labyrinth'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-04-25
 summary: 'A pwn challenge — reversing a 64-bit ELF (no canary, no PIE) to find door 69 triggers a buffer overflow, then ret2win to an unreachable escape_plan function that prints the flag.'
 role: 'appsec'
 tags: ['pwn', 'buffer-overflow', 'binary-exploitation', 'ghidra', 'reverse-engineering', 'pwntools', 'stack-overflow', 'elf', 'checksec', 'ret2win']

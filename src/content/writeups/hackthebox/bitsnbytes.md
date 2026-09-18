@@ -2,7 +2,7 @@
 title: 'BitsNBytes'
 target: 'Hack The Box — BitsNBytes'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2025-11-29
 summary: 'A steganography challenge — two visually identical PNGs differ in the leftmost pixel column. StegSolve SUB mode reveals the modified pixels, a Python/PIL script extracts binary from black/white values, and the resulting base64 string decodes to the flag.'
 role: 'forensics'
 tags: ['steganography', 'image-analysis', 'stegsolve', 'python', 'pil', 'binary', 'base64', 'pixel-manipulation', 'image-subtraction']

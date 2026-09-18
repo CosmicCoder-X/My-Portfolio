@@ -2,7 +2,7 @@
 title: 'RouterSpace'
 target: 'Hack The Box — RouterSpace'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-07-18
 summary: 'An easy Linux box — setting up an Android emulator with BurpSuite proxy to intercept a RouterSpace APK''s API traffic, exploiting command injection in the /api/v4/monitoring/router/dev/check/deviceAccess endpoint for SSH key injection, then escalating to root via CVE-2021-3156 (Baron Samedit).'
 role: 'pentest'
 tags: ['android', 'apk', 'mobsf', 'burpsuite', 'command-injection', 'genymotion', 'adb', 'ssh-key-injection', 'cve-2021-3156', 'sudo', 'privilege-escalation']

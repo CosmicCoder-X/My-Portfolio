@@ -2,7 +2,7 @@
 title: 'Lost in Hyperspace'
 target: 'Hack The Box — Lost in Hyperspace'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-05-23
 summary: 'An AI/ML challenge — PCA reduction of high-dimensional token embeddings to 3D reveals a deliberate spiral in the XY projection, with the flag readable from labeled characters along the spiral path.'
 role: 'llm'
 tags: ['ai', 'machine-learning', 'embeddings', 'pca', 'dimensionality-reduction', 'numpy', 'matplotlib', 'scikit-learn', 'nlp', 'tokenization']

@@ -2,7 +2,7 @@
 title: 'Orion'
 target: 'Hack The Box — Orion'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-03-21
 summary: 'An HTB machine — Craft CMS 5.6.16 pre-auth RCE (CVE-2025-32432) via Metasploit for a shell as www-data, database credential extraction and bcrypt cracking for SSH as adam, and telnetd auth bypass (CVE-2026-24061) for root.'
 role: 'pentest'
 tags: ['nmap', 'gobuster', 'craft-cms', 'cve-2025-32432', 'metasploit', 'meterpreter', 'mysql', 'hashcat', 'bcrypt', 'password-reuse', 'ssh', 'telnet', 'cve-2026-24061', 'privilege-escalation']

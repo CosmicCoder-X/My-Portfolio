@@ -2,7 +2,7 @@
 title: 'Netmon'
 target: 'Hack The Box — Netmon'
 difficulty: 'easy'
-date: 2025-12-05
+date: 2026-03-07
 summary: 'An HTB machine — anonymous FTP exposes the entire C:\ drive including the user flag and PRTG config backups. An old password with year incremented grants PRTG admin access, and command injection through the notification system provides a SYSTEM shell.'
 role: 'pentest'
 tags: ['nmap', 'ftp', 'anonymous-ftp', 'prtg', 'credential-recovery', 'password-guessing', 'rce', 'notifications', 'impacket', 'smbserver', 'netcat', 'privilege-escalation', 'windows']

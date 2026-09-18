@@ -2,7 +2,7 @@
 title: 'Support'
 target: 'Hack The Box — Support'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2026-08-22
 summary: 'An easy Windows AD box — extracting LDAP credentials from a .NET binary on an anonymous SMB share, finding the support user''s cleartext password in an LDAP attribute, abusing GenericAll-equivalent ACLs on DC$ via Resource-Based Constrained Delegation and S4U impersonation for SYSTEM access.'
 role: 'pentest'
 tags: ['nmap', 'smb', 'anonymous-access', 'dotnet', 'reverse-engineering', 'strace', 'ldap', 'active-directory', 'rbcd', 'kerberos', 's4u', 'delegation', 'privilege-escalation']

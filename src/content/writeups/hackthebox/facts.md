@@ -2,7 +2,7 @@
 title: 'Facts'
 target: 'Hack The Box — Facts'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-02-07
 summary: 'An HTB machine — Camaleon CMS v2.9.0 file read (CVE-2024-46987) and mass assignment to admin, S3 credential extraction leading to an SSH key in a MinIO bucket, passphrase cracking for shell access, then root via sudo facter custom fact injection.'
 role: 'pentest'
 tags: ['nmap', 'gobuster', 'camaleon-cms', 'cve-2024-46987', 'file-read', 'mass-assignment', 'privilege-escalation', 'aws-s3', 'minio', 'aws-cli', 'ssh', 'john-the-ripper', 'ruby', 'facter', 'sudo']

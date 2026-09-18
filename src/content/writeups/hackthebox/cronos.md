@@ -2,7 +2,7 @@
 title: 'Cronos'
 target: 'Hack The Box — Cronos'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-01-17
 summary: 'An HTB machine — DNS zone transfer to discover admin.cronos.htb, SQL injection to bypass login, command injection on Net Tool v0.1 for a shell as www-data, then root via crontab running a www-data-owned Laravel artisan file as root.'
 role: 'pentest'
 tags: ['nmap', 'dns-zone-transfer', 'sql-injection', 'command-injection', 'reverse-shell', 'crontab', 'privilege-escalation', 'burp-suite', 'sqlmap', 'laravel', 'php']

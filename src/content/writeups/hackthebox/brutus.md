@@ -2,7 +2,7 @@
 title: 'Brutus'
 target: 'Hack The Box — Brutus'
 difficulty: 'easy'
-date: 2026-01-25
+date: 2026-11-22
 summary: 'An HTB Sherlock — auth.log and wtmp forensics from a compromised Confluence server. Reconstructed an SSH brute-force from 65.2.161.68 that cracked root, identified session 37, traced persistence via cyberjunkie account creation (T1136.001) with sudo privileges, and found post-exploitation curl download of linper.sh.'
 role: 'soc'
 tags: ['auth-log', 'wtmp', 'ssh', 'brute-force', 'log-analysis', 'dfir', 'linux-forensics', 'grep', 'last', 'session-tracking', 'persistence', 'account-creation', 'mitre-attack', 'privilege-escalation', 'sudo', 'timeline-analysis', 'confluence', 'sherlock']

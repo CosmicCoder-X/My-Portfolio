@@ -2,7 +2,7 @@
 title: 'BountyHunter'
 target: 'Hack The Box — BountyHunter'
 difficulty: 'easy'
-date: 2025-12-15
+date: 2025-11-15
 summary: 'An HTB machine — Ubuntu host with SSH (22) and HTTP (80). XXE injection in a bounty report form exfiltrated db.php credentials via php://filter, granting SSH as development. Escalated to root by exploiting Python eval() in a sudo-permitted ticket validation script with a crafted Markdown ticket.'
 role: 'pentest'
 tags: ['nmap', 'masscan', 'dirb', 'xxe', 'xml-injection', 'burp-suite', 'php-filter', 'credential-recovery', 'ssh', 'sudo', 'python', 'eval', 'code-injection', 'reverse-shell', 'privilege-escalation', 'linux']

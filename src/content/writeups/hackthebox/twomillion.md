@@ -2,7 +2,7 @@
 title: 'TwoMillion'
 target: 'Hack The Box — TwoMillion'
 difficulty: 'easy'
-date: 2025-09-15
+date: 2026-09-12
 summary: "Nostalgic HTB replica — JavaScript invite code deobfuscation, API enumeration revealing unprotected admin endpoints, blind command injection for shell as www-data, credential reuse from .env for SSH, and CVE-2023-0386 OverlayFS kernel exploit to root."
 role: 'pentest'
 tags: ['rustscan', 'nmap', 'javascript', 'deobfuscation', 'api', 'feroxbuster', 'idor', 'privilege-escalation', 'command-injection', 'reverse-shell', 'credential-reuse', 'ssh', 'cve-2023-0386', 'overlayfs', 'kernel-exploit']

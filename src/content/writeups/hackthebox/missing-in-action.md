@@ -2,7 +2,7 @@
 title: 'Missing in Action'
 target: 'Hack The Box — Missing in Action'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-06-13
 summary: 'An OSINT challenge — tracing Roland Sanchez across social media. LinkedIn reveals his employer Egotistical Bank, the company Twitter references Foursquare, and a Google dork finds his Foursquare profile with the flag hidden in a cafe review.'
 role: 'soc'
 tags: ['osint', 'social-media', 'linkedin', 'twitter', 'foursquare', 'google-dorks', 'reconnaissance', 'open-source-intelligence']

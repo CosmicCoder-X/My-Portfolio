@@ -2,7 +2,7 @@
 title: 'Money Flowz'
 target: 'Hack The Box — Money Flowz'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-06-20
 summary: 'An OSINT challenge — tracing Frank Vitalik from Reddit to a Steemit fake ETH giveaway, pivoting to the Ropsten testnet via a comment hint, and decoding hex input data from an outgoing transaction to reveal the flag.'
 role: 'soc'
 tags: ['osint', 'reddit', 'steemit', 'ethereum', 'ropsten', 'etherscan', 'blockchain', 'cryptocurrency', 'transaction-analysis', 'hex-decoding']

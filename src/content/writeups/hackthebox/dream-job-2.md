@@ -2,7 +2,7 @@
 title: 'Dream Job 2'
 target: 'Hack The Box — Dream Job 2'
 difficulty: 'medium'
-date: 2026-01-30
+date: 2026-02-14
 summary: 'An HTB Sherlock — threat intelligence investigation into Lazarus Group Operation Dream Job, mapping DRATzarus and Torisma through MITRE ATT&CK, analysing a malicious ISO on VirusTotal (UPX-packed InternalViewer.exe/SumatraPDF.exe), and reverse-engineering VBA macros in a weaponised Lockheed Martin salary document.'
 role: 'soc'
 tags: ['threat-intelligence', 'malware-analysis', 'lazarus-group', 'apt', 'mitre-attack', 'dratzarus', 'torisma', 'virustotal', 'iso-analysis', 'vba-macro', 'operation-dream-job', 'rat', 'encryption', 'packing', 'yara', 'upx', 'dfir', 'sherlock']
