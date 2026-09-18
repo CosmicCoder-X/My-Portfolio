@@ -2,7 +2,7 @@
 title: 'Metasploit: Meterpreter'
 target: 'TryHackMe — Meterpreter'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-06-28
 summary: 'Post-exploitation on a Windows Server 2019 domain host: psexec for initial access over SMB, then enumerating shares, dumping the SAM, cracking a domain user, and searching the disk for two hidden files.'
 role: 'pentest'
 tags: ['Meterpreter', 'Metasploit', 'psexec', 'SMB', 'hashdump', 'Post-exploitation', 'enum_shares']

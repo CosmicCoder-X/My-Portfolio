@@ -2,7 +2,7 @@
 title: 'Windows Fundamentals 3'
 target: 'TryHackMe — Windows Fundamentals 3'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-06-14
 summary: 'The built-in tools that keep a Windows device secure — Windows Update, the Windows Security dashboard, firewall profiles, TPM and device security, BitLocker, and Volume Shadow Copy.'
 role: 'soc'
 tags: ['Windows', 'Windows Security', 'BitLocker', 'TPM', 'Firewall', 'Defender', 'VSS']

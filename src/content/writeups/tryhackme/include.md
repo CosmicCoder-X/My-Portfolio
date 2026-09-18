@@ -2,7 +2,7 @@
 title: 'Include'
 target: 'TryHackMe — Include'
 difficulty: 'medium'
-date: 2025-08-27
+date: 2026-04-05
 summary: 'A multi-service Linux target running a Node.js review app and an Apache PHP monitoring portal. Broken Object-Level Property Authorization (BOPLA) in the API grants admin access, Server-Side Request Forgery (SSRF) leaks internal API credentials, Local File Inclusion (LFI) reads sensitive files, and SMTP log poisoning provides an alternative path to remote code execution.'
 role: 'appsec'
 tags: ['bopla', 'ssrf', 'lfi', 'log-poisoning', 'smtp', 'path-traversal', 'api-abuse', 'burp-suite', 'nmap', 'dirsearch', 'web-exploitation']

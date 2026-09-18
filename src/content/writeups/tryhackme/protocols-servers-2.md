@@ -2,7 +2,7 @@
 title: 'Protocols and Servers 2'
 target: 'TryHackMe — Protocols and Servers 2'
 difficulty: 'easy'
-date: 2025-08-28
+date: 2026-07-26
 summary: 'A blue-team oriented walkthrough of attacks against cleartext network protocols — sniffing POP3 credentials with tcpdump and Wireshark, understanding man-in-the-middle attacks against unencrypted channels, the role of TLS in upgrading protocols like HTTP, FTP, SMTP, POP3 and IMAP to their encrypted counterparts, SSH as a secure replacement for Telnet including SCP file transfers, and password attacks using THC Hydra to brute-force IMAP credentials.'
 role: 'soc'
 tags: ['network-security', 'sniffing', 'mitm', 'tls', 'ssh', 'hydra', 'pop3', 'imap', 'wireshark', 'tcpdump', 'password-attack', 'blue-team']

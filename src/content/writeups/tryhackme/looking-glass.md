@@ -2,7 +2,7 @@
 title: 'Looking Glass'
 target: 'TryHackMe — Looking Glass'
 difficulty: 'hard'
-date: 2025-01-15
+date: 2026-05-31
 summary: 'Wonderland-themed Linux box where dozens of decoy Dropbear SSH ports hide one real service behind a binary-search game. The real port serves a Vigenere-encrypted Jabberwocky poem whose decryption yields SSH credentials, then a chain of lateral moves through four Alice-in-Wonderland users — exploiting a cron-triggered reverse shell, a leaked SSH key, and a reversed sudo hostname — leads to root.'
 role: 'pentest'
 tags: ['ssh', 'dropbear', 'vigenere', 'cipher', 'binary-search', 'cron', 'reverse-shell', 'lateral-movement', 'sudo', 'linpeas', 'privilege-escalation']

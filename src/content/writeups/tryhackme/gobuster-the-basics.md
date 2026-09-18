@@ -2,7 +2,7 @@
 title: 'Gobuster: The Basics'
 target: 'TryHackMe — Gobuster: The Basics'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-03-01
 summary: 'Gobuster across its three main modes — directory, DNS subdomain, and vhost enumeration — against offensivetools.thm, including the resolver workaround the room needs to work at all.'
 role: 'pentest'
 tags: ['Gobuster', 'Enumeration', 'Directory brute-force', 'DNS', 'Vhost', 'Recon']

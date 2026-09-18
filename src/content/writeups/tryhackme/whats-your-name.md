@@ -2,7 +2,7 @@
 title: "What's Your Name?"
 target: "TryHackMe — What's Your Name?"
 difficulty: 'medium'
-date: 2025-08-27
+date: 2026-06-07
 summary: 'A social-media-style web application split across two virtual hosts, vulnerable to reflected and stored XSS. Cookie stealing via a registration form XSS escalates to moderator access, stored XSS in a chat feature enables CSRF to reset the admin password, and an exposed Selenium script leaks admin credentials as an alternative path.'
 role: 'appsec'
 tags: ['xss', 'csrf', 'cookie-stealing', 'stored-xss', 'gobuster', 'nmap', 'session-hijacking', 'web-exploitation', 'privilege-escalation']

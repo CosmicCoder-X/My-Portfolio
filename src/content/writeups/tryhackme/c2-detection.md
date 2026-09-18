@@ -2,7 +2,7 @@
 title: 'C2 Detection'
 target: 'TryHackMe — C2 Detection'
 difficulty: 'easy'
-date: 2025-08-28
+date: 2025-12-28
 summary: 'A blue-team exercise using RITA (Real Intelligence Threat Analytics) to detect command and control traffic in network captures. PCAPs are converted to Zeek logs, imported into RITA for automated beacon detection, and the results are analyzed through RITA''s TUI — examining beacon scores, connection durations, rare signatures, prevalence metrics, and non-standard ports to identify AsyncRAT C2 infrastructure and a fictional malhare.net threat actor.'
 role: 'soc'
 tags: ['rita', 'zeek', 'c2-detection', 'beacon-analysis', 'network-forensics', 'threat-hunting', 'pcap', 'blue-team']

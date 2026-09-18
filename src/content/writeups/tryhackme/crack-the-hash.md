@@ -2,7 +2,7 @@
 title: 'Crack The Hash'
 target: 'TryHackMe — Crack The Hash'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-01-04
 summary: 'Identifying and cracking hashes across MD5, SHA1, SHA256, MD4, bcrypt, NTLM, sha512crypt and HMAC-SHA1 — where online lookups stop working and hashcat with the right mode takes over.'
 role: 'pentest'
 tags: ['Hashcat', 'Hash cracking', 'bcrypt', 'NTLM', 'sha512crypt', 'HMAC-SHA1', 'rockyou']

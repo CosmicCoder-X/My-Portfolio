@@ -2,7 +2,7 @@
 title: 'Hammer'
 target: 'TryHackMe — Hammer'
 difficulty: 'hard'
-date: 2025-08-27
+date: 2026-03-15
 summary: 'A web application on port 1337 with a weak OTP recovery flow and a JWT-authenticated command execution endpoint. Brute-forced the 4-digit recovery code to reset the account password, then discovered a signing key on disk, forged an admin JWT, and used the unrestricted command endpoint to read the final flag.'
 role: 'appsec'
 tags: ['otp-bypass', 'jwt-forgery', 'brute-force', 'session-management', 'command-injection', 'python-scripting', 'burp-suite', 'web-exploitation']

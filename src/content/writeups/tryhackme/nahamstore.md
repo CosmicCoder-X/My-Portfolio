@@ -2,7 +2,7 @@
 title: 'NahamStore'
 target: 'TryHackMe — NahamStore'
 difficulty: 'medium'
-date: 2026-08-27
+date: 2026-07-05
 summary: 'A black-box web app engagement against an e-commerce site that went from default credentials on an admin panel to a reverse shell, plus 18 other findings across SQLi, XXE, SSRF, LFI, IDOR, CSRF, XSS, and open redirect — every major web vulnerability class in one box.'
 role: 'appsec'
 tags: ['Burp Suite', 'SQLi', 'XXE', 'SSRF', 'LFI', 'IDOR', 'CSRF', 'XSS', 'Open redirect', 'RCE', 'sqlmap', 'Web app testing']

@@ -2,7 +2,7 @@
 title: 'Wonderland'
 target: 'TryHackMe — Wonderland'
 difficulty: 'medium'
-date: 2026-08-27
+date: 2026-06-21
 summary: 'An Alice in Wonderland-themed box where everything is upside down — the user flag is in /root, the root flag is in alice''s home, and the path from initial access to root chains steganography, Python library hijacking, SUID PATH manipulation, and a Linux capabilities exploit on Perl.'
 role: 'pentest'
 tags: ['Steganography', 'Gobuster', 'Python library hijack', 'PATH hijack', 'SUID', 'Linux capabilities', 'GTFObins', 'Perl', 'cap_setuid']

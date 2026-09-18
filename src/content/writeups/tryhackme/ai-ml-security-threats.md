@@ -2,7 +2,7 @@
 title: 'AI/ML Security Threats'
 target: 'TryHackMe — AI/ML Security Threats'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2025-11-09
 summary: 'An introductory room covering the AI/ML security landscape — from the building blocks of machine learning, neural networks, and LLMs through AI-specific vulnerabilities mapped to MITRE ATLAS (prompt injection, data poisoning, model theft, privacy leakage, model drift) and AI-enhanced attack capabilities (deepfakes, AI-generated phishing), to defensive AI applications and a hands-on practical using an AI assistant as a cybersecurity co-pilot for log analysis, regex generation, and threat hunting.'
 role: 'llm'
 tags: ['ai-security', 'machine-learning', 'llm-security', 'mitre-atlas', 'data-poisoning', 'prompt-injection', 'deepfakes', 'threat-hunting', 'defensive-ai']

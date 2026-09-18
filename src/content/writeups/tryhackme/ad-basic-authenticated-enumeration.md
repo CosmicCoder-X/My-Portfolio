@@ -2,7 +2,7 @@
 title: 'AD: Basic & Authenticated Enumeration'
 target: 'TryHackMe — AD: Basic Authentication / AD: Authenticated Enumeration'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2025-11-02
 summary: "A combined walkthrough of two Active Directory rooms covering unauthenticated reconnaissance through anonymous SMB and enum4linux, credential acquisition via CrackMapExec password spraying and AS-REP roasting, and authenticated domain enumeration with PowerShell AD cmdlets."
 role: 'pentest'
 tags: ['active-directory', 'enumeration', 'nmap', 'smb', 'enum4linux', 'crackmapexec', 'password-spraying', 'as-rep-roasting', 'hashcat', 'powershell', 'kerberos', 'windows-server']

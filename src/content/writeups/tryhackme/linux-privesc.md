@@ -2,7 +2,7 @@
 title: 'Linux Privilege Escalation'
 target: 'TryHackMe — Linux Privilege Escalation'
 difficulty: 'medium'
-date: 2025-08-28
+date: 2026-05-23
 summary: 'A comprehensive walkthrough of Linux privilege escalation techniques covering manual enumeration, kernel exploits (CVE-2015-1328 overlayfs), sudo abuse through find/less/nano, SUID binary exploitation with base64, Linux capabilities (view with cap_setuid), cron job hijacking via writable backup scripts, PATH variable manipulation, NFS no_root_squash exploitation, and a capstone challenge chaining password cracking with sudo pivots to reach root.'
 role: 'pentest'
 tags: ['linux', 'privilege-escalation', 'kernel-exploit', 'sudo', 'suid', 'capabilities', 'cron-jobs', 'path-hijacking', 'nfs', 'gtfobins', 'john-the-ripper']

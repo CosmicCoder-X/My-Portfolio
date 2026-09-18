@@ -2,7 +2,7 @@
 title: 'Investigating Windows 2.0'
 target: 'TryHackMe — Investigating Windows 2.0'
 difficulty: 'medium'
-date: 2025-08-27
+date: 2026-04-19
 summary: 'A compromised Windows Server (EC2AMAZ-I8UHO76) with multiple persistence mechanisms, WMI backdoors, and disguised binaries. The investigation uses Task Scheduler, Autoruns, Loki IOC scanner, Process Monitor, and strings analysis to uncover the full scope of the compromise.'
 role: 'forensics'
 tags: ['windows-forensics', 'incident-response', 'wmi-persistence', 'loki', 'ioc-scanner', 'autoruns', 'process-monitor', 'yara', 'strings-analysis', 'malware-analysis']

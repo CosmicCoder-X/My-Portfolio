@@ -2,7 +2,7 @@
 title: 'How to write a writeup on this site'
 target: 'Template'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-09-13
 summary: 'A worked example of the format. Copy this file, change the front matter, replace the body. Delete it once you have real writeups up.'
 role: 'pentest'
 tags: ['Template', 'Meta']

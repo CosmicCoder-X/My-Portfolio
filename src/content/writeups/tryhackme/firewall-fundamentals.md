@@ -2,7 +2,7 @@
 title: 'Firewall Fundamentals'
 target: 'TryHackMe — Firewall Fundamentals'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-02-15
 summary: 'What a firewall actually decides, the four types and where each one sits in the OSI model, and the rule syntax on both Windows Defender Firewall and Linux ufw.'
 role: 'soc'
 tags: ['Firewalls', 'Network security', 'iptables', 'ufw', 'nftables', 'Windows Defender Firewall']

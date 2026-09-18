@@ -2,7 +2,7 @@
 title: 'Linux Shells'
 target: 'TryHackMe — Linux Shells (Cyber Security 101)'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-05-10
 summary: 'Interacting with the Linux shell, the differences between Bash, Zsh and Fish, the building blocks of a shell script — variables, loops, conditionals — and a practical exercise that greps a keyword out of log files.'
 role: 'pentest'
 tags: ['Linux', 'Bash', 'Shell scripting', 'grep', 'CLI', 'Automation']

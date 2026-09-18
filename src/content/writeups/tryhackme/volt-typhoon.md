@@ -2,7 +2,7 @@
 title: 'Volt Typhoon'
 target: 'TryHackMe — Volt Typhoon'
 difficulty: 'medium'
-date: 2026-08-27
+date: 2026-09-06
 summary: 'Splunk-based threat hunting through a Volt Typhoon APT intrusion — tracing the kill chain from initial access via ADSelfService Plus account takeover through WMIC reconnaissance, web shell persistence, credential theft with mimikatz, lateral movement, data exfiltration, and log cleanup.'
 role: 'soc'
 tags: ['Splunk', 'Volt Typhoon', 'APT', 'Threat hunting', 'ADSelfService Plus', 'WMIC', 'PowerShell', 'mimikatz', 'MITRE ATT&CK']

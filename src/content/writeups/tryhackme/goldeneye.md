@@ -2,7 +2,7 @@
 title: 'GoldenEye'
 target: 'TryHackMe — GoldenEye'
 difficulty: 'medium'
-date: 2026-08-26
+date: 2026-03-08
 summary: 'A full Bond-themed boot2root: a password hidden in page source, POP3 enumeration over telnet, layered Hydra brute-forcing to pivot between users, an admin password buried in image EXIF, a manual Moodle Aspell reverse shell, and a kernel privesc to root.'
 role: 'pentest'
 tags: ['Boot2root', 'nmap', 'POP3', 'Hydra', 'exiftool', 'Moodle', 'Reverse shell', 'Kernel exploit', 'Privilege escalation']

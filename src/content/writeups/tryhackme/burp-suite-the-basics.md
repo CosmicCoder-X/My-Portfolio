@@ -2,7 +2,7 @@
 title: 'Burp Suite: The Basics'
 target: 'TryHackMe — Burp Suite: The Basics'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2025-12-21
 summary: 'Orientation in Burp Community — the editions, the core tools, navigating the settings maze, and using the Site Map to find an unlinked endpoint and read its response.'
 role: 'appsec'
 tags: ['Burp Suite', 'Proxy', 'Web app testing', 'Site map', 'Recon']

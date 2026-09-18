@@ -2,7 +2,7 @@
 title: 'Binex'
 target: 'TryHackMe — Binex'
 difficulty: 'hard'
-date: 2026-08-27
+date: 2025-11-23
 summary: 'Three privilege escalation paths on a single Ubuntu box — SUID find abuse for a lateral shell, a 64-bit stack buffer overflow with manual offset calculation and injected shellcode, and PATH variable manipulation to hijack a call to ps.'
 role: 'pentest'
 tags: ['SUID', 'Buffer overflow', 'PATH hijack', 'GDB', 'Hydra', 'enum4linux', 'GTFObins', 'Shellcode', 'x86_64']

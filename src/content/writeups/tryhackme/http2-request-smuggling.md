@@ -2,7 +2,7 @@
 title: 'HTTP/2 Request Smuggling'
 target: 'TryHackMe — HTTP/2 Request Smuggling'
 difficulty: 'hard'
-date: 2025-08-27
+date: 2026-03-22
 summary: 'An educational deep-dive into HTTP/2 request smuggling techniques covering H2.CL and H2.TE desync vectors, CRLF injection through header values and header names, pseudo-header abuse for ambiguous host and path routing, URL prefix injection via the :scheme pseudo-header, and request line injection — all demonstrated through PortSwigger Web Security Academy labs and documented real-world cases affecting Verizon, Netlify, and AOL/HuffPost infrastructure.'
 role: 'appsec'
 tags: ['http2', 'request-smuggling', 'h2-desync', 'crlf-injection', 'burp-suite', 'portswigger', 'web-exploitation']

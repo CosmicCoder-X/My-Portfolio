@@ -2,7 +2,7 @@
 title: 'Encryption — Crypto 101'
 target: 'TryHackMe — Encryption — Crypto 101'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-02-08
 summary: "A walkthrough of core cryptography concepts — symmetric vs asymmetric encryption, RSA key math, Diffie-Hellman, digital certificates, PGP/GPG, cracking SSH keys with John the Ripper, and quantum computing threats to current standards."
 role: 'soc'
 tags: ['cryptography', 'rsa', 'ssh', 'gpg', 'pgp', 'aes', 'des', 'tls', 'john-the-ripper', 'encryption', 'diffie-hellman']

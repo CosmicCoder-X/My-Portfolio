@@ -2,7 +2,7 @@
 title: 'Sakura'
 target: 'TryHackMe — Sakura'
 difficulty: 'easy'
-date: 2025-08-27
+date: 2026-08-09
 summary: 'A pure OSINT investigation that chains image metadata extraction, PGP key analysis, GitHub commit history, cryptocurrency tracing on Etherscan, deep web paste lookups, wireless network geolocation via WiGLE, and reverse image searching to build a complete profile on a target persona.'
 role: 'soc'
 tags: ['osint', 'metadata', 'pgp', 'github', 'cryptocurrency', 'etherscan', 'reverse-image-search', 'wigle', 'geolocation', 'social-media', 'dark-web']

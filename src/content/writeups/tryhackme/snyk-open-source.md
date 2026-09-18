@@ -2,7 +2,7 @@
 title: 'Snyk Open Source'
 target: 'TryHackMe — Snyk Open Source'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-08-30
 summary: "A walkthrough of Snyk Open Source for dependency vulnerability scanning — forking a vulnerable Node.js project, connecting it to Snyk via GitHub integration, interpreting results including a high-severity lodash prototype pollution, and integrating Snyk into CI/CD pipelines."
 role: 'appsec'
 tags: ['snyk', 'open-source', 'dependency-scanning', 'supply-chain', 'vulnerability-management', 'nodejs', 'npm', 'prototype-pollution', 'lodash', 'cvss', 'ci-cd', 'devsecops']

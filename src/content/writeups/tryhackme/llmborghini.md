@@ -2,7 +2,7 @@
 title: 'LLMborghini'
 target: 'TryHackMe — LLMborghini'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-05-24
 summary: 'An AI security challenge involving prompt injection and jailbreaking against a guarded LLM calendar assistant — bypassing direct injection defences and base64 obfuscation filters by pivoting to a roleplay-based jailbreak that convinced the agent to leak confidential weekly sales revenue data from all regional branches.'
 role: 'llm'
 tags: ['prompt-injection', 'jailbreaking', 'llm-security', 'ai-security', 'social-engineering', 'red-teaming']

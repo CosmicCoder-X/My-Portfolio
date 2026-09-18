@@ -2,7 +2,7 @@
 title: 'Room 404'
 target: 'TryHackMe — Room 404'
 difficulty: 'easy'
-date: 2026-09-16
+date: 2026-08-02
 summary: 'An exposed .git directory on a hotel booking platform''s staging site, reconstructed two different ways to recover a flag left sitting in the README.'
 role: 'pentest'
 tags: ['Git dumping', 'Gobuster', 'Directory enumeration', 'Information disclosure', 'git-dumper']

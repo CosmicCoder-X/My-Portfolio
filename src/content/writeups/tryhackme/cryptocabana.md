@@ -2,7 +2,7 @@
 title: 'CryptoCabana'
 target: 'TryHackMe — CryptoCabana'
 difficulty: 'medium'
-date: 2026-08-27
+date: 2026-01-11
 summary: 'Exploiting implicit trust in Azure — from a hardcoded SAS token in client-side JavaScript through container enumeration, leaked service principal credentials, and Key Vault secret extraction including pre-rotation versions.'
 role: 'appsec'
 tags: ['Azure', 'Cloud security', 'SAS token', 'Key Vault', 'Service principal', 'OAuth2', 'Blob storage', 'Secret rotation']

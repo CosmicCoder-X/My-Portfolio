@@ -2,7 +2,7 @@
 title: 'Searchlight — IMINT'
 target: 'TryHackMe — Searchlight — IMINT'
 difficulty: 'easy'
-date: 2026-08-27
+date: 2026-08-16
 summary: 'An OSINT room focused on image intelligence and geolocation — eight tasks that escalate from reading a street sign to geolocating a hotel from a video, using reverse image search, Google Maps Street View, and cross-platform search engine analysis.'
 role: 'soc'
 tags: ['OSINT', 'IMINT', 'GEOINT', 'Reverse image search', 'Google Maps', 'Street View', 'Yandex', 'Geolocation']

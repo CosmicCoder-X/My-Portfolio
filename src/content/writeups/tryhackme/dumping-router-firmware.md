@@ -2,7 +2,7 @@
 title: 'Dumping Router Firmware'
 target: 'TryHackMe — Dumping Router Firmware'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-01-25
 summary: "A hands-on walkthrough of router firmware reverse engineering — extracting a Linksys WRT1900ACS v2 firmware image, analysing it with strings and binwalk to identify the OS and architecture, extracting and mounting the JFFS2 filesystem, and exploring the BusyBox-based internals."
 role: 'forensics'
 tags: ['firmware-analysis', 'binwalk', 'strings', 'jffs2', 'router', 'iot', 'filesystem', 'linksys', 'reverse-engineering']

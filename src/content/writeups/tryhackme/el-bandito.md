@@ -2,7 +2,7 @@
 title: 'El Bandito'
 target: 'TryHackMe — El Bandito'
 difficulty: 'hard'
-date: 2025-08-27
+date: 2026-02-01
 summary: 'A multi-service target running a Python web app and an nginx-proxied Spring Boot backend. SSRF through a service status checker is chained with a rogue WebSocket upgrade to smuggle requests past nginx and reach internal endpoints, leaking admin credentials. HTTP/2 request desync then exploits a Content-Length mismatch to intercept another user''s authenticated request and steal their session cookie containing the final flag.'
 role: 'appsec'
 tags: ['ssrf', 'http-request-smuggling', 'http2-desync', 'websocket', 'spring-boot', 'burp-suite', 'nmap', 'gobuster', 'web-exploitation']

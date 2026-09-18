@@ -2,7 +2,7 @@
 title: 'Borderlands'
 target: 'TryHackMe — Borderlands'
 difficulty: 'hard'
-date: 2026-08-27
+date: 2025-12-14
 summary: 'A five-phase chain from an exposed .git repo through SQL injection, Chisel pivoting and a vsFTPd backdoor into BGP route hijacking — impersonating a trusted host to intercept flags across isolated subnets.'
 role: 'pentest'
 tags: ['Git dumping', 'SQL injection', 'Webshell', 'Chisel', 'SOCKS proxy', 'vsFTPd 2.3.4', 'CVE-2011-2523', 'BGP hijacking', 'Quagga', 'Vigenere cipher', 'Network pivoting', 'Docker']

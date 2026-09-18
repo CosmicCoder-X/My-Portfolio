@@ -2,7 +2,7 @@
 title: 'KaffeeSec — SoMeSINT'
 target: 'TryHackMe — KaffeeSec — SoMeSINT'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2026-04-26
 summary: "An OSINT investigation starting from a single social media profile, spiralling outward through Twitter, Reddit, reverse image searches, follower analysis, Wayback Machine snapshots, and cached Pastebin links to uncover a target's hidden identity and personal secrets."
 role: 'soc'
 tags: ['osint', 'social-media', 'twitter', 'reddit', 'wayback-machine', 'reverse-image-search', 'pastebin', 'social-engineering', 'reconnaissance']

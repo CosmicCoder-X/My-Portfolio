@@ -2,7 +2,7 @@
 title: 'ParrotPost: Phishing Analysis'
 target: 'TryHackMe — ParrotPost: Phishing Analysis'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-07-19
 summary: "A phishing email analysis exercise — inspecting headers to identify spoofed sender details and originating IP, deobfuscating a multi-layered HTML attachment through base64, HTML entity, and JavaScript deobfuscation to reveal a credential harvesting page, then tracing the exfiltration path and recovering stolen credentials."
 role: 'soc'
 tags: ['phishing', 'email-analysis', 'header-analysis', 'obfuscation', 'base64', 'html-entity', 'credential-harvesting', 'cyberchef', 'deobfuscation', 'social-engineering']

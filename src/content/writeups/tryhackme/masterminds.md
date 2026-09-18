@@ -2,7 +2,7 @@
 title: 'Masterminds'
 target: 'TryHackMe — Masterminds'
 difficulty: 'medium'
-date: 2025-01-15
+date: 2026-06-14
 summary: 'Incident-response triage of three compromised workstations at Pfeffer PLC using Brim (Zui) to analyse pcap traffic, identify C2 infrastructure, and attribute each infection to a known malware family.'
 role: 'soc'
 tags: ['brim', 'zui', 'pcap', 'network-forensics', 'emotet', 'redline-stealer', 'phorphiex', 'incident-response', 'virustotal', 'urlhaus']

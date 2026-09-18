@@ -2,7 +2,7 @@
 title: 'Block'
 target: 'TryHackMe — Block'
 difficulty: 'medium'
-date: 2025-08-27
+date: 2025-11-30
 summary: 'A blue-team challenge built around a packet capture of two SMB3-encrypted sessions on a Windows domain. The investigation uses pypykatz to extract NTLM hashes from an lsass dump, cracks the first user''s password to derive the random session key for SMB3 decryption, then uses a Kerberos keytab to decrypt the second user''s traffic without needing to crack their hash at all.'
 role: 'forensics'
 tags: ['smb3-decryption', 'ntlm', 'pypykatz', 'wireshark', 'kerberos', 'keytab', 'hash-cracking', 'pcap-analysis', 'network-forensics', 'blue-team']

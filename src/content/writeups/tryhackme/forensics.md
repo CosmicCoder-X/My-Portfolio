@@ -2,7 +2,7 @@
 title: 'Forensics'
 target: 'TryHackMe — Forensics'
 difficulty: 'medium'
-date: 2026-08-27
+date: 2026-02-22
 summary: 'Volatility-based memory forensics on a Windows 7 dump: profiling the image, hunting suspicious processes and ports with pslist, shellbags, netscan and malfind, then extracting IOCs with strings and envars.'
 role: 'forensics'
 tags: ['Volatility', 'Memory forensics', 'malfind', 'shellbags', 'netscan', 'IOC', 'envars', 'strings']

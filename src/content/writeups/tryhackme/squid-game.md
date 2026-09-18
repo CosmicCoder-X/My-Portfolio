@@ -2,7 +2,7 @@
 title: 'Squid Game'
 target: 'TryHackMe — Squid Game'
 difficulty: 'hard'
-date: 2026-08-27
+date: 2026-09-06
 summary: 'A malicious document analysis challenge covering five attacker samples — each embedding a different obfuscation and delivery technique — dissected with OLEtools, ViperMonkey, CyberChef, and scdbgc to extract C2 infrastructure, dropped payloads, and a Cobalt Strike beacon.'
 role: 'forensics'
 tags: ['OLEtools', 'oledump', 'olevba', 'ViperMonkey', 'CyberChef', 'scdbgc', 'Malicious documents', 'VBA macros', 'PowerShell', 'Cobalt Strike', 'Shellcode', 'XOR']

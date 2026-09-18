@@ -2,7 +2,7 @@
 title: 'YARA Mean One'
 target: 'TryHackMe — YARA Mean One'
 difficulty: 'easy'
-date: 2025-08-28
+date: 2026-06-28
 summary: 'A practical introduction to YARA rule writing where a custom regex-based rule is crafted to scan a directory of 60 image files for embedded string indicators matching the pattern TBFC: followed by alphanumeric characters. The matching files are identified, the strings are extracted with the Linux strings utility, and the fragments are reassembled into a hidden message.'
 role: 'soc'
 tags: ['yara', 'pattern-matching', 'strings', 'regex', 'blue-team', 'forensics', 'steganography']

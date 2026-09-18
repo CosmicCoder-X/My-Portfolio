@@ -2,7 +2,7 @@
 title: 'Injectics'
 target: 'TryHackMe — Injectics'
 difficulty: 'medium'
-date: 2025-08-27
+date: 2026-04-12
 summary: 'A sports-themed web application vulnerable to SQL injection and Server-Side Template Injection. Client-side SQL filters are bypassed with URL encoding and Burp Suite, a DROP TABLE destroys the users table to trigger default credential restoration, and Twig SSTI in the admin profile page escalates to remote code execution.'
 role: 'appsec'
 tags: ['sql-injection', 'ssti', 'twig', 'burp-suite', 'gobuster', 'nmap', 'client-side-bypass', 'web-exploitation', 'template-injection', 'privilege-escalation']

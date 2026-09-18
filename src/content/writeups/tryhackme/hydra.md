@@ -2,7 +2,7 @@
 title: 'Hydra'
 target: 'TryHackMe — Hydra'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-03-29
 summary: 'Brute-forcing two services on one host with THC-Hydra — a POST web login and SSH — including the DevTools recon needed to build the http-post-form string correctly.'
 role: 'pentest'
 tags: ['Hydra', 'Brute force', 'http-post-form', 'SSH', 'Password attacks', 'rockyou']

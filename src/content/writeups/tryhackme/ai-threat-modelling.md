@@ -2,7 +2,7 @@
 title: 'AI Threat Modelling'
 target: 'TryHackMe — AI Threat Modelling'
 difficulty: 'medium'
-date: 2025-08-29
+date: 2025-11-16
 summary: "A defender-focused threat modelling exercise against MegaCorp AI chatbot architecture — identifying AI-specific assets, adapting STRIDE for AI failure modes, enriching findings with MITRE ATLAS technique IDs, and mapping OWASP LLM Top 10 vulnerabilities to architectural components in a three-phase interactive assessment."
 role: 'llm'
 tags: ['ai-security', 'threat-modelling', 'owasp-llm-top-10', 'stride', 'mitre-atlas', 'llm-security', 'rag', 'supply-chain', 'data-poisoning', 'red-teaming']

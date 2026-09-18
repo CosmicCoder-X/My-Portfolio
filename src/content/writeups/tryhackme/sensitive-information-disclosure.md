@@ -2,7 +2,7 @@
 title: 'Sensitive Information Disclosure'
 target: 'TryHackMe — Sensitive Information Disclosure'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-08-23
 summary: "A hands-on exploration of OWASP LLM02 — demonstrating how RAG pipelines leak confidential data through broad similarity search, semantic collisions, and logging exposure. The practical simulates an AI assistant where salary and HR data are exposed through a shared vector index without access controls."
 role: 'llm'
 tags: ['owasp-llm-top-10', 'llm-security', 'rag', 'information-disclosure', 'vector-database', 'access-control', 'embeddings', 'data-segmentation', 'metadata-filtering']

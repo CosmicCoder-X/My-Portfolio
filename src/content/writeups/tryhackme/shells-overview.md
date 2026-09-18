@@ -2,7 +2,7 @@
 title: 'Shells Overview'
 target: 'TryHackMe — Shells Overview'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2026-08-30
 summary: 'Reverse vs bind shells, the Netcat payloads for each, the tooling that makes a raw shell usable, and a practical finish exploiting command injection and an unrestricted file upload to land two shells.'
 role: 'pentest'
 tags: ['Reverse shell', 'Bind shell', 'Netcat', 'Web shell', 'Command injection', 'File upload']

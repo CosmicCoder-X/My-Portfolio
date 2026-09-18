@@ -2,7 +2,7 @@
 title: 'Blue (EternalBlue)'
 target: 'TryHackMe — Blue'
 difficulty: 'easy'
-date: 2026-08-26
+date: 2025-12-07
 summary: 'The full EternalBlue chain against a Windows 7 host: MS17-010 recon, exploitation to a raw shell, upgrade to Meterpreter, process migration, hashdump, cracking Jon''s password with John, and three flags.'
 role: 'pentest'
 tags: ['EternalBlue', 'MS17-010', 'SMB', 'Metasploit', 'Meterpreter', 'hashdump', 'John the Ripper', 'Privilege escalation']

@@ -2,7 +2,7 @@
 title: 'Dreaming'
 target: 'TryHackMe — Dreaming'
 difficulty: 'easy'
-date: 2025-08-29
+date: 2026-01-18
 summary: "An easy Linux box with initial access through Pluck 4.7.13 CMS via default credentials and a file upload vulnerability. Lateral movement through three users using credential reuse, command injection through a MySQL-backed sudo script, and Python library hijacking of shutil.py."
 role: 'pentest'
 tags: ['pluck-cms', 'file-upload', 'command-injection', 'mysql', 'lateral-movement', 'privilege-escalation', 'python-library-hijacking', 'credential-reuse', 'sudo', 'webshell']
