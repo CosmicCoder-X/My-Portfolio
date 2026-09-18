@@ -1,6 +1,6 @@
 ---
 title: "Joker's Stash: anatomy of a billion-dollar carding market"
-date: 2026-09-15
+date: 2026-06-13
 summary: 'How the largest dark-web carding marketplace in history ran for six years on blockchain DNS and a tiered escrow system, survived a federal seizure attempt, and shut itself down on its own terms: a look at the machinery behind $1B+ in stolen card data, and what it tells defenders about takedown resilience.'
 tags: ['Threat Intelligence', 'Carding', 'Dark Web', 'Cybercrime', 'Payment Card Fraud', 'OSINT']
 draft: false

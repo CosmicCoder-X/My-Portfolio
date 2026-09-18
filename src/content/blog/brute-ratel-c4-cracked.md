@@ -1,6 +1,6 @@
 ---
 title: 'The Red Team Tool That Got Handed to Ransomware Gangs for Free'
-date: 2026-09-15
+date: 2025-12-29
 summary: "Brute Ratel C4 was built specifically to slip past the EDR tools its own creator used to work on. It worked so well that state-linked hackers were caught abusing it before the public even knew it existed, and then a Russian cracking group blew the whole thing wide open, and ransomware gangs like Black Basta and BlackCat just... helped themselves."
 tags: ['Ransomware', 'Red Team Tools', 'Cybercrime History', 'EDR Evasion', 'APT29']
 draft: false

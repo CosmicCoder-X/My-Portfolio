@@ -1,6 +1,6 @@
 ---
 title: 'Tracing Crypto Crime: How the Trail Actually Works'
-date: 2026-07-10
+date: 2026-02-25
 summary: "Every blockchain transaction is a permanent, public record: the traceability that makes cryptocurrency investigations possible at all, and the reason criminals spend so much effort trying to break the link between where funds started and where they end up. How clustering, exposure analysis and wallet fingerprinting follow the money, how mixing and peel chains try to lose it, and why the trail so often survives anyway."
 tags: ['Cryptocurrency', 'Blockchain Forensics', 'Money Laundering', 'OSINT', 'Threat Intelligence', 'Bitcoin', 'Monero']
 draft: false

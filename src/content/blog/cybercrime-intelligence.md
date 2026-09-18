@@ -1,6 +1,6 @@
 ---
 title: 'Inside Cybercrime Intelligence: Tools, Law, and Tradecraft'
-date: 2026-07-07
+date: 2026-02-12
 summary: "Cybercrime intelligence work sits at the intersection of tooling, law and personal risk in a way most intel disciplines don't: a DOJ guidance document draws the line between standard practice and a federal crime, and the same OPSEC mistake that burns a source can put an investigator's real identity in front of the people they're investigating."
 tags: ['Threat Intelligence', 'OSINT', 'OPSEC', 'Legal', 'Sock Puppets', 'Dark Web', 'Cybercrime']
 draft: false

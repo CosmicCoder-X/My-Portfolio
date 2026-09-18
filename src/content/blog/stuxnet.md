@@ -1,6 +1,6 @@
 ---
 title: "Stuxnet: The Worm That Reached Out of the Internet and Broke Things"
-date: 2026-09-15
+date: 2026-08-22
 summary: "Every piece of malware before Stuxnet stayed inside computers. Stuxnet reached through a computer, into a piece of industrial machinery, and physically wrecked it: a thousand Iranian nuclear centrifuges spun themselves apart while the control room readouts calmly reported that everything was fine. It took a Belarusian antivirus company noticing some weird reboots to find it, and years for anyone to fully figure out what it had actually done."
 tags: ['Stuxnet', 'Nation-State', 'ICS Security', 'Malware History', 'Iran']
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Cicada 3301: The Puzzle Nobody Has Ever Finished"
-date: 2026-09-15
+date: 2026-01-25
 summary: "In January 2012, someone posted a single image to 4chan with a hidden message challenging the internet to find them. Three years, three puzzle rounds, steganography, book ciphers, physical posters in a dozen countries, and a 74-page book written in a runic alphabet nobody had ever seen before, and more than a decade later, most of it is still unsolved."
 tags: ['Cicada 3301', 'Cryptography', 'Puzzles', 'Internet Mystery', 'Steganography']
 draft: false

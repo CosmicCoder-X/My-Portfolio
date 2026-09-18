@@ -1,6 +1,6 @@
 ---
 title: "The May Day Mystery: 44 Years of the Same Ad, Nobody Knows Why"
-date: 2026-09-16
+date: 2026-07-29
 summary: "Every May 1st since 1981, a full-page ad stuffed with equations, jumbled maps, literary quotes, and a smirking cartoon face has run in a University of Arizona student newspaper. A lawyer who speaks eight languages calls in to place it every single year, on behalf of a group calling itself The Orphanage, and after four and a half decades of amateur cryptanalysis nobody outside it has ever figured out what it actually says."
 tags: ['May Day Mystery', 'Cryptography', 'Puzzles', 'Internet Mysteries', 'Secret Societies']
 draft: false

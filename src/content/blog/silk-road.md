@@ -1,6 +1,6 @@
 ---
 title: "Silk Road: The Dark Web's First (and Wildest) Marketplace"
-date: 2026-09-15
+date: 2026-08-13
 summary: "A 26-year-old libertarian with a physics degree built the internet's first real drug marketplace out of his apartment, ran it under the name Dread Pirate Roberts for two and a half years, got busted because of a forum post with his own Gmail address on it, and, plot twist nobody saw coming, walked out with a full presidential pardon over a decade later. Here's the whole ridiculous story."
 tags: ['Dark Web', 'Silk Road', 'Cybercrime History', 'Bitcoin', 'Tor']
 draft: false

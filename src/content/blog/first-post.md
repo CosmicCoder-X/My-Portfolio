@@ -1,6 +1,6 @@
 ---
 title: 'Starting this thing'
-date: 2026-08-26
+date: 2026-03-17
 summary: 'A placeholder first post. Rewrite it in your own voice or delete it, the site works either way.'
 tags: ['Meta']
 # Placeholder scaffolding, not a real post: kept in the repo for

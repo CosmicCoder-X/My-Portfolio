@@ -1,6 +1,6 @@
 ---
 title: "Escaping the Box: A History of Breaking Out of Virtual Machines"
-date: 2026-09-15
+date: 2026-05-15
 summary: "The entire business model of cloud computing rests on one promise: your virtual machine cannot touch your neighbor's, even though they're running on the exact same physical server. A hypervisor escape is what happens when that promise breaks. Three incidents, thirteen years apart, show the whole story evolving: from a bug in a graphics card driver, to a bug in hardware nobody uses anymore, to an attack that doesn't need a software bug at all."
 tags: ['Virtualization', 'Hypervisor', 'Cloud Security', 'VM Escape', 'Side-Channel']
 draft: false

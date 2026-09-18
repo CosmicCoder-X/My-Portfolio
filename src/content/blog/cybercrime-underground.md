@@ -1,6 +1,6 @@
 ---
 title: 'How the Cybercrime Underground Actually Works'
-date: 2026-07-13
+date: 2026-03-14
 summary: 'The cybercrime underground is not one thing: it is forums, markets, leak sites and messaging apps, each running its own economy of trust. Mapped through the Diamond Model of Intrusion Analysis: who runs it, what they sell, what they run it on, and who ends up paying for it.'
 tags: ['Cybercrime', 'Threat Intelligence', 'Dark Web', 'Diamond Model', 'Ransomware', 'OSINT', 'Malware']
 draft: false

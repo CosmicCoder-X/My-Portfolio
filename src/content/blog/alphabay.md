@@ -1,6 +1,6 @@
 ---
 title: "AlphaBay: The Dark Web Market That Was 10x Silk Road (and Died Because of a Hotmail Address)"
-date: 2026-09-15
+date: 2025-12-22
 summary: "AlphaBay made Silk Road look small: ten times the size, hundreds of thousands of listings, a founder worth $23 million living it up in Bangkok. It took a coordinated international sting, a fake marketplace the Dutch police secretly ran for 27 days, and one genuinely baffling email header mistake to bring it down. Then it came back from the dead once, and even that didn't last."
 tags: ['Dark Web', 'AlphaBay', 'Cybercrime History', 'Bitcoin', 'Tor']
 draft: false

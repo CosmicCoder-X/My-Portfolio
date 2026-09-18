@@ -1,6 +1,6 @@
 ---
 title: 'The Tradecraft of Undercover Cyber Operations'
-date: 2026-07-14
+date: 2026-07-16
 summary: "Cybercrime forums gate their most valuable sections behind auditable trust thresholds, not a vibe check: how operations decide what they're actually after, how automated collection scales past what a human can do alone, and the graduated engagement model that keeps a covert presence from turning into exposure nobody decided to take on."
 tags: ['Threat Intelligence', 'HUMINT', 'OSINT', 'Dark Web', 'Undercover Operations', 'Web Scraping', 'ELK Stack']
 draft: false

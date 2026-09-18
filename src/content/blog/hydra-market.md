@@ -1,6 +1,6 @@
 ---
 title: "Hydra Market: The Darknet Giant That Never Used the Mail"
-date: 2026-09-15
+date: 2026-04-18
 summary: "Hydra was bigger than Silk Road and AlphaBay combined: 80% of all darknet crypto transactions in 2021, $5.2 billion moved over its lifetime, and it got there by throwing out the one thing every other dark web market relied on: the postal service. Germany and the US killed the site in 2022. The guy who actually built it wasn't caught until two and a half years later, and not by them."
 tags: ['Dark Web', 'Hydra Market', 'Cybercrime History', 'Bitcoin', 'Russia']
 draft: false

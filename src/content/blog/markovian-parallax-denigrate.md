@@ -1,6 +1,6 @@
 ---
 title: "Markovian Parallax Denigrate: The Nonsense That Ate Usenet in 1996"
-date: 2026-09-16
+date: 2026-07-15
 summary: "In August 1996, hundreds of messages full of grammatically plausible nonsense hit dozens of unrelated Usenet newsgroups, every one of them carrying the same three-word subject line. Nobody traced the sender, nobody found a hidden message, and the most interesting twist isn't the gibberish itself. It's how a real person's name got wrongly pulled into it years later, and how the whole thing became a legend mostly after the fact."
 tags: ['Markovian Parallax Denigrate', 'Usenet', 'Internet History', 'Spam', 'Internet Mysteries']
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "A Tour of Linux's Weirdest and Most Wonderful Family Tree"
-date: 2026-09-15
+date: 2026-07-10
 summary: "Linux isn't one operating system. It's a kernel that a few thousand completely different groups of people have wrapped in wildly different clothes: a friendly desktop for your grandmother, a toolbox with three thousand hacking tools bolted on, a government surveillance apparatus, and one that was built entirely by a single man who genuinely believed God was giving him instructions. This is a tour through that family, and it gets stranger the further you go."
 tags: ['Linux', 'Operating Systems', 'Open Source', 'Kali Linux', 'TempleOS']
 draft: false

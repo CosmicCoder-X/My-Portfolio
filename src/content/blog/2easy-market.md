@@ -1,6 +1,6 @@
 ---
 title: "2easy: The Log Shop That Wouldn't Die"
-date: 2026-09-15
+date: 2025-12-15
 summary: "2easy (often just called 'ss' or 2easy.shop) is one of the biggest names in stolen-login marketplaces: a self-service shop for infostealer logs that fed off a rival's downfall to explode in size. It's often called the largest of its kind, though that title actually belongs to a quieter competitor. What makes 2easy interesting isn't the size record. It's that everyone else on this blog is dead, and 2easy just... isn't."
 tags: ['Dark Web', 'Infostealers', 'Cybercrime History', 'Data Breach', 'Russia']
 draft: false

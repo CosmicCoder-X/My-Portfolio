@@ -1,6 +1,6 @@
 ---
 title: "Lake City Quiet Pills: The Reddit Mystery That Timed Itself to a Real Assassination"
-date: 2026-09-16
+date: 2026-06-25
 summary: "It started with an obituary for a Redditor nobody could confirm ever existed. It ended with a hidden forum, an encrypted flash drive someone bragged about destroying, and a set of cryptic warnings that landed on the same week a Hamas commander was actually assassinated in Dubai. Whether any of it was real is still the whole argument."
 tags: ['Lake City Quiet Pills', 'Reddit', 'Internet Mysteries', 'OSINT', 'Mercenaries']
 draft: false

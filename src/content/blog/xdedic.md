@@ -1,6 +1,6 @@
 ---
 title: 'xDedic: The Marketplace That Sold Access to Your Own Servers'
-date: 2026-09-15
+date: 2026-08-30
 summary: "xDedic didn't sell drugs or stolen cards: it sold logins. Specifically, working remote-desktop logins to over 70,000 hacked servers, including government machines going for as little as $6 a pop. A security firm exposed the whole operation in 2016. The market just shrugged, moved to Tor, and kept growing anyway."
 tags: ['Dark Web', 'RDP', 'Cybercrime History', 'Data Breach', 'xDedic']
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Kryptos: The CIA's Unsolved Statue Just Got Weirder, Not Less"
-date: 2026-09-16
+date: 2026-06-17
 summary: "A 10-foot copper sculpture has sat in a CIA courtyard since 1990, carrying four encrypted messages nobody could crack. Three fell in 1999. The fourth survived 35 years of the world's best amateur and professional cryptanalysts, until two journalists found the answer by accident in a filing mistake at the Smithsonian, and it still didn't count as solved."
 tags: ['Kryptos', 'CIA', 'Cryptography', 'Puzzles', 'Jim Sanborn']
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "The FBI Built a Phone Company for Criminals, and Criminals Bought It"
-date: 2026-09-15
+date: 2026-08-05
 summary: "The FBI took down one encrypted-phone company selling to cartels, and then, instead of stopping there, quietly stood up its own replacement, seeded it into the exact criminal trust networks the first company had built, and spent three years reading every message on it. 12,000 devices, 300 syndicates, 27 million messages, and a legal routing trick clever enough that it deserves its own explanation."
 tags: ['FBI', 'ANOM', 'Encrypted Communications', 'Law Enforcement', 'Cybercrime History']
 draft: false

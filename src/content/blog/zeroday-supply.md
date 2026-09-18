@@ -1,6 +1,6 @@
 ---
 title: 'ZeroDay Supply: the WEB1 practical exam'
-date: 2026-09-07
+date: 2026-09-10
 summary: "The practical exam for TryHackMe's WEB1 certification: a black-box HR portal, a grey-box Flask/MongoDB e-commerce API behind a React SPA, and a white-box Spring Boot config tool. The API hid five vulnerability classes: SSRF via a webhook response-merge bug, a weak JWT signing secret, NoSQL operator injection, and a hidden cart-update endpoint with broken business logic, plus a fifth (command injection) that resisted every technique tried, while source review of the third host surfaced an insecure-deserialization RCE to root via a Commons Collections gadget chain."
 tags: ['WEB1', 'SSRF', 'JWT', 'NoSQL Injection', 'MongoDB', 'Business Logic', 'Mass Assignment', 'API Security', 'React', 'Flask', 'Insecure Deserialization', 'Java', 'Spring Boot', 'ysoserial', 'RCE']
 draft: false
