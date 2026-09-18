@@ -93,7 +93,7 @@ export const projects = [
     repo: 'https://github.com/CosmicCoder-X/iam-oracle',
   },
   {
-    name: 'ransomprint',
+    name: 'Ransomprint',
     kind: 'Ransomware triage',
     blurb: `Ransomware family fingerprinting and recovery triage. Point it at a
       folder that's already been hit and it tells you two things honestly:
