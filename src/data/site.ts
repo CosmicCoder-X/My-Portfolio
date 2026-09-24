@@ -286,6 +286,7 @@ export const experience = [
 
 // ── Credentials ──────────────────────────────────────────────
 export const credentials = [
+  { name: 'Junior Penetration Tester (PT1)', issuer: 'TryHackMe', kind: 'Certification' },
   { name: 'Junior Penetration Tester', issuer: 'TryHackMe', kind: 'Path' },
   { name: 'Blue Team Junior Analyst', issuer: 'Security Blue Team', kind: 'Pathway' },
   { name: 'Ethical Hacking', issuer: 'Cisco', kind: 'Certification' },
@@ -332,6 +333,7 @@ export const certCategories = [
     name: 'Professional Certifications',
     blurb: 'Industry certifications and structured coursework.',
     items: [
+      { name: 'Junior Penetration Tester (PT1)', issuer: 'TryHackMe', year: '2026', image: '/certifications/pt1-professional-certification.jpg' },
       { name: 'Web App Pentester Level 1 (WEB1)', issuer: 'TryHackMe', year: '2026', image: '/certifications/web1-professional-certification.jpg' },
       { name: 'Ethical Hacking', issuer: 'Cisco', year: '', image: '' },
       { name: 'FOR589 — Cybercrime Investigations', issuer: 'SANS curriculum', year: '', image: '' },
