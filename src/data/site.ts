@@ -287,7 +287,7 @@ export const experience = [
 // ── Credentials ──────────────────────────────────────────────
 export const credentials = [
   { name: 'Junior Penetration Tester (PT1)', issuer: 'TryHackMe', kind: 'Certification' },
-  { name: 'Junior Penetration Tester', issuer: 'TryHackMe', kind: 'Path' },
+  { name: 'Web App Pentester Level 1 (WEB1)', issuer: 'TryHackMe', kind: 'Certification' },
   { name: 'Blue Team Junior Analyst', issuer: 'Security Blue Team', kind: 'Pathway' },
   { name: 'Ethical Hacking', issuer: 'Cisco', kind: 'Certification' },
   { name: 'FOR589 — Cybercrime Investigations', issuer: 'SANS curriculum', kind: 'Self-study' },
